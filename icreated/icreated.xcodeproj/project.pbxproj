@@ -10,6 +10,7 @@
 		9C03482819F183020070BEFD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482719F183020070BEFD /* MapViewController.m */; };
 		9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482A19F18D1F0070BEFD /* RegisterViewController.m */; };
 		9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482D19F18F460070BEFD /* LoginViewController.m */; };
+		9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */; };
 		9CEB7F7819F16EBF0096B4E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7719F16EBF0096B4E7 /* main.m */; };
 		9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7A19F16EBF0096B4E7 /* AppDelegate.m */; };
 		9CEB7F7E19F16EBF0096B4E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7D19F16EBF0096B4E7 /* ViewController.m */; };
@@ -39,6 +40,8 @@
 		9C03482A19F18D1F0070BEFD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		9C03482C19F18F460070BEFD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9C03482D19F18F460070BEFD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventUpdater.h; sourceTree = "<group>"; };
+		9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventUpdater.m; sourceTree = "<group>"; };
 		9CEB7F7219F16EBF0096B4E7 /* icreated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icreated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEB7F7619F16EBF0096B4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CEB7F7719F16EBF0096B4E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 				9CEB7F8219F16EBF0096B4E7 /* Images.xcassets */,
 				9CEB7F8419F16EBF0096B4E7 /* LaunchScreen.xib */,
 				9CEB7F7519F16EBF0096B4E7 /* Supporting Files */,
+				9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */,
+				9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */,
 			);
 			path = icreated;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			files = (
 				9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */,
 				9CEB7F7E19F16EBF0096B4E7 /* ViewController.m in Sources */,
+				9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */,
 				9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */,
 				9CEB7FA219F16FCD0096B4E7 /* NavigationViewController.m in Sources */,
 				9C03482819F183020070BEFD /* MapViewController.m in Sources */,

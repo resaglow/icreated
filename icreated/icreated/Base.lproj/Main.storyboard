@@ -170,12 +170,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f1-p9-wtk">
-                                <rect key="frame" x="139" y="20" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vRc-4u-wLq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -233,7 +231,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bqv-FJ-V8a" kind="push" id="JMo-RT-pnW"/>
+                                    <action selector="sendLogin:" destination="ptg-7k-amK" eventType="touchUpInside" id="ap0-IP-Bwx"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnT-xj-ma4">
@@ -261,18 +259,28 @@
                                     <navigationItem title="Title" id="jD4-d9-Rjs"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSf-ox-mp1">
+                                <rect key="frame" x="44" y="341" width="232" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.035254118090000001" blue="0.15648965209999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="Fqe-m1-VAY"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="aSf-ox-mp1" id="9OC-QU-7Zk"/>
+                        <outlet property="loginTextField" destination="tnT-xj-ma4" id="PKd-dd-SOf"/>
+                        <outlet property="passwordTextField" destination="693-mM-LQb" id="Sw1-Kq-W5R"/>
+                        <segue destination="bqv-FJ-V8a" kind="push" identifier="loginSuccessful" id="lq7-fp-wLQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tb-nG-rlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="-112"/>
+            <point key="canvasLocation" x="722" y="-112"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="I8K-6o-xbZ">
@@ -303,25 +311,32 @@
                                 </state>
                                 <connections>
                                     <action selector="sendRegister:" destination="U3Y-m8-GUn" eventType="touchUpInside" id="3R5-k1-43O"/>
-                                    <segue destination="bqv-FJ-V8a" kind="push" id="AJh-Pg-tIk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-6Q-bl9">
+                                <rect key="frame" x="44" y="341" width="232" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.035254118090000001" blue="0.15648965209999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="wvM-3V-GwL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="errorLabel" destination="aUK-6Q-bl9" id="9mV-ET-rMh"/>
                         <outlet property="loginTextField" destination="zPx-5D-gGB" id="Ohc-wz-k50"/>
                         <outlet property="passwordTextField" destination="sec-xF-tMI" id="O5Z-8s-Abb"/>
+                        <segue destination="bqv-FJ-V8a" kind="push" identifier="registerSuccessful" id="G0C-ge-lB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a48-Nn-coE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="-112"/>
+            <point key="canvasLocation" x="1140" y="-112"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aKu-VB-sul"/>
+        <segue reference="lq7-fp-wLQ"/>
     </inferredMetricsTieBreakers>
 </document>
