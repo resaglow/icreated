@@ -80,7 +80,7 @@
 
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Finished loading");
+    NSLog(@"Login finished loading");
     
     NSError *error = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&error];

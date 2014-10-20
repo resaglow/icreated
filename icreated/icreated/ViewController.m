@@ -63,7 +63,7 @@
     
     switch (index) {
         case 0:
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EventsController"];
+            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NewsStandController"];
             break;
         case 1:
             vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MapController"];

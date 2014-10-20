@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface EventUpdater : UIViewController <NSURLConnectionDataDelegate>
+
++ (NSArray *)eventsArray;
+- (void)getEventsWithCompletionHandler:(void (^)(void))handler;
 
 @end

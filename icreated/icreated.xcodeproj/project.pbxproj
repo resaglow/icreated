@@ -11,6 +11,7 @@
 		9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482A19F18D1F0070BEFD /* RegisterViewController.m */; };
 		9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482D19F18F460070BEFD /* LoginViewController.m */; };
 		9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */; };
+		9CC81E5419F4FCB300C28DA3 /* NewsStandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */; };
 		9CEB7F7819F16EBF0096B4E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7719F16EBF0096B4E7 /* main.m */; };
 		9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7A19F16EBF0096B4E7 /* AppDelegate.m */; };
 		9CEB7F7E19F16EBF0096B4E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7D19F16EBF0096B4E7 /* ViewController.m */; };
@@ -21,6 +22,7 @@
 		9CEB7F9D19F16ED40096B4E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F9C19F16ED40096B4E7 /* SWRevealViewController.m */; };
 		9CEB7F9F19F16EE60096B4E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEB7F9E19F16EE60096B4E7 /* MapKit.framework */; };
 		9CEB7FA219F16FCD0096B4E7 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7FA119F16FCD0096B4E7 /* NavigationViewController.m */; };
+		9CF1D87C19F54A4000D7A5E0 /* EventAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1D87B19F54A4000D7A5E0 /* EventAddViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		9C03482D19F18F460070BEFD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventUpdater.h; sourceTree = "<group>"; };
 		9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventUpdater.m; sourceTree = "<group>"; };
+		9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsStandViewController.h; sourceTree = "<group>"; };
+		9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsStandViewController.m; sourceTree = "<group>"; };
 		9CEB7F7219F16EBF0096B4E7 /* icreated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icreated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEB7F7619F16EBF0096B4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CEB7F7719F16EBF0096B4E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		9CEB7F9E19F16EE60096B4E7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9CEB7FA019F16FCD0096B4E7 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		9CEB7FA119F16FCD0096B4E7 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		9CF1D87A19F54A4000D7A5E0 /* EventAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAddViewController.h; sourceTree = "<group>"; };
+		9CF1D87B19F54A4000D7A5E0 /* EventAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAddViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +122,15 @@
 				9C03482D19F18F460070BEFD /* LoginViewController.m */,
 				9C03482919F18D1F0070BEFD /* RegisterViewController.h */,
 				9C03482A19F18D1F0070BEFD /* RegisterViewController.m */,
+				9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */,
+				9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */,
 				9CEB7F8219F16EBF0096B4E7 /* Images.xcassets */,
 				9CEB7F8419F16EBF0096B4E7 /* LaunchScreen.xib */,
 				9CEB7F7519F16EBF0096B4E7 /* Supporting Files */,
 				9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */,
 				9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */,
+				9CF1D87A19F54A4000D7A5E0 /* EventAddViewController.h */,
+				9CF1D87B19F54A4000D7A5E0 /* EventAddViewController.m */,
 			);
 			path = icreated;
 			sourceTree = "<group>";
@@ -254,11 +264,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */,
+				9CF1D87C19F54A4000D7A5E0 /* EventAddViewController.m in Sources */,
 				9CEB7F7E19F16EBF0096B4E7 /* ViewController.m in Sources */,
 				9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */,
 				9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */,
 				9CEB7FA219F16FCD0096B4E7 /* NavigationViewController.m in Sources */,
 				9C03482819F183020070BEFD /* MapViewController.m in Sources */,
+				9CC81E5419F4FCB300C28DA3 /* NewsStandViewController.m in Sources */,
 				9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */,
 				9CEB7F7819F16EBF0096B4E7 /* main.m in Sources */,
 				9CEB7F9D19F16ED40096B4E7 /* SWRevealViewController.m in Sources */,

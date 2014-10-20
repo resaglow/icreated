@@ -24,8 +24,8 @@
 
 
 - (IBAction)sendRegister:(id)sender {
-    // Для отмены соединения, если оно уже установлено
-    // Например, при повторном нажатии кнопки
+    // For cancelling the connection, if it's already established
+    // I.e., button double-tapping case
     [self.connection cancel];
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
@@ -38,7 +38,6 @@
                                     self.passwordTextField.text, @"ConfirmPassword",
                                     nil];
     
-    // error нужна, но в данном случае не используется
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
@@ -53,8 +52,6 @@
                                                                   delegate:self];
     self.connection = connection;
     [connection start];
-    // Не очень понятно, зачем эти присвоения и т.д., но работает стабильно,
-    // так что пусть будет так
 }
 
 
@@ -67,11 +64,11 @@
         if (response.statusCode == 400) {
             NSLog(@"Register not OK!");
             self.errorLabel.text = @"Username is already taken.";
-            // Другого вида ошибки у нас быть не может,
-            // т.к. подтверждения пароля от пользователя не требуется
+            // There can't be another error type (password confirmation not correct)
+            // because password is only typed by user once
         }
         else {
-            NSLog(@"Register very not OK!");
+            NSLog(@"Register very not OK!, status code = %ld", (long)response.statusCode);
             self.errorLabel.text = @"Unknown error.";
         }
     }
@@ -83,7 +80,7 @@
 
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Finished loading");
+    NSLog(@"Register finished loading");
 }
 
 
