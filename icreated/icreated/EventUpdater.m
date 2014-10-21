@@ -14,28 +14,30 @@
 
 @implementation EventUpdater
 
-static NSArray *eventsArray;
+static NSMutableArray *eventsArray;
 
-+ (NSArray *)eventsArray
++ (NSMutableArray *)eventsArray
 {
     if (!eventsArray)
-        eventsArray = [[NSArray alloc] init];
+        eventsArray = [[NSMutableArray alloc] init];
     
     return eventsArray;
 }
 
 
-- (void)getEventsWithCompletionHandler:(void (^)(void))handler {
-    NSLog(@"Smth");
-    
++ (void)getEventsWithCompletionHandler:(void (^)(void))handler {
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
                                       @"http://customer87-001-site1.myasp.net/api/Events"]];
     
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
-//    NSString *bearer = @"Bearer";
-//    NSString *token = [bearer stringByAppendingString:[defaults objectForKey:@"token"]];
-//    [theRequest addValue:token forHTTPHeaderField:@"Authorization"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+    if (token == nil) {
+        handler();
+        return;
+    }
+    
+    NSString *tokenToSend = [@"Bearer " stringByAppendingString:token];
+    [theRequest addValue:tokenToSend forHTTPHeaderField:@"Authorization"];
     
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
@@ -48,34 +50,13 @@ static NSArray *eventsArray;
              return;
          }
          else {
-             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-             NSString *docDirectory = [paths objectAtIndex:0];
-             NSString *dataFilePath = [docDirectory stringByAppendingPathComponent:@"tempdata"];
-             
-             NSLog(@"Logging to file %@", dataFilePath);
-             
-             [data writeToFile:dataFilePath atomically:YES];
-             
              NSError *error = nil;
-             NSArray *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-             eventsArray = (NSMutableArray *)res;
-             
-             for (id event in res) {
-                 NSDictionary *dictEvent = (NSDictionary *)event;
-                 
-                 for (id key in dictEvent) {
-                     id value = [dictEvent objectForKey:key];
-                     
-                     NSString *keyAsString = (NSString *)key;
-                     NSString *valueAsString = (NSString *)value;
-                     
-                     NSLog(@"key: %@", keyAsString);
-                     NSLog(@"value: %@", valueAsString);
-                 }
-             }
+             eventsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
+                                                                             options:NSJSONReadingMutableLeaves
+                                                                               error:&error];
          }
-         handler();
          
+         handler();
      }];
 }
 

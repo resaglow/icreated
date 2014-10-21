@@ -11,7 +11,7 @@
 
 @interface EventUpdater : UIViewController <NSURLConnectionDataDelegate>
 
-+ (NSArray *)eventsArray;
-- (void)getEventsWithCompletionHandler:(void (^)(void))handler;
++ (NSMutableArray *)eventsArray;
++ (void)getEventsWithCompletionHandler:(void (^)(void))handler;
 
 @end

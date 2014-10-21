@@ -40,8 +40,6 @@
 
 
 - (IBAction)sendLogin:(id)sender {
-    // Для отмены соединения, если оно уже установлено
-    // Например, при повторном нажатии кнопки
     [self.connection cancel];
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
@@ -65,8 +63,6 @@
                                                                   delegate:self];
     self.connection = connection;
     [connection start];
-    // Не очень понятно, зачем эти присвоения и т.д., но работает стабильно,
-    // так что пусть будет так
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

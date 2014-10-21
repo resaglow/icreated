@@ -10,6 +10,7 @@
 		9C03482819F183020070BEFD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482719F183020070BEFD /* MapViewController.m */; };
 		9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482A19F18D1F0070BEFD /* RegisterViewController.m */; };
 		9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482D19F18F460070BEFD /* LoginViewController.m */; };
+		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
 		9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */; };
 		9CC81E5419F4FCB300C28DA3 /* NewsStandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */; };
 		9CEB7F7819F16EBF0096B4E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7719F16EBF0096B4E7 /* main.m */; };
@@ -22,7 +23,6 @@
 		9CEB7F9D19F16ED40096B4E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F9C19F16ED40096B4E7 /* SWRevealViewController.m */; };
 		9CEB7F9F19F16EE60096B4E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEB7F9E19F16EE60096B4E7 /* MapKit.framework */; };
 		9CEB7FA219F16FCD0096B4E7 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7FA119F16FCD0096B4E7 /* NavigationViewController.m */; };
-		9CF1D87C19F54A4000D7A5E0 /* EventAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF1D87B19F54A4000D7A5E0 /* EventAddViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,8 @@
 		9C03482A19F18D1F0070BEFD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		9C03482C19F18F460070BEFD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9C03482D19F18F460070BEFD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9C9623A419F666CE002C2515 /* EventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAnnotation.h; sourceTree = "<group>"; };
+		9C9623A519F666CE002C2515 /* EventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAnnotation.m; sourceTree = "<group>"; };
 		9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventUpdater.h; sourceTree = "<group>"; };
 		9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventUpdater.m; sourceTree = "<group>"; };
 		9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsStandViewController.h; sourceTree = "<group>"; };
@@ -64,8 +66,6 @@
 		9CEB7F9E19F16EE60096B4E7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9CEB7FA019F16FCD0096B4E7 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		9CEB7FA119F16FCD0096B4E7 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
-		9CF1D87A19F54A4000D7A5E0 /* EventAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAddViewController.h; sourceTree = "<group>"; };
-		9CF1D87B19F54A4000D7A5E0 /* EventAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAddViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +87,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C9623A319F666A3002C2515 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9C9623A419F666CE002C2515 /* EventAnnotation.h */,
+				9C9623A519F666CE002C2515 /* EventAnnotation.m */,
+				9C03482619F183020070BEFD /* MapViewController.h */,
+				9C03482719F183020070BEFD /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		9C9623A719F666EA002C2515 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9C03482C19F18F460070BEFD /* LoginViewController.h */,
+				9C03482D19F18F460070BEFD /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		9C9623A819F66700002C2515 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				9C03482919F18D1F0070BEFD /* RegisterViewController.h */,
+				9C03482A19F18D1F0070BEFD /* RegisterViewController.m */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		9C9623A919F66714002C2515 /* NewsStand */ = {
+			isa = PBXGroup;
+			children = (
+				9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */,
+				9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */,
+			);
+			name = NewsStand;
+			sourceTree = "<group>";
+		};
+		9C9623AA19F66731002C2515 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9CEB7F7C19F16EBF0096B4E7 /* ViewController.h */,
+				9CEB7F7D19F16EBF0096B4E7 /* ViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		9C9623AB19F66749002C2515 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				9CEB7FA019F16FCD0096B4E7 /* NavigationViewController.h */,
+				9CEB7FA119F16FCD0096B4E7 /* NavigationViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		9C9623AC19F6675F002C2515 /* EventUpdater */ = {
+			isa = PBXGroup;
+			children = (
+				9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */,
+				9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */,
+			);
+			name = EventUpdater;
+			sourceTree = "<group>";
+		};
 		9CEB7F6919F16EBF0096B4E7 = {
 			isa = PBXGroup;
 			children = (
@@ -111,26 +176,17 @@
 			children = (
 				9CEB7F7919F16EBF0096B4E7 /* AppDelegate.h */,
 				9CEB7F7A19F16EBF0096B4E7 /* AppDelegate.m */,
-				9CEB7F7C19F16EBF0096B4E7 /* ViewController.h */,
-				9CEB7F7D19F16EBF0096B4E7 /* ViewController.m */,
 				9CEB7F7F19F16EBF0096B4E7 /* Main.storyboard */,
-				9C03482619F183020070BEFD /* MapViewController.h */,
-				9C03482719F183020070BEFD /* MapViewController.m */,
-				9CEB7FA019F16FCD0096B4E7 /* NavigationViewController.h */,
-				9CEB7FA119F16FCD0096B4E7 /* NavigationViewController.m */,
-				9C03482C19F18F460070BEFD /* LoginViewController.h */,
-				9C03482D19F18F460070BEFD /* LoginViewController.m */,
-				9C03482919F18D1F0070BEFD /* RegisterViewController.h */,
-				9C03482A19F18D1F0070BEFD /* RegisterViewController.m */,
-				9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */,
-				9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */,
+				9C9623AA19F66731002C2515 /* Main */,
+				9C9623AB19F66749002C2515 /* Menu */,
+				9C9623A719F666EA002C2515 /* Login */,
+				9C9623A819F66700002C2515 /* Register */,
+				9C9623A919F66714002C2515 /* NewsStand */,
+				9C9623A319F666A3002C2515 /* Map */,
+				9C9623AC19F6675F002C2515 /* EventUpdater */,
 				9CEB7F8219F16EBF0096B4E7 /* Images.xcassets */,
 				9CEB7F8419F16EBF0096B4E7 /* LaunchScreen.xib */,
 				9CEB7F7519F16EBF0096B4E7 /* Supporting Files */,
-				9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */,
-				9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */,
-				9CF1D87A19F54A4000D7A5E0 /* EventAddViewController.h */,
-				9CF1D87B19F54A4000D7A5E0 /* EventAddViewController.m */,
 			);
 			path = icreated;
 			sourceTree = "<group>";
@@ -264,7 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */,
-				9CF1D87C19F54A4000D7A5E0 /* EventAddViewController.m in Sources */,
+				9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */,
 				9CEB7F7E19F16EBF0096B4E7 /* ViewController.m in Sources */,
 				9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */,
 				9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */,

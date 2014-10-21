@@ -10,7 +10,6 @@
 
 @interface NewsStandViewController ()
 
-@property EventUpdater *updater;
 @property (strong, nonatomic) IBOutlet UITableView *newsStand;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
@@ -20,8 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.updater = [[EventUpdater alloc] init];
     
     [self.newsStand setDataSource:self];
     [self.newsStand setDelegate:self];
@@ -36,7 +33,7 @@
 }
 
 - (void)refreshNewsStand {
-    [self.updater getEventsWithCompletionHandler:^(void) {
+    [EventUpdater getEventsWithCompletionHandler:^(void) {
         [self.newsStand reloadData];
         NSLog(@"Reloading data called");
         

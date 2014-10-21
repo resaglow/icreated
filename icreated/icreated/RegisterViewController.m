@@ -52,6 +52,8 @@
                                                                   delegate:self];
     self.connection = connection;
     [connection start];
+    // Not really clear, why these assignments are necessary
+    // Still, it's working this way, so let it be for now
 }
 
 

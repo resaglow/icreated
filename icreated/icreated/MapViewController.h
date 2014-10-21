@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "EventAnnotation.h"
+#import "EventUpdater.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
+
+- (void)refreshMap;
 
 @end

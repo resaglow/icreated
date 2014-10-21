@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menu = @[@"Events", @"Login"];
+    menu = @[@"addEvent", @"events", @"login"];
     
 }
 
@@ -62,8 +62,11 @@
     NSString *cellIdentifier = [menu objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.row == 1) {
-        cell.textLabel.text = @"Войти";
+    switch (indexPath.row) {            
+        case 2:
+            cell.textLabel.text = @"Войти";
+        default:
+            break;
     }
     
     // Configure the cell...
