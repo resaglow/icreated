@@ -22,8 +22,8 @@
     
     [self.mapView setShowsUserLocation:YES];
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//    NSTimer* timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
+//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     [self refreshMap];
 }
@@ -71,7 +71,6 @@
     
     [EventUpdater getEventsWithCompletionHandler:^(void) {
         NSMutableArray *updatedEvents = [EventUpdater updatedEventsArray];
-        NSMutableArray *updatedAnnotations = [[NSMutableArray alloc] init];
         
         for (NSInteger i = 0; i < updatedEvents.count; i++) {
             NSDictionary *eventDict = [updatedEvents objectAtIndex:i];
@@ -101,29 +100,10 @@
             curAnnotation.title = [eventDict objectForKey:@"Description"];
             curAnnotation.subtitle = [eventDict objectForKey:@"EventDate"];
             
-            if (self.curAnnotationArray == nil || [self.curAnnotationArray indexOfObject:curAnnotation] == NSNotFound) {
-                NSLog(@"Adding annotation");
-                [self.mapView addAnnotation:curAnnotation];
-            }
-            else {
-                NSLog(@"Got old annotations, not adding");
-                NSLog(@"self.curAnnotationArray = %@", self.curAnnotationArray);
-                NSLog(@"Index != NSNotFound, Index = %lu", (unsigned long)[self.curAnnotationArray indexOfObject:curAnnotation]);
-            }
             
-            [updatedAnnotations addObject:curAnnotation];
+            [self.mapView addAnnotation:curAnnotation];
+            [self.curAnnotationArray addObject:curAnnotation];
         }
-        
-        for (id annotation in self.curAnnotationArray) {
-            if ([updatedAnnotations indexOfObject:annotation] == NSNotFound) {
-                NSLog(@"Removing annotation");
-                NSLog(@"self.curAnnotationArray = %@", self.curAnnotationArray);
-                NSLog(@"updatedAnnotations = %@", updatedAnnotations);
-                [self.mapView removeAnnotation:annotation];
-            }
-        }
-        
-        self.curAnnotationArray = updatedAnnotations;
     }];
 }
 
