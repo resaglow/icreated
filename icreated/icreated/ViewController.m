@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) UIViewController *currentViewController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addEventButton;
 
 @end
 
@@ -32,6 +33,24 @@
     vc.view.frame = self.contentView.bounds;
     [self.contentView addSubview:vc.view];
     self.currentViewController = vc;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"\uf044"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:nil];
+    
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
+                                                                      nil]
+                                       forState:UIControlStateNormal];
+    
+    self.navigationItem.leftBarButtonItem.title = @"\uf0c9";
+    [self.navigationItem.leftBarButtonItem setImageInsets:UIEdgeInsetsMake(20, 0, -20, 0)];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                    [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
+                                                                    nil]
+                                                          forState:UIControlStateNormal];
 }
 
 
@@ -53,6 +72,8 @@
                                 [self.currentViewController removeFromParentViewController];
                                 self.currentViewController = vc;
                             }];
+    
+    self.navigationController.title = vc.title;
     
     self.navigationItem.title = vc.title;
 }

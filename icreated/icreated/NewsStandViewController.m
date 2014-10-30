@@ -33,9 +33,11 @@
 }
 
 - (void)refreshNewsStand {
+    NSLog(@"About to refresh newsstand");
     [EventUpdater getEventsWithCompletionHandler:^(void) {
+        NSLog(@"About to reload newsstand");
         [self.newsStand reloadData];
-        NSLog(@"Reloading data called");
+        NSLog(@"Newsstand reloaded");
         
         [self.refreshControl endRefreshing];
     }];
@@ -49,8 +51,8 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"eventsArray.count = %lu", (unsigned long)[EventUpdater eventsArray].count);
-    return [EventUpdater eventsArray].count;
+    NSLog(@"updatedEventsArray.count = %lu", (unsigned long)[EventUpdater updatedEventsArray].count);
+    return [EventUpdater updatedEventsArray].count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,7 +67,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventCell"];
     }
     
-    NSDictionary *dict = [[EventUpdater eventsArray] objectAtIndex:indexPath.row];
+    NSDictionary *dict = [[EventUpdater updatedEventsArray] objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [dict objectForKey:@"Description"];
     cell.detailTextLabel.text = [dict objectForKey:@"EventDate"];

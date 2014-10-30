@@ -14,14 +14,14 @@
 
 @implementation EventUpdater
 
-static NSMutableArray *eventsArray;
+static NSMutableArray *updatedEventsArray;
 
-+ (NSMutableArray *)eventsArray
++ (NSMutableArray *)updatedEventsArray
 {
-    if (!eventsArray)
-        eventsArray = [[NSMutableArray alloc] init];
+    if (!updatedEventsArray)
+        updatedEventsArray = [[NSMutableArray alloc] init];
     
-    return eventsArray;
+    return updatedEventsArray;
 }
 
 
@@ -30,14 +30,15 @@ static NSMutableArray *eventsArray;
                                      [NSURL URLWithString:
                                       @"http://customer87-001-site1.myasp.net/api/Events"]];
     
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-    if (token == nil) {
-        handler();
-        return;
-    }
-    
-    NSString *tokenToSend = [@"Bearer " stringByAppendingString:token];
-    [theRequest addValue:tokenToSend forHTTPHeaderField:@"Authorization"];
+    // Standard authRequired code
+//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+//    if (token == nil) {
+//        handler();
+//        return;
+//    }
+//    
+//    NSString *tokenToSend = [@"Bearer " stringByAppendingString:token];
+//    [theRequest addValue:tokenToSend forHTTPHeaderField:@"Authorization"];
     
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
@@ -45,19 +46,42 @@ static NSMutableArray *eventsArray;
     
     [NSURLConnection sendAsynchronousRequest:theRequest queue:queue completionHandler:
      ^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if (error != nil) {
-             return;
-         }
-         else {
-             NSError *error = nil;
-             eventsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
-                                                                             options:NSJSONReadingMutableLeaves
-                                                                               error:&error];
-         }
-         
-         handler();
-     }];
+    {
+        if (error != nil) {
+            NSLog(@"Connection fault, error = %@", error);
+            handler();
+            return;
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (httpResponse.statusCode != 200) {
+            NSLog(@"Server fault, status code = %ld", (long)httpResponse.statusCode);
+            handler();
+            return;
+        }
+        
+        NSError *error2 = nil;
+        updatedEventsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
+                                                                               options:NSJSONReadingMutableLeaves
+                                                                                 error:&error2];
+            
+        // Somehow "костыль" because of dead server response
+        // Приходит, когда сервер упал, но все равно присылает 200
+        if ([updatedEventsArray isEqual: @{ @"Message": @"An error has occurred." }]) {
+            NSLog(@"Server fault, however 200 status code (Message : An error has occurred)");
+            updatedEventsArray = (NSMutableArray *)@[];
+        }
+        else {
+            NSLog(@"Events update OK");
+        }
+        
+        NSLog(@"About to handle");
+        handler();
+            
+        // Write updatedEventsArray into a DB
+        
+        
+    }];
 }
 
 @end

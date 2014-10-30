@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface EventUpdater : UIViewController <NSURLConnectionDataDelegate>
+@interface EventUpdater : NSObject  <NSURLConnectionDataDelegate>
 
-+ (NSMutableArray *)eventsArray;
++ (NSMutableArray *)updatedEventsArray;
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler;
 
 @end

@@ -27,7 +27,8 @@
     [super viewDidLoad];
     
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-    barButton.title = @"Меню";
+    barButton.title = @"\uf0c9";
+    barButton.tintColor = [UIColor whiteColor];
     barButton.target = self.revealViewController;
     barButton.action = @selector(revealToggle:);
     
@@ -46,16 +47,14 @@
                                      [NSURL URLWithString:
                                       @"http://customer87-001-site1.myasp.net/Token"]];
     
-    
-    NSString *postData = [NSString stringWithFormat:
-                          @"grant_type=password&username=%@&password=%@",
-                          self.loginTextField.text,
-                          self.passwordTextField.text];
-    
     [theRequest setHTTPMethod:@"POST"];
     [theRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
+    NSString *postData = [NSString stringWithFormat:
+                          @"grant_type=password&username=%@&password=%@",
+                          self.loginTextField.text,
+                          self.passwordTextField.text];    
     
     [theRequest setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
     

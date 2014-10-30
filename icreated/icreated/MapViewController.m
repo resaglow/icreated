@@ -19,23 +19,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.mapView setShowsUserLocation:YES];
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//    NSTimer* timer = [NSTimer timerWithTimeInterval:15.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
+//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
     [self refreshMap];
+}
+
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+//{
+//    
+//}
+
+- (UIImage *)imageFromString:(NSString *)string size:(CGSize)size {
+    NSString *pinSymbol = @"\uf0a7";
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [pinSymbol drawInRect:CGRectMake(0, 0, size.width, size.height)
+           withAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                       NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]}];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (void)refreshMap {
     NSLog(@"Refreshing map");
     
     [EventUpdater getEventsWithCompletionHandler:^(void) {
-        NSMutableArray *updatedEvents = [EventUpdater eventsArray];
+        NSMutableArray *updatedEvents = [EventUpdater updatedEventsArray];
         NSMutableArray *updatedAnnotations = [[NSMutableArray alloc] init];
         
         for (NSInteger i = 0; i < updatedEvents.count; i++) {
-            NSDictionary *eventDict = updatedEvents[i];
+            NSDictionary *eventDict = [updatedEvents objectAtIndex:i];
             
             EventAnnotation *curAnnotation = [[EventAnnotation alloc] init];
             
