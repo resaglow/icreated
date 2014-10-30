@@ -48,14 +48,14 @@ static NSMutableArray *updatedEventsArray;
      ^(NSURLResponse *response, NSData *data, NSError *error)
     {
         if (error != nil) {
-            NSLog(@"Connection fault, error = %@", error);
+            NSLog(@"BUG: Connection fault, error = %@", error);
             handler();
             return;
         }
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (httpResponse.statusCode != 200) {
-            NSLog(@"Server fault, status code = %ld", (long)httpResponse.statusCode);
+            NSLog(@"BUG: Server fault, status code = %ld", (long)httpResponse.statusCode);
             handler();
             return;
         }
@@ -68,17 +68,16 @@ static NSMutableArray *updatedEventsArray;
         // Somehow "костыль" because of dead server response
         // Приходит, когда сервер упал, но все равно присылает 200
         if ([updatedEventsArray isEqual: @{ @"Message": @"An error has occurred." }]) {
-            NSLog(@"Server fault, however 200 status code (Message : An error has occurred)");
+            NSLog(@"BUG: Server fault, however 200 status code (Message : An error has occurred)");
             updatedEventsArray = (NSMutableArray *)@[];
         }
         else {
             NSLog(@"Events update OK");
         }
         
-        NSLog(@"About to handle");
         handler();
             
-        // Write updatedEventsArray into a DB
+        // TODO Write updatedEventsArray into a DB
         
         
     }];

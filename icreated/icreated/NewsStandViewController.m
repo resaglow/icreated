@@ -33,9 +33,7 @@
 }
 
 - (void)refreshNewsStand {
-    NSLog(@"About to refresh newsstand");
     [EventUpdater getEventsWithCompletionHandler:^(void) {
-        NSLog(@"About to reload newsstand");
         [self.newsStand reloadData];
         NSLog(@"Newsstand reloaded");
         
@@ -46,7 +44,7 @@
 #pragma mark - UITableView Delegate and Datasource method implementation
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"Calculating number of sections");
+    NSLog(@"Calculating number of sections (const 1)");
     return 1;
 }
 
