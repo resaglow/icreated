@@ -1,15 +1,15 @@
 //
-//  ViewController.m
+//  MainViewController.m
 //  icreated
 //
 //  Created by Artem Lobanov on 17/10/14.
 //  Copyright (c) 2014 pispbsu. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "SWRevealViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) UIViewController *currentViewController;
@@ -18,7 +18,7 @@
 @end
 
 
-@implementation ViewController
+@implementation MainViewController
 
 
 - (void)viewDidLoad {

@@ -67,46 +67,34 @@
 }
 
 - (void)refreshMap {
-    NSLog(@"Refreshing map");
-    
+    NSLog(@"Request to refresh map");    
     [EventUpdater getEventsWithCompletionHandler:^(void) {
-        NSMutableArray *updatedEvents = [EventUpdater updatedEventsArray];
+        NSLog(@"Refreshing map");
+        [[EventUpdater fetchedResultsController] performFetch:nil];
         
-        for (NSInteger i = 0; i < updatedEvents.count; i++) {
-            NSDictionary *eventDict = [updatedEvents objectAtIndex:i];
+        for (NSInteger i = 0; i < [[[[EventUpdater fetchedResultsController] sections] objectAtIndex:0] numberOfObjects]; i++) {
+            NSIndexPath *indexPath = [[NSIndexPath alloc] init];
+            indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            Event *curEvent = [[EventUpdater fetchedResultsController] objectAtIndexPath:indexPath];
+            
             
             EventAnnotation *curAnnotation = [[EventAnnotation alloc] init];
             
+            curAnnotation.title = curEvent.desc;
+            curAnnotation.subtitle = curEvent.date;
+            
+            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
+            
             CLLocationCoordinate2D curCoordinate;
-            curCoordinate.latitude = [NSDecimalNumber decimalNumberWithString:
-                                      [eventDict objectForKey:@"Latitude"]].doubleValue;
-            curCoordinate.longitude = [NSDecimalNumber decimalNumberWithString:
-                                       [eventDict objectForKey:@"Longitude"]].doubleValue;
-            
-            if (!(curCoordinate.latitude > -90 && curCoordinate.latitude < 90 &&
-                  curCoordinate.longitude > -180 && curCoordinate.longitude < 180)) {
-                NSLog(@"BUG: Coordinates out of the range, setting standard values");
-                
-                curCoordinate.longitude = 0;
-                curCoordinate.latitude = 0;
-            }
-            else {
-                NSLog(@"Good coordinates");
-                NSLog(@"Latitude = %f", curCoordinate.latitude);
-                NSLog(@"Longitude = %f", curCoordinate.longitude);
-            }
-            
+            curCoordinate.latitude = curEvent.latitude.doubleValue;
+            curCoordinate.longitude = curEvent.longitude.doubleValue;
             curAnnotation.coordinate = curCoordinate;
-            curAnnotation.title = [eventDict objectForKey:@"Description"];
-            curAnnotation.subtitle = [eventDict objectForKey:@"EventDate"];
-            
             
             [self.mapView addAnnotation:curAnnotation];
             [self.curAnnotationArray addObject:curAnnotation];
         }
     }];
 }
-
 
 
 

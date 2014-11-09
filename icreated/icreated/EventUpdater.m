@@ -14,16 +14,43 @@
 
 @implementation EventUpdater
 
+static NSManagedObjectContext *managedObjectContext;
 static NSMutableArray *updatedEventsArray;
+static NSFetchedResultsController *fetchedResultsController;
 
-+ (NSMutableArray *)updatedEventsArray
-{
-    if (!updatedEventsArray)
-        updatedEventsArray = [[NSMutableArray alloc] init];
-    
-    return updatedEventsArray;
++ (void)setManagedObjectContext:(NSManagedObjectContext *)context {
+    managedObjectContext = context;
 }
 
++ (NSFetchedResultsController *)fetchedResultsController {
+    if (!managedObjectContext) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.managedObjectContext = appDelegate.managedObjectContext;
+    }
+    
+    if (fetchedResultsController) {
+        return fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event"
+                                              inManagedObjectContext:managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"eventId" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                   managedObjectContext:managedObjectContext
+                                                                     sectionNameKeyPath:nil
+                                                                              cacheName:nil];
+    
+    
+    return fetchedResultsController;
+}
 
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler {
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
@@ -64,7 +91,9 @@ static NSMutableArray *updatedEventsArray;
         updatedEventsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
                                                                                options:NSJSONReadingMutableLeaves
                                                                                  error:&error2];
-            
+        
+        [self updateManagedObjectContext];
+        
         // Somehow "костыль" because of dead server response
         // Приходит, когда сервер упал, но все равно присылает 200
         if ([updatedEventsArray isEqual: @{ @"Message": @"An error has occurred." }]) {
@@ -82,5 +111,63 @@ static NSMutableArray *updatedEventsArray;
         
     }];
 }
+
+
++ (void)updateManagedObjectContext {
+    // (Temp) Delete all the entries from the context
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Event"
+                                        inManagedObjectContext:managedObjectContext]];
+    NSArray *result = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    for (id event in result) {
+        [managedObjectContext deleteObject:event];
+    }
+    
+    // Add all the new entries in the context
+    for (id eventDict in updatedEventsArray) {
+        Event *newEvent = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event"
+                                                                 inManagedObjectContext:managedObjectContext];
+        
+        newEvent.eventId = [eventDict objectForKey:@"EventId"];
+        newEvent.date = [eventDict objectForKey:@"EventDate"];
+        newEvent.desc = [eventDict objectForKey:@"Description"];
+        
+        NSString *stringLatitude = [eventDict objectForKey:@"Latitude"];
+        NSString *stringLongitude = [eventDict objectForKey:@"Longitude"];
+        
+        if (stringLatitude == nil || stringLongitude == nil) {
+            NSLog(@"Nil latitude/longitude, continuing");
+            [managedObjectContext deleteObject:newEvent];
+            continue;
+        }
+        else if ([stringLatitude isEqual:[NSNull null]] || [stringLongitude isEqual:[NSNull null]]) {
+            NSLog(@"<null> latitude/longitude from the server, continuing");
+            [managedObjectContext deleteObject:newEvent];
+            continue;
+        }
+        
+        double latitude = [NSDecimalNumber decimalNumberWithString:stringLatitude].doubleValue;
+        double longitude = [NSDecimalNumber decimalNumberWithString:stringLongitude].doubleValue;
+        
+        if (!(latitude > -90 && latitude < 90 && longitude > -180 && longitude < 180)) {
+            NSLog(@"BUG: Coordinates out of the range, continuing");
+            [managedObjectContext deleteObject:newEvent];
+            continue;
+        }
+        else {
+            NSLog(@"Valid coordinates, latitude = %f, longitude = %f", latitude, longitude);
+        }
+        
+        newEvent.latitude = [NSNumber numberWithDouble:latitude];
+        newEvent.longitude = [NSNumber numberWithDouble:longitude];
+    }
+    
+    // Save context
+    NSError *error;
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"Error! %@", error);
+    }
+}
+
 
 @end

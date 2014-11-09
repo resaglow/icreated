@@ -15,33 +15,16 @@
 @implementation AppDelegate
 
 
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //     Override point for customization after application launch.
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:192.0f / 255.0f
-                                                                  green:57.0f / 255.0f
-                                                                   blue:43.0f / 255.0f
-                                                                  alpha:1]];
+    [self setUIOptions];    
     
-    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
-                                                   forState:UIControlStateSelected];
-    
-    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                              NSFontAttributeName:[UIFont boldSystemFontOfSize:12.0f]}
-                                                   forState:UIControlStateNormal];
-    
-    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:192.0f / 255.0f
-                                                                  green:57.0f / 255.0f
-                                                                   blue:43.0f / 255.0f
-                                                                  alpha:1]];
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor whiteColor],
-                  NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:26.0]
-     }
-     forState:UIControlStateNormal];
-    
-    // For vertical alignment of SegmentControl and UITabBarItems (buttons)
-    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-2 forBarMetrics:UIBarMetricsDefault];
+    [EventUpdater setManagedObjectContext:self.managedObjectContext];
     
     return YES;
 }
@@ -67,5 +50,100 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - UI Options method
+
+- (void)setUIOptions {
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:192.0f / 255.0f
+                                                                  green:57.0f / 255.0f
+                                                                   blue:43.0f / 255.0f
+                                                                  alpha:1]];
+
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
+                                                   forState:UIControlStateSelected];
+
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                              NSFontAttributeName:[UIFont boldSystemFontOfSize:12.0f]}
+                                                   forState:UIControlStateNormal];
+
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:192.0f / 255.0f
+                                                                  green:57.0f / 255.0f
+                                                                   blue:43.0f / 255.0f
+                                                                  alpha:1]];
+
+    NSDictionary *barButtonAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                          NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:26.0]};
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:barButtonAttributes
+                                                                                            forState:UIControlStateNormal];
+
+    // For vertical alignment of SegmentControl and UITabBarItems (buttons)
+    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-2 forBarMetrics:UIBarMetricsDefault];
+
+}
+
+#pragma mark - Core Data methods
+
+- (NSManagedObjectContext *)managedObjectContext {
+    if (_managedObjectContext) {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    
+    return _managedObjectContext;
+}
+
+- (NSManagedObjectModel *)managedObjectModel {
+    if (_managedObjectModel) {
+        return _managedObjectModel;
+    }
+    
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _managedObjectModel;
+}
+
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"icreatedDB.sqlite"];
+    
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+         
+         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
+         * Simply deleting the existing store:
+         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         
+         */
+        
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+
+
+
 
 @end

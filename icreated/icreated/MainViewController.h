@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  icreated
 //
 //  Created by Artem Lobanov on 17/10/14.
@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsStandViewController.h"
+#import "MapViewController.h"
+#import "EventUpdater.h"
 
-@interface ViewController : UIViewController
+@interface MainViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 

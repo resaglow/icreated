@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Event.h"
 
 
 @interface EventUpdater : NSObject  <NSURLConnectionDataDelegate>
 
-+ (NSMutableArray *)updatedEventsArray;
++ (void) setManagedObjectContext:(NSManagedObjectContext *)context;
+
+//+ (NSMutableArray *)updatedEventsArray;
+
++ (NSFetchedResultsController *)fetchedResultsController;
+
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler;
+
+
 
 @end

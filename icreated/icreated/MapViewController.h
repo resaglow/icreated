@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "AppDelegate.h"
 #import "EventAnnotation.h"
 #import "EventUpdater.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 - (void)refreshMap;
 

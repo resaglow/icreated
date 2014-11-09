@@ -17,8 +17,16 @@
 
 @implementation NewsStandViewController
 
+@synthesize fetchedResultsController = _fetchedResultsController;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = appDelegate.managedObjectContext;
+    
+    [[EventUpdater fetchedResultsController] performFetch:nil];
     
     [self.newsStand setDataSource:self];
     [self.newsStand setDelegate:self];
@@ -34,6 +42,8 @@
 
 - (void)refreshNewsStand {
     [EventUpdater getEventsWithCompletionHandler:^(void) {
+        [[EventUpdater fetchedResultsController] performFetch:nil];
+        
         [self.newsStand reloadData];
         NSLog(@"Newsstand reloaded");
         
@@ -41,34 +51,33 @@
     }];
 }
 
-#pragma mark - UITableView Delegate and Datasource method implementation
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"Calculating number of sections (const 1)");
-    return 1;
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{    
+    NSInteger secNum = [[[EventUpdater fetchedResultsController] sections] count];
+    NSLog(@"%ld sections", (long)secNum);
+    return secNum;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"updatedEventsArray.count = %lu", (unsigned long)[EventUpdater updatedEventsArray].count);
-    return [EventUpdater updatedEventsArray].count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    id <NSFetchedResultsSectionInfo> secInfo = [[[EventUpdater fetchedResultsController] sections] objectAtIndex:section];
+    NSLog(@"%lu rows", (unsigned long)[secInfo numberOfObjects]);
+    return [secInfo numberOfObjects];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Setting smth at indexPath");
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"eventCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Is it necessary? Can reusable cell not be dequeued?
-    // [There are some problems without it]
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"eventCell"];
-    }
-    
-    NSDictionary *dict = [[EventUpdater updatedEventsArray] objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = [dict objectForKey:@"Description"];
-    cell.detailTextLabel.text = [dict objectForKey:@"EventDate"];
+    // Configure the cell...
+    Event *event = [[EventUpdater fetchedResultsController] objectAtIndexPath:indexPath];
+    cell.textLabel.text = event.desc;
+    cell.detailTextLabel.text = event.date;
     
     return cell;
 }
