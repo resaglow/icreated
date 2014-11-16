@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C03482819F183020070BEFD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482719F183020070BEFD /* MapViewController.m */; };
 		9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482A19F18D1F0070BEFD /* RegisterViewController.m */; };
 		9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482D19F18F460070BEFD /* LoginViewController.m */; };
 		9C0B90DE1A0F93B900008071 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B90DC1A0F93B900008071 /* Model.xcdatamodeld */; };
@@ -16,9 +15,9 @@
 		9C0B91381A10102B00008071 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B91371A10102B00008071 /* Event.m */; };
 		9C0B913B1A10102B00008071 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B913A1A10102B00008071 /* Comment.m */; };
 		9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */; };
+		9C8CB7DA1A18C1F10064EA2F /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8CB7D91A18C1F10064EA2F /* SMCalloutView.m */; };
 		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
 		9CC81E4E19F4EFA300C28DA3 /* EventUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */; };
-		9CC81E5419F4FCB300C28DA3 /* NewsStandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */; };
 		9CEB7F7819F16EBF0096B4E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7719F16EBF0096B4E7 /* main.m */; };
 		9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7A19F16EBF0096B4E7 /* AppDelegate.m */; };
 		9CEB7F7E19F16EBF0096B4E7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB7F7D19F16EBF0096B4E7 /* MainViewController.m */; };
@@ -42,8 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9C03482619F183020070BEFD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		9C03482719F183020070BEFD /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		9C03482919F18D1F0070BEFD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		9C03482A19F18D1F0070BEFD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		9C03482C19F18F460070BEFD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -58,12 +55,12 @@
 		9C0B91391A10102B00008071 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		9C0B913A1A10102B00008071 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		9C8CB7D81A18C1F10064EA2F /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
+		9C8CB7D91A18C1F10064EA2F /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
 		9C9623A419F666CE002C2515 /* EventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAnnotation.h; sourceTree = "<group>"; };
 		9C9623A519F666CE002C2515 /* EventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAnnotation.m; sourceTree = "<group>"; };
 		9CC81E4C19F4EFA300C28DA3 /* EventUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventUpdater.h; sourceTree = "<group>"; };
 		9CC81E4D19F4EFA300C28DA3 /* EventUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventUpdater.m; sourceTree = "<group>"; };
-		9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsStandViewController.h; sourceTree = "<group>"; };
-		9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsStandViewController.m; sourceTree = "<group>"; };
 		9CEB7F7219F16EBF0096B4E7 /* icreated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icreated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEB7F7619F16EBF0096B4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CEB7F7719F16EBF0096B4E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -121,10 +118,10 @@
 		9C9623A319F666A3002C2515 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				9C8CB7D81A18C1F10064EA2F /* SMCalloutView.h */,
+				9C8CB7D91A18C1F10064EA2F /* SMCalloutView.m */,
 				9C9623A419F666CE002C2515 /* EventAnnotation.h */,
 				9C9623A519F666CE002C2515 /* EventAnnotation.m */,
-				9C03482619F183020070BEFD /* MapViewController.h */,
-				9C03482719F183020070BEFD /* MapViewController.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -145,15 +142,6 @@
 				9C03482A19F18D1F0070BEFD /* RegisterViewController.m */,
 			);
 			name = Register;
-			sourceTree = "<group>";
-		};
-		9C9623A919F66714002C2515 /* NewsStand */ = {
-			isa = PBXGroup;
-			children = (
-				9CC81E5219F4FCB300C28DA3 /* NewsStandViewController.h */,
-				9CC81E5319F4FCB300C28DA3 /* NewsStandViewController.m */,
-			);
-			name = NewsStand;
 			sourceTree = "<group>";
 		};
 		9C9623AA19F66731002C2515 /* Main */ = {
@@ -213,10 +201,11 @@
 				9C9623AB19F66749002C2515 /* Menu */,
 				9C9623A719F666EA002C2515 /* Login */,
 				9C9623A819F66700002C2515 /* Register */,
-				9C9623A919F66714002C2515 /* NewsStand */,
 				9C9623A319F666A3002C2515 /* Map */,
 				9C9623AC19F6675F002C2515 /* EventUpdater */,
 				9C0B90EC1A0FB4E800008071 /* Core Data Classes */,
+				9CEB7F9B19F16ED40096B4E7 /* SWRevealViewController.h */,
+				9CEB7F9C19F16ED40096B4E7 /* SWRevealViewController.m */,
 				9CEB7F8219F16EBF0096B4E7 /* Images.xcassets */,
 				9CEB7F8419F16EBF0096B4E7 /* LaunchScreen.xib */,
 				9CEB7F7519F16EBF0096B4E7 /* Supporting Files */,
@@ -227,8 +216,6 @@
 		9CEB7F7519F16EBF0096B4E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9CEB7F9B19F16ED40096B4E7 /* SWRevealViewController.h */,
-				9CEB7F9C19F16ED40096B4E7 /* SWRevealViewController.m */,
 				9CEB7F7619F16EBF0096B4E7 /* Info.plist */,
 				9CEB7F7719F16EBF0096B4E7 /* main.m */,
 				9C0B90DC1A0F93B900008071 /* Model.xcdatamodeld */,
@@ -363,9 +350,8 @@
 				9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */,
 				9C0B913B1A10102B00008071 /* Comment.m in Sources */,
 				9CEB7FA219F16FCD0096B4E7 /* NavigationViewController.m in Sources */,
-				9C03482819F183020070BEFD /* MapViewController.m in Sources */,
-				9CC81E5419F4FCB300C28DA3 /* NewsStandViewController.m in Sources */,
 				9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */,
+				9C8CB7DA1A18C1F10064EA2F /* SMCalloutView.m in Sources */,
 				9CEB7F7819F16EBF0096B4E7 /* main.m in Sources */,
 				9C0B91381A10102B00008071 /* Event.m in Sources */,
 				9CEB7F9D19F16ED40096B4E7 /* SWRevealViewController.m in Sources */,

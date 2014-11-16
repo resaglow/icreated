@@ -91,7 +91,7 @@ static NSFetchedResultsController *fetchedResultsController;
         updatedEventsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
                                                                                options:NSJSONReadingMutableLeaves
                                                                                  error:&error2];
-        
+        NSLog(@"Started updateding moc");
         [self updateManagedObjectContext];
         
         // Somehow "костыль" because of dead server response

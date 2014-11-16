@@ -7,13 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewsStandViewController.h"
-#import "MapViewController.h"
+#import <MapKit/MapKit.h>
+#import "SMCalloutView.h"
+#import "EventAnnotation.h"
 #import "EventUpdater.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
+    MKAnnotationView *_selectedAnnotationView;
+    EventAnnotation *_customAnnotation;
+}
+
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+
+@property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
+
+- (void)refreshMap;
 
 @end
 
