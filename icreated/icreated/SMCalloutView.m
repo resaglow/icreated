@@ -567,7 +567,7 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         
         self.containerView = [UIView new];
         self.containerView.backgroundColor = [UIColor whiteColor];
-        self.containerView.alpha = 0.96;
+        self.containerView.alpha = 0.85;
         self.containerView.layer.cornerRadius = 8;
         self.containerView.layer.shadowRadius = 30;
         self.containerView.layer.shadowOpacity = 0.1;
@@ -584,7 +584,7 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         }
         
         self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, blackArrowImage.size.width, blackArrowImage.size.height)];
-        self.arrowView.alpha = 0.96;
+        self.arrowView.alpha = 0.85;
         self.arrowImageView = [[UIImageView alloc] initWithImage:whiteArrowImage];
         self.arrowHighlightedImageView = [[UIImageView alloc] initWithImage:grayArrowImage];
         self.arrowHighlightedImageView.hidden = YES;

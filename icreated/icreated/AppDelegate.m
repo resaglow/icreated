@@ -77,7 +77,7 @@
                                                                                             forState:UIControlStateNormal];
 
     // For vertical alignment of SegmentControl and UITabBarItems (buttons)
-    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-2 forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:0 forBarMetrics:UIBarMetricsDefault];
 
 }
 

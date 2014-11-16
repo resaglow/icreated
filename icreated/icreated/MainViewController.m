@@ -23,6 +23,9 @@
 @property (strong, nonatomic) CustomMapView *map;
 @property (nonatomic, retain) EventAnnotation *customAnnotation;
 @property (nonatomic, strong) SMCalloutView *calloutView;
+@property (nonatomic, strong) UITextView *calloutTextView;
+@property (nonatomic, strong) UILabel *calloutTimeText;
+@property (nonatomic, strong) UILabel *calloutPeopleCount;
 
 @end
 
@@ -34,6 +37,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem.title = @"\uf0c9";
+//    [self.navigationItem.leftBarButtonItem setImageInsets:UIEdgeInsetsMake(20, 0, -50, 0)]; // What for?
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                   [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
+                                                                   nil]
+                                                         forState:UIControlStateNormal];
     
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
@@ -49,13 +59,6 @@
                                                  [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
                                                                       nil]
                                        forState:UIControlStateNormal];
-    
-    self.navigationItem.leftBarButtonItem.title = @"\uf0c9";
-    [self.navigationItem.leftBarButtonItem setImageInsets:UIEdgeInsetsMake(20, 0, -20, 0)];
-    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                    [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
-                                                                    nil]
-                                                          forState:UIControlStateNormal];
     
     [self viewDidLoadNewsStand];
     [self viewDidLoadMap];
@@ -151,56 +154,89 @@
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 
     [self refreshMap];
-    [self testAnnotation];
+    [self initCalloutView];
     
     self.map.calloutView = self.calloutView;
 }
 
-- (void)testAnnotation {
+- (void)initCalloutView {
     NSLog(@"Got in testAnnotation");
-    self.customAnnotation = [[EventAnnotation alloc] init];
-    self.customAnnotation.title = @"test";
-    self.customAnnotation.subtitle = @"testDate";
-    
-    CLLocationCoordinate2D curCoordinate;
-    curCoordinate.latitude = 38.6335;
-    curCoordinate.longitude = -90.2045;
-    self.customAnnotation.coordinate = curCoordinate;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.map addAnnotation:self.customAnnotation];
-    });
 
     self.calloutView = [SMCalloutView platformCalloutView];
     self.calloutView.delegate = self;
     
-    UIButton *disclosureButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    disclosureButton.backgroundColor = [UIColor redColor];
-    [disclosureButton setTitle:@"Normal" forState:UIControlStateNormal];
-    [disclosureButton setTitle:@"Selected" forState:UIControlStateSelected];
-    disclosureButton.frame = CGRectMake(0, 0, 60, 20);
+    UIFont *fontAwesome = [UIFont fontWithName:@"FontAwesome" size:20];
+    UIFont *smallFont = [UIFont systemFontOfSize:10];
     
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 20, 60, 20)];
-    [textView setText:@"thisText"];
+
+    UILabel *category = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     
-    UIView *contentView = [UIView new];
-    contentView.frame = CGRectMake(0, 0, 200, 100);
-    [contentView addSubview:disclosureButton];
-    [contentView addSubview:textView];
+    UIButton *people = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    people.frame = CGRectMake(20, 0, 80, 20);
+    self.calloutPeopleCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
+    self.calloutPeopleCount.font = smallFont;
+    UILabel *peopleIcon = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 20, 20)];
+    peopleIcon.font = fontAwesome;
+    peopleIcon.text = @"\uf007";
+    [people addSubview:self.calloutPeopleCount];
+    [people addSubview:peopleIcon];
+    
+    UIButton *time = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    time.frame = CGRectMake(100, 0, 80, 20);
+    self.calloutTimeText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
+    self.calloutTimeText.font = smallFont;
+    UILabel *timeIcon = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 20, 20)];
+    timeIcon.font = fontAwesome;
+    timeIcon.text = @"\uf017";
+    [time addSubview:self.calloutTimeText];
+    [time addSubview:timeIcon];
+    
+    UIButton *higherView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    higherView.frame = CGRectMake(0, 0, 180, 20);
+    [higherView addSubview:category];
+    [higherView addSubview:people];
+    [higherView addSubview:time];
+    
+    self.calloutTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 20, 180, 60)];
+    self.calloutTextView.backgroundColor = [UIColor clearColor];
+    self.calloutTextView.editable = NO;
+    
+    UIView *contentView = [UIButton new];
+    contentView.frame = CGRectMake(0, 0, 180, 80);
+    [contentView addSubview:self.calloutTextView];
+    [contentView addSubview:higherView];
     
     self.calloutView.contentView = contentView;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    EventAnnotation *annotation = (EventAnnotation *)view.annotation;
+    self.calloutTextView.text = annotation.title;
+    self.calloutTimeText.text = annotation.date;
+    
+    CGFloat fixedWidth = self.calloutTextView.frame.size.width;
+    CGSize newSize = [self.calloutTextView sizeThatFits:CGSizeMake(fixedWidth, CGFLOAT_MAX)];
+    
+    CGRect newFrame = self.calloutTextView.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    
+    if (newFrame.size.height <= 80.0f) {
+        CGFloat textViewsHeightDiff = self.calloutTextView.frame.size.height - newFrame.size.height;
+        self.calloutTextView.frame = newFrame;
+        self.calloutView.contentView.frame = CGRectMake(0,
+                                                        0,
+                                                        self.calloutView.contentView.frame.size.width,
+                                                        self.calloutView.contentView.frame.size.height - textViewsHeightDiff);
+    }
     
     self.calloutView.calloutOffset = view.calloutOffset;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.calloutView presentCalloutFromRect:view.bounds inView:view constrainedToView:self.view animated:YES];
-    });
+    [self.calloutView presentCalloutFromRect:view.bounds inView:view constrainedToView:self.view animated:YES];
 }
 
-
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    [self.calloutView dismissCalloutAnimated:YES];
+}
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -232,7 +268,7 @@
            withAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],
                             NSFontAttributeName:[UIFont fontWithName:@"FontAwesome"
                                                                 size:size.height]}];
-    // It's supposed that height == width
+                                                                // It's supposed that height == width
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -254,7 +290,7 @@
             EventAnnotation *curAnnotation = [[EventAnnotation alloc] init];
             
             curAnnotation.title = curEvent.desc;
-            curAnnotation.subtitle = curEvent.date;
+            curAnnotation.date = curEvent.date;
             
             NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
             
@@ -272,6 +308,33 @@
     }];
 }
 
+#pragma mark - SMCalloutView delegate methods
+
+- (NSTimeInterval)calloutView:(SMCalloutView *)calloutView delayForRepositionWithSize:(CGSize)offset {
+    
+    // When the callout is being asked to present in a way where it or its target will be partially offscreen, it asks us
+    // if we'd like to reposition our surface first so the callout is completely visible. Here we scroll the map into view,
+    // but it takes some math because we have to deal in lon/lat instead of the given offset in pixels.
+    
+    CLLocationCoordinate2D coordinate = self.map.centerCoordinate;
+    
+    // where's the center coordinate in terms of our view?
+    CGPoint center = [self.map convertCoordinate:coordinate toPointToView:self.view];
+    
+    // move it by the requested offset
+    center.x -= offset.width;
+    center.y -= offset.height;
+    
+    // and translate it back into map coordinates
+    coordinate = [self.map convertPoint:center toCoordinateFromView:self.view];
+    
+    // move the map!
+    [self.map setCenterCoordinate:coordinate animated:YES];
+    
+    // tell the callout to wait for a while while we scroll (we assume the scroll delay for MKMapView matches UIScrollView)
+    return kSMCalloutViewRepositionDelayForUIScrollView;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -280,9 +343,30 @@
 
 @end
 
+@interface MKMapView (UIGestureRecognizer)
+
+// this tells the compiler that MKMapView actually implements this method
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
+
+@end
+
 
 @implementation CustomMapView
 
+// override UIGestureRecognizer's delegate method so we can prevent MKMapView's recognizer from firing
+// when we interact with UIControl subclasses inside our callout view.
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+
+    if ([touch.view isKindOfClass:[UITextView class]] ||
+        [touch.view isKindOfClass:[UILabel class]]) {
+        return NO;
+    }
+    else {
+        return [super gestureRecognizer:gestureRecognizer shouldReceiveTouch:touch];
+    }
+}
+
+// Allow touches to be sent to our calloutview.
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     
     UIView *calloutMaybe = [self.calloutView hitTest:[self.calloutView convertPoint:point fromView:self]
