@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addEventButton;
 
 @property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
 

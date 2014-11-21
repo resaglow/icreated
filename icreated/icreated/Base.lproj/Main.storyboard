@@ -188,8 +188,13 @@
                                 <action selector="segmentChanged:" destination="bqv-FJ-V8a" eventType="valueChanged" id="q4m-RI-JrU"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="031-6g-4Bp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="addEventButton" destination="031-6g-4Bp" id="ds4-U1-Dju"/>
                         <outlet property="menuButton" destination="Zvk-tg-6Pj" id="pl5-zx-ACL"/>
                         <outlet property="newsStand" destination="vRc-4u-wLq" id="x0f-mh-drR"/>
                         <outlet property="typeSegmentedControl" destination="CgE-0g-qL7" id="kbV-gs-M2H"/>

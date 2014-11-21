@@ -15,6 +15,7 @@
 
 
 @interface MainViewController () <MKMapViewDelegate, UIGestureRecognizerDelegate, SMCalloutViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 @property (strong, nonatomic) IBOutlet UITableView *newsStand;
 
@@ -38,27 +39,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem.title = @"\uf0c9";
+    self.menuButton.title = @"\uf0c9";
 //    [self.navigationItem.leftBarButtonItem setImageInsets:UIEdgeInsetsMake(20, 0, -50, 0)]; // What for?
-    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                   [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
-                                                                   nil]
-                                                         forState:UIControlStateNormal];
+    [self.menuButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
+                                                                              forState:UIControlStateNormal];
     
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"\uf044"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:nil];
-    
-    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
-    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName,
-                                                                      nil]
-                                       forState:UIControlStateNormal];
+    self.addEventButton.title = @"\uf044";
+    [self.addEventButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
+                                                                                  forState:UIControlStateNormal];
     
     [self viewDidLoadNewsStand];
     [self viewDidLoadMap];
