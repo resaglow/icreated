@@ -1,0 +1,16 @@
+PODS:
+  - ActionSheetPicker-3.0 (1.3.5)
+  - FDTake (0.2.4)
+  - SMCalloutView (2.0.3)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - FDTake
+  - SMCalloutView
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: ffefc6fdafbb5392072f82fa8754454d7a87de2e
+  FDTake: caea3b794995e04d70696212970a85155107815e
+  SMCalloutView: f413edafcbead0d0a59066efa0708cdbca6dbfff
+
+COCOAPODS: 0.34.4
