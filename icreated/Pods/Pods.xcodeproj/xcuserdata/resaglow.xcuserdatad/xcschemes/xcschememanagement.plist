@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>09644D943654334F4FC78D1F</key>
+		<key>08A697AD54719A0F9F599793</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C2AA10EDB3F66BFB68F2CD3</key>
+		<key>13935837CF0C207A1EC39D42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A1B33870E4F339C7E312581D</key>
+		<key>2DA49EE736CE23E1633771DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E351BFC8C7E134BFF28B7CAC</key>
+		<key>B99A539988E6778E6234260E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CDEAA22426C1044C14E73040</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -83,6 +83,7 @@ static NSString * const kStringsTableName = @"FDTake";
 
 - (void)takePhotoOrChooseFromLibrary
 {
+    
     self.sources = nil;
     self.buttonTitles = nil;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -266,6 +267,7 @@ static NSString * const kStringsTableName = @"FDTake";
 
 - (UIViewController*)presentingViewController
 {
+    
     // Use optional view controller for presenting the image picker if set
     UIViewController *presentingViewController = nil;
     if (self.viewControllerForPresentingImagePickerController!=nil) {
@@ -305,6 +307,7 @@ static NSString * const kStringsTableName = @"FDTake";
                                               otherButtonTitles:nil];
         for (NSString *title in self.buttonTitles)
             [self.actionSheet addButtonWithTitle:title];
+        
         [self.actionSheet addButtonWithTitle:[self textForButtonWithTitle:kCancelKey]];
         self.actionSheet.cancelButtonIndex = self.sources.count;
         

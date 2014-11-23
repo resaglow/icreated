@@ -24,3 +24,9 @@
 #define COCOAPODS_VERSION_MINOR_SMCalloutView 0
 #define COCOAPODS_VERSION_PATCH_SMCalloutView 3
 
+// SWRevealViewController
+#define COCOAPODS_POD_AVAILABLE_SWRevealViewController
+#define COCOAPODS_VERSION_MAJOR_SWRevealViewController 2
+#define COCOAPODS_VERSION_MINOR_SWRevealViewController 1
+#define COCOAPODS_VERSION_PATCH_SWRevealViewController 0
+

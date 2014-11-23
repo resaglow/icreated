@@ -91,7 +91,7 @@ static NSFetchedResultsController *fetchedResultsController;
         updatedEventsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
                                                                                options:NSJSONReadingMutableLeaves
                                                                                  error:&error2];
-        NSLog(@"Started updateding moc");
+        NSLog(@"Started updateding MOC");
         [self updateManagedObjectContext];
         
         // Somehow "костыль" because of dead server response
@@ -155,7 +155,7 @@ static NSFetchedResultsController *fetchedResultsController;
             continue;
         }
         else {
-            NSLog(@"Valid coordinates, latitude = %f, longitude = %f", latitude, longitude);
+//            NSLog(@"Valid coordinates, latitude = %f, longitude = %f", latitude, longitude);
         }
         
         newEvent.latitude = [NSNumber numberWithDouble:latitude];

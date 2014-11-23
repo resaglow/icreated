@@ -40,7 +40,6 @@
     [super viewDidLoad];
     
     self.menuButton.title = @"\uf0c9";
-//    [self.navigationItem.leftBarButtonItem setImageInsets:UIEdgeInsetsMake(20, 0, -50, 0)]; // What for?
     [self.menuButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                              [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
                                                                               forState:UIControlStateNormal];
@@ -96,7 +95,7 @@
         [[EventUpdater fetchedResultsController] performFetch:nil];
         
         [self.newsStand reloadData];
-        NSLog(@"Newsstand reloaded");
+//        NSLog(@"Newsstand reloaded");
         
         [self.refreshControl endRefreshing];
     }];
@@ -105,14 +104,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger secNum = [[[EventUpdater fetchedResultsController] sections] count];
-    NSLog(@"%ld sections", (long)secNum);
+//    NSLog(@"%ld sections", (long)secNum);
     return secNum;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> secInfo = [[[EventUpdater fetchedResultsController] sections] objectAtIndex:section];
-    NSLog(@"%lu rows", (unsigned long)[secInfo numberOfObjects]);
+//    NSLog(@"%lu rows", (unsigned long)[secInfo numberOfObjects]);
     return [secInfo numberOfObjects];
 }
 
@@ -144,18 +143,16 @@
     [self.map setShowsUserLocation:YES];
     [self.view addSubview:self.map];
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-
-    [self refreshMap];
-    [self initCalloutView];
+//    NSTimer* timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
+//    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//
+//    [self refreshMap];
+//    [self initCalloutView];
     
     self.map.calloutView = self.calloutView;
 }
 
 - (void)initCalloutView {
-    NSLog(@"Got in testAnnotation");
-
     self.calloutView = [SMCalloutView platformCalloutView];
     self.calloutView.delegate = self;
     
@@ -234,9 +231,7 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    NSLog(@"Got in view for annotation");
     if ([annotation isKindOfClass:[EventAnnotation class]]) {
-        NSLog(@"Got in view for event annotation");
         NSString *identifier = @"eventAnnotation";
         MKPinAnnotationView* annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (!annotationView) {
@@ -286,7 +281,7 @@
             curAnnotation.title = curEvent.desc;
             curAnnotation.date = curEvent.date;
             
-            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
+//            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
             
             CLLocationCoordinate2D curCoordinate;
             curCoordinate.latitude = curEvent.latitude.doubleValue;

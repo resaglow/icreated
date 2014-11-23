@@ -1,6 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.1'
 
+pod 'SWRevealViewController', '~> 2.1.0'
 pod 'SMCalloutView'
 pod 'ActionSheetPicker-3.0'
 pod 'FDTake'

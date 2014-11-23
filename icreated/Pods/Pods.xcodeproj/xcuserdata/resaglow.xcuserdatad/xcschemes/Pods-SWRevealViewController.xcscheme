@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2DA49EE736CE23E1633771DC"
-               BuildableName = "libPods-FDTake.a"
-               BlueprintName = "Pods-FDTake"
+               BlueprintIdentifier = "CDEAA22426C1044C14E73040"
+               BuildableName = "libPods-SWRevealViewController.a"
+               BlueprintName = "Pods-SWRevealViewController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
