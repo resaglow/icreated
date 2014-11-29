@@ -7,6 +7,7 @@
 //
 
 #import "EventUpdater.h"
+#import "NSDate+RFC1123.h"
 
 @interface EventUpdater ()
 
@@ -123,13 +124,14 @@ static NSFetchedResultsController *fetchedResultsController;
         [managedObjectContext deleteObject:event];
     }
     
+    NSLog(@"Started adding entries to dict");
     // Add all the new entries in the context
     for (id eventDict in updatedEventsArray) {
         Event *newEvent = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event"
                                                                  inManagedObjectContext:managedObjectContext];
         
         newEvent.eventId = [eventDict objectForKey:@"EventId"];
-        newEvent.date = [eventDict objectForKey:@"EventDate"];
+        newEvent.date = [NSDate dateFromRFC1123:[eventDict objectForKey:@"EventDate"]];
         newEvent.desc = [eventDict objectForKey:@"Description"];
         
         NSString *stringLatitude = [eventDict objectForKey:@"Latitude"];

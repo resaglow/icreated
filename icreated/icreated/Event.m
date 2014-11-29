@@ -2,7 +2,7 @@
 //  Event.m
 //  icreated
 //
-//  Created by Artem Lobanov on 10/11/14.
+//  Created by Artem Lobanov on 28/11/14.
 //  Copyright (c) 2014 pispbsu. All rights reserved.
 //
 
@@ -15,9 +15,9 @@
 
 @dynamic date;
 @dynamic desc;
+@dynamic eventId;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic eventId;
 @dynamic comments;
 @dynamic photos;
 

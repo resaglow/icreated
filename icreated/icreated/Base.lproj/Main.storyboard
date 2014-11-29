@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -26,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-222" y="361"/>
+            <point key="canvasLocation" x="-180" y="666"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="M0f-Af-8yu">
@@ -55,6 +54,9 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="3ly-FF-bHk" kind="custom" customClass="SWRevealViewControllerSegue" id="0Zp-VM-m1J"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -205,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idc-VK-n9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="722" y="660"/>
+            <point key="canvasLocation" x="746" y="666"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="lpq-Ux-KsH">
@@ -322,12 +324,24 @@
                             <constraint firstItem="Sv1-ez-pyH" firstAttribute="top" secondItem="hUA-sw-6s1" secondAttribute="bottom" id="yVO-Ox-j9R"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZtY-Qo-fgn"/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="ZSb-Ah-nTl">
+                            <inset key="imageInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="ZtY-Qo-fgn">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="CkD-ld-f9w">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="accessoryView" destination="Ien-Ly-Ip6" id="mhb-tl-qxz"/>
                         <outlet property="bottomConstraint" destination="DWS-x5-Cmm" id="pZV-Jp-Ssf"/>
                         <outlet property="innerViewHeight" destination="vZO-sJ-Iyj" id="ne7-o5-7K1"/>
+                        <outlet property="menuButton" destination="CkD-ld-f9w" id="Dhj-3G-TyX"/>
                         <outlet property="scrollViewHeight" destination="Zkv-hD-rNg" id="ZmA-Ws-bTb"/>
                         <outlet property="textView" destination="ZXM-9v-m1D" id="brd-xz-CO4"/>
                         <outlet property="textViewHeight" destination="2sL-Mq-lpK" id="T5A-F6-p7Z"/>
@@ -350,7 +364,7 @@
                     <color key="backgroundColor" red="0.6841111858565514" green="0.73715913388639709" blue="0.78960060586734693" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1140" y="1378"/>
+            <point key="canvasLocation" x="1247" y="622"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="1pG-cs-uq5">
@@ -476,6 +490,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="VJO-20-DuY"/>
         <segue reference="aKu-VB-sul"/>
     </inferredMetricsTieBreakers>
 </document>

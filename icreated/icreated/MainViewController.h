@@ -12,21 +12,26 @@
 #import "EventAnnotation.h"
 #import "EventUpdater.h"
 
-@interface MainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
-    MKAnnotationView *_selectedAnnotationView;
-    EventAnnotation *_customAnnotation;
-}
+@interface CustomMapView : MKMapView
+@property (nonatomic, strong) SMCalloutView *calloutView;
+@end
 
+@interface MainViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addEventButton;
 
-@property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
+@property (strong, nonatomic) IBOutlet UITableView *newsStand;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-- (void)refreshMap;
+@property (strong, nonatomic) CustomMapView *map;
+@property (nonatomic, retain) EventAnnotation *customAnnotation;
+@property (nonatomic, strong) SMCalloutView *calloutView;
+@property (nonatomic, strong) UITextView *calloutTextView;
+@property (nonatomic, strong) UILabel *calloutTimeText;
+@property (nonatomic, strong) UILabel *calloutPeopleCount;
 
 @end
 

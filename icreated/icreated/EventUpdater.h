@@ -15,8 +15,6 @@
 
 + (void) setManagedObjectContext:(NSManagedObjectContext *)context;
 
-//+ (NSMutableArray *)updatedEventsArray;
-
 + (NSFetchedResultsController *)fetchedResultsController;
 
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler;

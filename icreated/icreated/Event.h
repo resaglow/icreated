@@ -2,7 +2,7 @@
 //  Event.h
 //  icreated
 //
-//  Created by Artem Lobanov on 10/11/14.
+//  Created by Artem Lobanov on 28/11/14.
 //  Copyright (c) 2014 pispbsu. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @interface Event : NSManagedObject
 
-@property (nonatomic, retain) NSString * date;
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * desc;
+@property (nonatomic, retain) NSNumber * eventId;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSNumber * eventId;
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *photos;
 @end

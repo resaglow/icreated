@@ -126,9 +126,11 @@
          
          If you encounter schema incompatibility errors during development, you can reduce their frequency by:
          * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
          
          */
+        
+//        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();

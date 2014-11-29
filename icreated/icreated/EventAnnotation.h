@@ -13,6 +13,6 @@
 
 @property (nonatomic,assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic,copy) NSString *title;
-@property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSDate *date;
 
 @end
