@@ -7,7 +7,7 @@
 //
 
 #import "AddEventViewController.h"
-#import "AddEventViewController+AddPin.h"
+#import "AddEventViewController+PinPicker.h"
 #import "AddEventViewController+DatePicker.h"
 #import <QuartzCore/QuartzCore.h> // Maybe needed for borders
 

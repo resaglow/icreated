@@ -45,7 +45,7 @@
 @property NSMutableArray *accessoryButtons;
 @property NSArray *accessoryButtonSymbols;
 
-@property AddPinViewController *addPinViewController;
+@property PinPickerViewController *pinPickerViewController;
 @property ActionSheetDatePicker *datePicker;
 @property FDTakeController *takeController;
 

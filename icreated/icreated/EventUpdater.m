@@ -106,8 +106,6 @@ static NSFetchedResultsController *fetchedResultsController;
         }
         
         handler();
-            
-        // TODO Write updatedEventsArray into a DB
         
         
     }];

@@ -1,5 +1,5 @@
 //
-//  AddPinViewController.m
+//  PinPickerViewController.m
 //  icreated
 //
 //  Created by Artem Lobanov on 28/11/14.
@@ -8,7 +8,7 @@
 
 #import "AddPinViewController.h"
 
-@interface AddPinViewController () <MKMapViewDelegate>
+@interface PinPickerViewController () <MKMapViewDelegate>
 
 @property (strong, nonatomic) MKMapView *map;
 @property CLLocationCoordinate2D curCoordinate;
@@ -16,7 +16,7 @@
 @end
 
 
-@implementation AddPinViewController
+@implementation PinPickerViewController
 
 - (void)viewDidLoad {
     self.map = [[MKMapView alloc] initWithFrame:self.view.bounds];

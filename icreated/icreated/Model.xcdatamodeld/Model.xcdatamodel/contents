@@ -14,7 +14,7 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="event" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="photos" inverseEntity="Event" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="photos" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -23,8 +23,8 @@
     </entity>
     <elements>
         <element name="Comment" positionX="135" positionY="-100" width="128" height="73"/>
-        <element name="Event" positionX="-63" positionY="-126" width="128" height="150"/>
-        <element name="Photo" positionX="117" positionY="32" width="128" height="88"/>
+        <element name="Event" positionX="-63" positionY="-126" width="128" height="148"/>
+        <element name="Photo" positionX="117" positionY="32" width="128" height="28"/>
         <element name="User" positionX="-126" positionY="72" width="128" height="58"/>
     </elements>
 </model>

@@ -1,5 +1,5 @@
 //
-//  AddEventViewController+AddPin.h
+//  AddEventViewController+PinPicker.h
 //  icreated
 //
 //  Created by Artem Lobanov on 29/11/14.
@@ -8,8 +8,8 @@
 
 #import "AddEventViewController.h"
 
-@interface AddEventViewController (AddPin)
+@interface AddEventViewController (PinPicker)
 
-- (void)pushAddPinViewController;
+- (void)pushPinPickerViewController;
 
 @end

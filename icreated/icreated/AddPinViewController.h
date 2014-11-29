@@ -1,5 +1,5 @@
 //
-//  AddPinViewController.h
+//  PinPickerViewController.h
 //  icreated
 //
 //  Created by Artem Lobanov on 28/11/14.
@@ -10,6 +10,6 @@
 #import <MapKit/MapKit.h>
 #import "EventAnnotation.h"
 
-@interface AddPinViewController : UIViewController
+@interface PinPickerViewController : UIViewController
 
 @end
