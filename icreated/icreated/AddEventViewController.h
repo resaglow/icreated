@@ -24,6 +24,7 @@
 
 @interface AddEventViewController : UIViewController <UITextViewDelegate, FDTakeDelegate>
 
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
@@ -33,7 +34,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
 
 @property (retain) IBOutletCollection(UIView) NSArray *views;
+@property (weak, nonatomic) IBOutlet UICollectionView *photosView;
 @property (retain) IBOutletCollection(NSLayoutConstraint) NSArray *heights;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *photosViewHeight;
 @property NSInteger firstFreeViewIndex;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -48,5 +51,7 @@
 @property PinPickerViewController *pinPickerViewController;
 @property ActionSheetDatePicker *datePicker;
 @property FDTakeController *takeController;
+
+@property NSMutableArray *photos;
 
 @end

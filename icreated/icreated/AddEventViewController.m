@@ -9,6 +9,7 @@
 #import "AddEventViewController.h"
 #import "AddEventViewController+PinPicker.h"
 #import "AddEventViewController+DatePicker.h"
+#import "AddEventViewController+PhotoPicker.h"
 #import <QuartzCore/QuartzCore.h> // Maybe needed for borders
 
 @interface UIActionSheet (NonFirstResponder)
@@ -39,6 +40,12 @@
     self.takeController = [FDTakeController new];
     [self.takeController setDelegate:self];
     
+    self.photos = [NSMutableArray array];
+    [self.photosView setDataSource:self];
+    [self.photosView setDelegate:self];
+    self.photosView.bounces = YES;
+    self.photosView.alwaysBounceHorizontal = YES;
+    
     self.accessoryViewEnabledSubFlag = YES;
     self.accessoryViewEnabledFlag = YES;
     
@@ -53,8 +60,9 @@
     self.bottomConstraint.priority = 800;
     
     for (NSLayoutConstraint *height in self.heights) {
-        height.constant = 0;
+        height.constant = 0.0f;
     }
+    self.photosViewHeight.constant = 0.0f;
     
     self.bottomConstraint.constant = 0.0f;
     
@@ -87,7 +95,7 @@
         [self.accessoryButtons addObject:button];
     }
     
-    [self.accessoryButtons[1] addTarget:self action:@selector(pushAddPinViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.accessoryButtons[1] addTarget:self action:@selector(pushPinPickerViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.accessoryButtons[2] addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
     [self.accessoryButtons[3] addTarget:self action:@selector(showPhotoPicker) forControlEvents:UIControlEventTouchUpInside];
     
@@ -149,20 +157,6 @@
                                                   object:nil];
 }
 
-- (void)showPhotoPicker {
-    [self.takeController takePhotoOrChooseFromLibrary];
-    self.accessoryViewEnabledSubFlag = NO;
-}
-
-// FDTakeDelegate method
-- (void)takeController:(FDTakeController *)controller didCancelAfterAttempting:(BOOL)madeAttempt {
-    self.accessoryViewEnabledSubFlag = YES;
-}
-
-- (void)takeController:(FDTakeController *)controller gotPhoto:(UIImage *)photo withInfo:(NSDictionary *)info {
-    
-}
-
 - (void)keyboardWillShow:(NSNotification *)notification {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
@@ -186,18 +180,12 @@
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     self.textViewHeight.priority = 750;
-    if (keyboardSize.height < 260.0f) {
-        self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT;
-        self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT;
-    }
-    else {
         [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
             self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
             
             [self.view layoutIfNeeded];
         } completion:nil];
-    }
     
     if (!self.accessoryViewEnabledSubFlag) {
         self.accessoryViewEnabledFlag = NO;
@@ -205,10 +193,6 @@
     }
     
     NSLog(@"AddEvent keyboardWillHide, height = %f", keyboardSize.height);
-}
-
-- (void)keyboardDidHide:(NSNotification *)notification {
-    
 }
 
 @end

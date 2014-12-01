@@ -45,9 +45,10 @@
     
     if (viewToLoadHeight.constant == 0) {
         self.firstFreeViewIndex++;
-        viewToLoadHeight.constant = NORMAL_VIEW_HEIGHT; // Show current view
         viewToLoad.layer.borderWidth = 2.0f;
         viewToLoad.layer.borderColor = [[UIColor redColor] CGColor];
+        viewToLoad.layer.cornerRadius = 5.0f;
+        viewToLoadHeight.constant = NORMAL_VIEW_HEIGHT; // Show current view
     }
     
     [UIView animateWithDuration:0.2f
