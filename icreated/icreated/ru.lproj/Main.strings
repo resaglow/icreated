@@ -1,0 +1,51 @@
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "031-6g-4Bp"; */
+"031-6g-4Bp.title" = "Item";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "22H-Kv-Mqb"; */
+"22H-Kv-Mqb.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Последние события"; ObjectID = "67V-uC-31R"; */
+"67V-uC-31R.text" = "Последние события";
+
+/* Class = "IBUITextField"; placeholder = "Пароль"; ObjectID = "693-mM-LQb"; */
+"693-mM-LQb.placeholder" = "Пароль";
+
+/* Class = "IBUISegmentedControl"; CgE-0g-qL7.segmentTitles[0] = "Лента"; ObjectID = "CgE-0g-qL7"; */
+"CgE-0g-qL7.segmentTitles[0]" = "Лента";
+
+/* Class = "IBUISegmentedControl"; CgE-0g-qL7.segmentTitles[1] = "Карта"; ObjectID = "CgE-0g-qL7"; */
+"CgE-0g-qL7.segmentTitles[1]" = "Карта";
+
+/* Class = "IBUIButton"; normalTitle = "Войти"; ObjectID = "K8f-vX-viQ"; */
+"K8f-vX-viQ.normalTitle" = "Войти";
+
+/* Class = "IBUIButton"; normalTitle = "Регистрация"; ObjectID = "Kk8-T9-Gw1"; */
+"Kk8-T9-Gw1.normalTitle" = "Регистрация";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "Zvk-tg-6Pj"; */
+"Zvk-tg-6Pj.title" = "Item";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "bkb-ms-rwq"; */
+"bkb-ms-rwq.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "Зарегистрироваться"; ObjectID = "gcq-S4-nwp"; */
+"gcq-S4-nwp.normalTitle" = "Зарегистрироваться";
+
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "jD4-d9-Rjs"; */
+"jD4-d9-Rjs.title" = "Title";
+
+/* Class = "IBUITextField"; placeholder = "Пароль"; ObjectID = "sec-xF-tMI"; */
+"sec-xF-tMI.placeholder" = "Пароль";
+
+/* Class = "IBUIButton"; normalTitle = "Добавить событие"; ObjectID = "tXI-aa-nom"; */
+"tXI-aa-nom.normalTitle" = "Добавить событие";
+
+/* Class = "IBUITextField"; placeholder = "Логин"; ObjectID = "tnT-xj-ma4"; */
+"tnT-xj-ma4.placeholder" = "Логин";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "vbX-cO-buy"; */
+"vbX-cO-buy.text" = "Label";
+
+/* Class = "IBUITextField"; placeholder = "Логин"; ObjectID = "zPx-5D-gGB"; */
+"zPx-5D-gGB.placeholder" = "Логин";

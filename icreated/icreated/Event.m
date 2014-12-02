@@ -20,5 +20,6 @@
 @dynamic eventId;
 @dynamic comments;
 @dynamic photos;
+@dynamic place;
 
 @end

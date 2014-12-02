@@ -118,13 +118,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"eventCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
     
-    // Configure the cell...
     Event *event = [[EventUpdater fetchedResultsController] objectAtIndexPath:indexPath];
-    cell.textLabel.text = event.desc;
-    cell.detailTextLabel.text = event.date;
+
+    
+    UILabel *label;
+    
+    label = (UILabel *)[cell viewWithTag:1];
+    label.text = event.desc;
+    
+    label = (UILabel *)[cell viewWithTag:2];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    label.text = event.date;
+    
+    label = (UILabel *)[cell viewWithTag:3];
+    
+    CLPlacemark* placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
+    
+    label.text = placemark.country;
+    NSLog(@"--=-=-=-=- %@", placemark.country);
     
     return cell;
 }

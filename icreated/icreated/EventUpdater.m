@@ -160,6 +160,17 @@ static NSFetchedResultsController *fetchedResultsController;
         
         newEvent.latitude = [NSNumber numberWithDouble:latitude];
         newEvent.longitude = [NSNumber numberWithDouble:longitude];
+        
+        
+        CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude: latitude longitude: longitude];
+        
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation:eventLocation
+                       completionHandler:^(NSArray *placemarks, NSError *error) {
+                           newEvent.place = [NSKeyedArchiver archivedDataWithRootObject:[placemarks objectAtIndex:0]];
+                       }];
+        
+        
     }
     
     // Save context
