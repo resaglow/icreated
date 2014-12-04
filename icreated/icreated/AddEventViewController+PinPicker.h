@@ -11,5 +11,6 @@
 @interface AddEventViewController (PinPicker)
 
 - (void)pushPinPickerViewController;
+- (void)getData:(EventAnnotation *)annotation;
 
 @end

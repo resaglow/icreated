@@ -237,7 +237,7 @@
                                                 </constraints>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NX6-89-DFL">
                                                 <rect key="frame" x="2" y="204" width="316" height="40"/>
@@ -358,11 +358,15 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="CkD-ld-f9w">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="2Hh-FR-z8w">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="accessoryView" destination="Ien-Ly-Ip6" id="mhb-tl-qxz"/>
+                        <outlet property="addButton" destination="2Hh-FR-z8w" id="0S7-B7-5xV"/>
                         <outlet property="bottomConstraint" destination="nzf-pV-nr2" id="zzs-n0-Fio"/>
                         <outlet property="innerViewHeight" destination="vZO-sJ-Iyj" id="ne7-o5-7K1"/>
                         <outlet property="menuButton" destination="CkD-ld-f9w" id="Dhj-3G-TyX"/>

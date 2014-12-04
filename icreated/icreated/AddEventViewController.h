@@ -20,12 +20,12 @@
 #import "SWRevealViewController.h"
 #import "ActionSheetDatePicker.h"
 #import "FDTakeController.h"
-#import "AddPinViewController.h"
+#import "PinPickerViewController.h"
 
 @interface AddEventViewController : UIViewController <UITextViewDelegate, FDTakeDelegate>
 
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *innerViewHeight;
@@ -49,9 +49,13 @@
 @property NSArray *accessoryButtonSymbols;
 
 @property PinPickerViewController *pinPickerViewController;
+
 @property ActionSheetDatePicker *datePicker;
 @property FDTakeController *takeController;
 
+@property EventAnnotation *annotation;
 @property NSMutableArray *photos;
+
+
 
 @end

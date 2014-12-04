@@ -10,6 +10,14 @@
 #import <MapKit/MapKit.h>
 #import "EventAnnotation.h"
 
+@protocol sendDataProtocol <NSObject>
+
+-(void)getData:(EventAnnotation *)annotation;
+
+@end
+
 @interface PinPickerViewController : UIViewController
+
+@property(nonatomic,assign) id delegate;
 
 @end

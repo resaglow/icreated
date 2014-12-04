@@ -12,8 +12,13 @@
 
 - (void)pushPinPickerViewController {
     self.pinPickerViewController = [[PinPickerViewController alloc] init];
-    
+    [self.pinPickerViewController setDelegate:self];
     [self.navigationController pushViewController:self.pinPickerViewController animated:YES];
+}
+
+- (void)getData:(EventAnnotation *)annotation {
+    self.annotation = annotation;
+    NSLog(@"GOT IT!! AZAZ");
 }
 
 @end

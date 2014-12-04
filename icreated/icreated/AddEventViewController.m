@@ -7,6 +7,7 @@
 //
 
 #import "AddEventViewController.h"
+#import "AddEventViewController+EventSender.h"
 #import "AddEventViewController+PinPicker.h"
 #import "AddEventViewController+DatePicker.h"
 #import "AddEventViewController+PhotoPicker.h"
@@ -26,13 +27,22 @@
 @implementation AddEventViewController
 
 - (void)viewDidLoad {
+    [self.textView setDelegate:self];
+    [self.textView setReturnKeyType:UIReturnKeyDone];
+    
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
     self.menuButton.title = @"\uf0c9";
     [self.menuButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                              [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
                                    forState:UIControlStateNormal];
+    
+    self.addButton.title = @"\uf0cc";
+    [self.addButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
+                                  forState:UIControlStateNormal];
     
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -104,6 +114,12 @@
     }
 }
 
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    NSLog(@"NNNN");
+    [self.textView resignFirstResponder];
+    
+    return YES;
+}
 
 - (BOOL)canBecomeFirstResponder {
     return YES;
