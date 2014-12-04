@@ -165,8 +165,7 @@
 			children = (
 				9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */,
 				9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */,
-				9CF3FDBC1A30A3140027841A /* AddEventViewController+EventSender.h */,
-				9CF3FDBD1A30A3140027841A /* AddEventViewController+EventSender.m */,
+				9CF3FDBF1A30A3C60027841A /* EventSender */,
 				9C7F8DE91A288F380082E7A6 /* PinPicker */,
 				9CCF953B1A2A3DE600A5C2C9 /* DatePicker */,
 				9CCF95601A2A8C6B00A5C2C9 /* PhotoPicker */,
@@ -329,6 +328,15 @@
 				9CEB7F9019F16EBF0096B4E7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9CF3FDBF1A30A3C60027841A /* EventSender */ = {
+			isa = PBXGroup;
+			children = (
+				9CF3FDBC1A30A3140027841A /* AddEventViewController+EventSender.h */,
+				9CF3FDBD1A30A3140027841A /* AddEventViewController+EventSender.m */,
+			);
+			name = EventSender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
