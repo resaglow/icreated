@@ -7,6 +7,7 @@
 //
 
 #import "AddEventViewController.h"
+#import "AddEventViewController+GestureHandlers.h"
 #import "AddEventViewController+EventSender.h"
 #import "AddEventViewController+PinPicker.h"
 #import "AddEventViewController+DatePicker.h"
@@ -26,13 +27,19 @@
 
 @implementation AddEventViewController
 
+- (void)resign {
+    [self.textView resignFirstResponder];
+}
+
 - (void)viewDidLoad {
+    self.textView.keyboardAppearance = UIKeyboardAppearanceDark;
     [self.textView setDelegate:self];
     [self.textView setReturnKeyType:UIReturnKeyDone];
     
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self.revealViewController setDelegate:self];
     
     self.menuButton.title = @"\uf0c9";
     [self.menuButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -43,6 +50,8 @@
     [self.addButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
                                   forState:UIControlStateNormal];
+    self.addButton.target = self;
+    self.addButton.action = @selector(resign);
     
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -64,6 +73,7 @@
     
     [self initView];
     [self initAccessoryView];
+    [self initSwipes];
 }
 
 - (void)initView {
@@ -112,13 +122,6 @@
     for (NSInteger i = 0; i < self.accessoryButtons.count; i++) {
         [self.accessoryView addSubview:self.accessoryButtons[i]];
     }
-}
-
-- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
-    NSLog(@"NNNN");
-    [self.textView resignFirstResponder];
-    
-    return YES;
 }
 
 - (BOOL)canBecomeFirstResponder {

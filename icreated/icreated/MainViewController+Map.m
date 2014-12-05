@@ -139,9 +139,9 @@
 }
 
 - (void)refreshMap {
-    NSLog(@"Request to refresh map");
+//    NSLog(@"Request to refresh map");
     [EventUpdater getEventsWithCompletionHandler:^(void) {
-        NSLog(@"Refreshing map");
+//        NSLog(@"Refreshing map");
         [[EventUpdater fetchedResultsController] performFetch:nil];
         
         for (NSInteger i = 0; i < [[[[EventUpdater fetchedResultsController] sections] objectAtIndex:0] numberOfObjects]; i++) {
@@ -154,7 +154,7 @@
             curAnnotation.title = curEvent.desc;
             curAnnotation.date = curEvent.date;
             
-            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
+//            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
             
             CLLocationCoordinate2D curCoordinate;
             curCoordinate.latitude = curEvent.latitude.doubleValue;
@@ -166,7 +166,7 @@
             });
         }
         
-        NSLog(@"Map refresh done");
+//        NSLog(@"Map refresh done");
     }];
 }
 

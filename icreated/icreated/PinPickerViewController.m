@@ -20,6 +20,11 @@
 @implementation PinPickerViewController
 
 - (void)viewDidLoad {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] init];
+    self.navigationItem.leftBarButtonItem.title = @"Cancel";
+    self.navigationItem.leftBarButtonItem.target = self;
+    self.navigationItem.leftBarButtonItem.action = @selector(dismiss);
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.rightBarButtonItem.title = @"\uf045";
     self.navigationItem.rightBarButtonItem.target = self;
@@ -104,8 +109,11 @@
 
 - (void)sendAnnotation {
     [self.delegate getData:self.curAnnotation];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismiss];
+}
+
+- (void)dismiss {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

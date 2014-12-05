@@ -22,7 +22,10 @@
 #import "FDTakeController.h"
 #import "PinPickerViewController.h"
 
-@interface AddEventViewController : UIViewController <UITextViewDelegate, FDTakeDelegate>
+@interface AddEventViewController : UIViewController <SWRevealViewControllerDelegate,
+                                                      UIGestureRecognizerDelegate,
+                                                      UITextViewDelegate,
+                                                      FDTakeDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton;

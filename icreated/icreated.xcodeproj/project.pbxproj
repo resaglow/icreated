@@ -11,6 +11,7 @@
 		9C03482B19F18D1F0070BEFD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482A19F18D1F0070BEFD /* RegisterViewController.m */; };
 		9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03482D19F18F460070BEFD /* LoginViewController.m */; };
 		9C0B90DE1A0F93B900008071 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C0B90DC1A0F93B900008071 /* Model.xcdatamodeld */; };
+		9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */; };
 		9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */; };
 		9C7F8DDC1A2776D00082E7A6 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F8DDB1A2776D00082E7A6 /* NSDate+RFC1123.m */; };
 		9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */; };
@@ -55,6 +56,8 @@
 		9C03482C19F18F460070BEFD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9C03482D19F18F460070BEFD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9C0B90DD1A0F93B900008071 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9C4B17A61A323A3000A2980B /* AddEventViewController+GestureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddEventViewController+GestureHandlers.h"; sourceTree = "<group>"; };
+		9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddEventViewController+GestureHandlers.m"; sourceTree = "<group>"; };
 		9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		9C7F8DDA1A2776D00082E7A6 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
@@ -160,11 +163,21 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		9C4B17A91A323ABE00A2980B /* GestureHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				9C4B17A61A323A3000A2980B /* AddEventViewController+GestureHandlers.h */,
+				9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */,
+			);
+			name = GestureHandlers;
+			sourceTree = "<group>";
+		};
 		9C6F793D1A1FDF6C0039B5E0 /* AddEvent */ = {
 			isa = PBXGroup;
 			children = (
 				9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */,
 				9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */,
+				9C4B17A91A323ABE00A2980B /* GestureHandlers */,
 				9CF3FDBF1A30A3C60027841A /* EventSender */,
 				9C7F8DE91A288F380082E7A6 /* PinPicker */,
 				9CCF953B1A2A3DE600A5C2C9 /* DatePicker */,
@@ -482,6 +495,7 @@
 				9CCF95561A2A75B400A5C2C9 /* Friend.m in Sources */,
 				9CF3FDBE1A30A3140027841A /* AddEventViewController+EventSender.m in Sources */,
 				9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */,
+				9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */,
 				9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */,
 				9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */,
 				9CCF95531A2A75B400A5C2C9 /* Event.m in Sources */,
