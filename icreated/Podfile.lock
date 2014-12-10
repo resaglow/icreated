@@ -2,18 +2,21 @@ PODS:
   - ActionSheetPicker-3.0 (1.3.5)
   - FDTake (0.2.4)
   - SMCalloutView (2.0.3)
+  - SORelativeDateTransformer (1.1.10)
   - SWRevealViewController (2.1.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - FDTake
   - SMCalloutView
+  - SORelativeDateTransformer (~> 1.1.10)
   - SWRevealViewController (~> 2.1.0)
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: ffefc6fdafbb5392072f82fa8754454d7a87de2e
   FDTake: caea3b794995e04d70696212970a85155107815e
   SMCalloutView: f413edafcbead0d0a59066efa0708cdbca6dbfff
+  SORelativeDateTransformer: de7936811c9988af8e129a097af48c828f933f5f
   SWRevealViewController: f76796aab107be84940e20fb3e0fdab8f3ac987b
 
 COCOAPODS: 0.34.4

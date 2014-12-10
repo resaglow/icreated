@@ -60,6 +60,7 @@ install_resource()
                     install_resource "FDTake/FDTakeExample/tr.lproj"
                     install_resource "FDTake/FDTakeExample/zh-Hans.lproj"
                     install_resource "FDTake/FDTakeExample/zh-Hant.lproj"
+                    install_resource "SORelativeDateTransformer/SORelativeDateTransformer/SORelativeDateTransformer.bundle"
           
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

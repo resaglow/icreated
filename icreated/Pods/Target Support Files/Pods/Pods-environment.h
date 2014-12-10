@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_SMCalloutView 0
 #define COCOAPODS_VERSION_PATCH_SMCalloutView 3
 
+// SORelativeDateTransformer
+#define COCOAPODS_POD_AVAILABLE_SORelativeDateTransformer
+#define COCOAPODS_VERSION_MAJOR_SORelativeDateTransformer 1
+#define COCOAPODS_VERSION_MINOR_SORelativeDateTransformer 1
+#define COCOAPODS_VERSION_PATCH_SORelativeDateTransformer 10
+
 // SWRevealViewController
 #define COCOAPODS_POD_AVAILABLE_SWRevealViewController
 #define COCOAPODS_VERSION_MAJOR_SWRevealViewController 2
