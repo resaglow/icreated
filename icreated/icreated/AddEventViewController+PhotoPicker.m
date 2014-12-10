@@ -26,6 +26,8 @@
     
     self.photosViewHeight.constant = NORMAL_VIEW_HEIGHT;
     [(UIButton *)self.accessoryButtons[3] setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    
+    self.firstFreeViewIndex++;
 }
 
 // UICollectionViewDataSource methods

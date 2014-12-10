@@ -30,7 +30,7 @@
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      @"http://customer87-001-site1.myasp.net/api/Account/Register"]];
+                                      @"http://nbixman-001-site1.myasp.net/api/Account/Register"]];
     
     NSDictionary* jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     self.loginTextField.text, @"UserName",
@@ -58,6 +58,7 @@
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
+    self.errorLabel.text = @"";
     if (response.statusCode == 200) {
         NSLog(@"Register OK!");
         [self performSegueWithIdentifier:@"registerSuccessful" sender:self];

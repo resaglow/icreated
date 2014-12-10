@@ -233,7 +233,6 @@
 				9CCF95431A2A43D600A5C2C9 /* MainViewController+NewsStand.m */,
 				9CCF953F1A2A401A00A5C2C9 /* MainViewController+Map.h */,
 				9CCF95401A2A401A00A5C2C9 /* MainViewController+Map.m */,
-				9C9623A319F666A3002C2515 /* Annotation */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -307,6 +306,7 @@
 				9C9623A819F66700002C2515 /* Register */,
 				9C6F793D1A1FDF6C0039B5E0 /* AddEvent */,
 				9C9623AC19F6675F002C2515 /* EventUpdater */,
+				9C9623A319F666A3002C2515 /* Annotation */,
 				9C0B90EC1A0FB4E800008071 /* Core Data */,
 				9CEB7F8219F16EBF0096B4E7 /* Images.xcassets */,
 				9CEB7F8419F16EBF0096B4E7 /* LaunchScreen.xib */,

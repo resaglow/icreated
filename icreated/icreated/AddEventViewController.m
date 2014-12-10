@@ -148,8 +148,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Костыль, чтобы accessoryView точно появился, без него в паре исключительных случаев не появляется
-    [self becomeFirstResponder];
+    // For AccessoryView showing after photo selection
+    [self becomeFirstResponder]; // For iOS 7.1
+    [self reloadInputViews]; // For iOS 8
     
     // Observe keyboard hide and show notifications to resize the text view appropriately
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -179,39 +180,45 @@
 - (void)keyboardWillShow:(NSNotification *)notification {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
-    if (keyboardSize.height == 260 && self.firstFreeViewIndex > 0) {
-        self.textViewHeight.priority = 950;
-    }
-    
-    NSLog(@"%f, %f, %f", self.view.bounds.size.height, BAR_HEIGHT, keyboardSize.height);
-    self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - keyboardSize.height;
-    self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - keyboardSize.height + NORMAL_VIEW_HEIGHT * self.firstFreeViewIndex;
-    [UIView animateWithDuration:0.25f
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:nil];
-    
     NSLog(@"AddEvent keyboardWillShow, height = %f", keyboardSize.height);
+    
+    if (keyboardSize.height == self.accessoryView.bounds.size.height) {
+        NSLog(@"Well, actually it's keyboardWillHide");
+        [self keyboardWillHide:notification];
+    }
+    else {
+        if (keyboardSize.height == 260 && self.firstFreeViewIndex > 0) {
+            self.textViewHeight.priority = 950;
+        }
+        
+        NSLog(@"%f, %f, %f", self.view.bounds.size.height, BAR_HEIGHT, keyboardSize.height);
+        self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - keyboardSize.height;
+        self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - keyboardSize.height + NORMAL_VIEW_HEIGHT * self.firstFreeViewIndex;
+        [UIView animateWithDuration:0.25f
+                         animations:^{
+                             [self.view layoutIfNeeded];
+                         }
+                         completion:nil];
+    }
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
+    NSLog(@"AddEvent keyboardWillHide, height = %f", keyboardSize.height);
+    
     self.textViewHeight.priority = 750;
-        [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
-            self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
-            
-            [self.view layoutIfNeeded];
-        } completion:nil];
+    [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
+        self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
+        
+        [self.view layoutIfNeeded];
+    } completion:nil];
     
     if (!self.accessoryViewEnabledSubFlag) {
         self.accessoryViewEnabledFlag = NO;
         [self.textView resignFirstResponder];
     }
-    
-    NSLog(@"AddEvent keyboardWillHide, height = %f", keyboardSize.height);
 }
 
 @end
