@@ -30,6 +30,7 @@
 
 - (void)getData:(EventAnnotation *)annotation {
     self.annotation = annotation;
+    [(UIButton *)self.accessoryButtons[1] setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
 

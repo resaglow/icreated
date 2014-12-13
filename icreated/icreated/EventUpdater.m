@@ -56,7 +56,7 @@ static NSFetchedResultsController *fetchedResultsController;
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler {
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      @"http://customer87-001-site1.myasp.net/api/Events"]];
+                                      @"http://nbixman-001-site1.myasp.net/api/Events"]];
     
     // Standard authRequired code
 //    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];

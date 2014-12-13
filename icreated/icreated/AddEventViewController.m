@@ -191,10 +191,9 @@
             self.textViewHeight.priority = 950;
         }
         
-        NSLog(@"%f, %f, %f", self.view.bounds.size.height, BAR_HEIGHT, keyboardSize.height);
         self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - keyboardSize.height;
         self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - keyboardSize.height + NORMAL_VIEW_HEIGHT * self.firstFreeViewIndex;
-        [UIView animateWithDuration:0.25f
+        [UIView animateWithDuration:0.27f
                          animations:^{
                              [self.view layoutIfNeeded];
                          }
@@ -208,7 +207,7 @@
     NSLog(@"AddEvent keyboardWillHide, height = %f", keyboardSize.height);
     
     self.textViewHeight.priority = 750;
-    [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.scrollViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
         self.innerViewHeight.constant = self.view.bounds.size.height - BAR_HEIGHT - self.accessoryView.bounds.size.height;
         

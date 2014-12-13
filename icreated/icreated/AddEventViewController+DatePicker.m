@@ -26,9 +26,7 @@
     UIButton *timeButton = self.accessoryButtons[2];
     [timeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm zzz"];
-    NSString *stringFromDate = [formatter stringFromDate:selectedTime];
+    NSString *stringFromDate = [[SORelativeDateTransformer registeredTransformer] transformedValue:selectedTime];
     
     UIView *viewToLoad = self.views[0]; // First view for the time
     NSLayoutConstraint *viewToLoadHeight = self.heights[0];

@@ -64,7 +64,7 @@
     
     switch (indexPath.row) {            
         case 2:
-            cell.textLabel.text = @"Войти";
+            cell.textLabel.text = NSLocalizedString(@"Login", @"_");
         default:
             break;
     }
