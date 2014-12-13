@@ -12,17 +12,20 @@
 
 - (void)showDatePicker {
     self.datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"Выберите время"
-                                                    datePickerMode:UIDatePickerModeTime
+                                                    datePickerMode:UIDatePickerModeDateAndTime
                                                       selectedDate:[NSDate date]
                                                             target:self
                                                             action:@selector(timeWasSelected:element:)
                                                             origin:self.view];
     
     self.datePicker.minuteInterval = DATEPICKER_MINUTE_INTERVAL;
+    self.datePicker.minimumDate = [NSDate date];
     [self.datePicker showActionSheetPicker];
 }
 
 -(void)timeWasSelected:(NSDate *)selectedTime element:(id)element {
+    self.eventDate = selectedTime;
+    
     UIButton *timeButton = self.accessoryButtons[2];
     [timeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     

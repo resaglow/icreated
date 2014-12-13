@@ -32,6 +32,10 @@
                                      [NSURL URLWithString:
                                       @"http://nbixman-001-site1.myasp.net/api/Account/Register"]];
     
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
     NSDictionary* jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     self.loginTextField.text, @"UserName",
                                     self.passwordTextField.text, @"Password",
@@ -42,9 +46,6 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [theRequest setHTTPBody:jsonData];
     

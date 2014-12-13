@@ -53,12 +53,14 @@
 
 @property PinPickerViewController *pinPickerViewController;
 
+@property EventAnnotation *annotation;
+
 @property ActionSheetDatePicker *datePicker;
 @property FDTakeController *takeController;
+@property NSDate *eventDate;
 
-@property EventAnnotation *annotation;
 @property NSMutableArray *photos;
 
-
+- (void)dismiss;
 
 @end

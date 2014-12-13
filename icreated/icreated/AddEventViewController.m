@@ -12,6 +12,7 @@
 #import "AddEventViewController+PinPicker.h"
 #import "AddEventViewController+DatePicker.h"
 #import "AddEventViewController+PhotoPicker.h"
+#import "MainViewController.h"
 #import <QuartzCore/QuartzCore.h> // Maybe needed for borders
 
 @interface UIActionSheet (NonFirstResponder)
@@ -51,10 +52,13 @@
                                             [UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
                                   forState:UIControlStateNormal];
     self.addButton.target = self;
-    self.addButton.action = @selector(resign);
+    self.addButton.action = @selector(sendEvent);
     
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.eventDate = nil;
+    self.annotation = nil;
     
     self.takeController = [FDTakeController new];
     [self.takeController setDelegate:self];
@@ -218,6 +222,12 @@
         self.accessoryViewEnabledFlag = NO;
         [self.textView resignFirstResponder];
     }
+}
+
+- (void)dismiss {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainViewController *mainVC = (MainViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
+    [self.navigationController pushViewController:mainVC animated:YES];
 }
 
 @end

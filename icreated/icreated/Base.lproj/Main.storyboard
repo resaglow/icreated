@@ -133,7 +133,7 @@
         <!--Main View Controller-->
         <scene sceneID="X9e-it-Rrq">
             <objects>
-                <viewController id="bqv-FJ-V8a" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainVC" id="bqv-FJ-V8a" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qXl-Rn-Sf2"/>
                         <viewControllerLayoutGuide type="bottom" id="ls9-nT-Qiu"/>
@@ -227,14 +227,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-7q-xOh" userLabel="InnerView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXM-9v-m1D">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum" translatesAutoresizingMaskIntoConstraints="NO" id="ZXM-9v-m1D">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="750" constant="204" id="2sL-Mq-lpK"/>
                                                     <constraint firstAttribute="width" constant="320" id="iXS-Ix-nlF"/>
                                                 </constraints>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" returnKeyType="done"/>
                                             </textView>
@@ -517,7 +516,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lq7-fp-wLQ"/>
         <segue reference="VJO-20-DuY"/>
+        <segue reference="lq7-fp-wLQ"/>
     </inferredMetricsTieBreakers>
 </document>
