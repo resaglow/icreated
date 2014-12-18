@@ -120,6 +120,13 @@ static NSFetchedResultsController *fetchedResultsController;
     NSArray *result = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
     for (id event in result) {
         [managedObjectContext deleteObject:event];
+        
+        // Save context
+        // This fixes the bug, so far no clue why
+        NSError *error;
+        if (![managedObjectContext save:&error]) {
+            NSLog(@"Error! %@", error);
+        }
     }
     
     NSLog(@"Started adding entries to dict");
