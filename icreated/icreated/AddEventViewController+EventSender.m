@@ -13,6 +13,8 @@
 
 
 - (void)sendEvent {
+    NSLog(@"Sending...");
+    
     if (!self.annotation || !self.eventDate) {
         NSLog(@"Not enough info for event adding");
         return;
@@ -29,7 +31,7 @@
     // Standard authRequired code
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     if (token == nil) {
-        NSLog(@"Cant get token");
+        NSLog(@"WAT: New event sending while logged out");
         return;
     }
 

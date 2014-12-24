@@ -1,20 +1,20 @@
 //
-//  Photo.m
+//  User.m
 //  icreated
 //
 //  Created by Artem Lobanov on 18/12/14.
 //  Copyright (c) 2014 pispbsu. All rights reserved.
 //
 
+#import "User.h"
 #import "Photo.h"
-#import "Event.h"
 #import "User.h"
 
 
-@implementation Photo
+@implementation User
 
-@dynamic image;
-@dynamic event;
-@dynamic user;
+@dynamic photos;
+@dynamic avatar;
+@dynamic friends;
 
 @end
