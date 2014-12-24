@@ -6,19 +6,15 @@
 //  Copyright (c) 2014 pispbsu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Event.h"
 
-
-@interface EventUpdater : NSObject  <NSURLConnectionDataDelegate>
+@interface EventUpdater : NSObject <NSURLConnectionDataDelegate>
 
 + (void) setManagedObjectContext:(NSManagedObjectContext *)context;
 
 + (NSFetchedResultsController *)fetchedResultsController;
 
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler;
-
-
 
 @end

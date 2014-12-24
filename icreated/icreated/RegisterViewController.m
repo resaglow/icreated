@@ -22,6 +22,27 @@
 
 @implementation RegisterViewController
 
+- (void)viewDidLoad {
+    [self initTitle];
+}
+
+- (void)initTitle {
+    UILabel *titleView = [UILabel new];
+    
+    titleView.text = @"Register";
+    titleView.textColor = [UIColor whiteColor];
+    titleView.font = [UIFont systemFontOfSize:25.f];
+    
+    CGRect desiredFrame = [titleView.text boundingRectWithSize:CGSizeMake(self.view.bounds.size.width, 0)
+                                                       options:NSStringDrawingTruncatesLastVisibleLine
+                                                    attributes:@{NSFontAttributeName:titleView.font}
+                                                       context:nil];
+    
+    titleView.frame = CGRectMake(0, 0, desiredFrame.size.width, desiredFrame.size.height);
+    
+    self.navigationItem.titleView = titleView;
+}
+
 
 - (IBAction)sendRegister:(id)sender {
     // For cancelling the connection, if it's already established

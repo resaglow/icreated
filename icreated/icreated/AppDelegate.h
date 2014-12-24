@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EventUpdater.h"
+#import "UserUpdater.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

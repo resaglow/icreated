@@ -21,7 +21,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//     Override point for customization after application launch.
     [self setUIOptions];    
     
     [EventUpdater setManagedObjectContext:self.managedObjectContext];
@@ -54,31 +53,27 @@
 #pragma mark - UI Options method
 
 - (void)setUIOptions {
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:192.0f / 255.0f
                                                                   green:57.0f / 255.0f
                                                                    blue:43.0f / 255.0f
                                                                   alpha:1]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 
+    
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
                                                    forState:UIControlStateSelected];
-
+    
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
                                                               NSFontAttributeName:[UIFont boldSystemFontOfSize:12.0f]}
                                                    forState:UIControlStateNormal];
-
+    
+    [[UISegmentedControl appearance] setBackgroundColor:[UIColor redColor]];
+    
     [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:192.0f / 255.0f
                                                                   green:57.0f / 255.0f
                                                                    blue:43.0f / 255.0f
                                                                   alpha:1]];
-
-    NSDictionary *barButtonAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
-                                          NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:26.0]};
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:barButtonAttributes
-                                                                                            forState:UIControlStateNormal];
-
-    // For vertical alignment of SegmentControl and UITabBarItems (buttons)
-//    [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:0 forBarMetrics:UIBarMetricsDefault];
-
 }
 
 #pragma mark - Core Data methods

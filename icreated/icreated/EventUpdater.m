@@ -58,16 +58,6 @@ static NSFetchedResultsController *fetchedResultsController;
                                      [NSURL URLWithString:
                                       @"http://nbixman-001-site1.myasp.net/api/Events"]];
     
-    // Standard authRequired code
-//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-//    if (token == nil) {
-//        handler();
-//        return;
-//    }
-//    
-//    NSString *tokenToSend = [@"Bearer " stringByAppendingString:token];
-//    [theRequest addValue:tokenToSend forHTTPHeaderField:@"Authorization"];
-    
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
