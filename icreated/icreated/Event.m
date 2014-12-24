@@ -20,5 +20,6 @@
 @dynamic longitude;
 @dynamic comments;
 @dynamic photos;
+@dynamic place;
 
 @end

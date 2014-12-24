@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <MapKit/MapKit.h>
 
 @class Comment, Photo;
 
@@ -20,6 +21,8 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *photos;
+@property (nonatomic, retain) NSData *place;
+
 @end
 
 @interface Event (CoreDataGeneratedAccessors)
