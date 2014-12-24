@@ -17,13 +17,18 @@
     [self.map setShowsUserLocation:YES];
     [self.view addSubview:self.map];
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    
-    [self refreshMap];
-    [self initCalloutView];
-    
+    [self initCalloutView];    
     self.map.calloutView = self.calloutView;
+    
+    self.timer = [NSTimer timerWithTimeInterval:10.0 target:self selector:@selector(refreshMap) userInfo:nil repeats:YES];
+}
+
+- (void)startTimer {
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+- (void)stopTimer {
+    [self.timer invalidate];
 }
 
 - (void)initCalloutView {

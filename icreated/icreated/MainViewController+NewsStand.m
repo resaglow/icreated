@@ -72,11 +72,20 @@
     
     label = (UILabel *)[cell viewWithTag:3];
     
-    CLPlacemark* placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
-    
-    label.text = placemark.country;
-    NSLog(@"--=-=-=-=- %@", placemark.country);
-    
+    if (event.place) {
+        CLPlacemark* placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
+//        NSLog(@"Placemark is: %@", placemark);
+        if (placemark.country) {
+            label.text = placemark.country;
+            NSLog(@"Country is: %@", placemark.country);
+        }
+        else {
+            NSLog(@"Unknown country");
+        }
+    }
+    else {
+        NSLog(@"event.place not set, probably placemark was = nil while updating");
+    }
     return cell;
 }
 

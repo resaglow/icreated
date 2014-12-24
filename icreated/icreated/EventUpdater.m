@@ -159,15 +159,28 @@ static NSFetchedResultsController *fetchedResultsController;
         newEvent.longitude = [NSNumber numberWithDouble:longitude];
         
         
-        CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude: latitude longitude: longitude];
+        CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
         
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
         [geocoder reverseGeocodeLocation:eventLocation
                        completionHandler:^(NSArray *placemarks, NSError *error) {
-                           newEvent.place = [NSKeyedArchiver archivedDataWithRootObject:[placemarks objectAtIndex:0]];
-                       }];
-        
-        
+            if (error) {
+                NSLog(@"Error getting placemarks, %@", error.description);
+            }
+            else {
+                CLPlacemark *placemark = placemarks[0];
+                if (!placemark) {
+                    NSLog(@"Error: for some reason placemark = nil");
+                }
+                else {
+                    newEvent.place = [NSKeyedArchiver archivedDataWithRootObject:placemark];
+                }
+            }
+                           
+            dispatch_semaphore_signal(semaphore);
+        }];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);        
     }
     
     // Save context

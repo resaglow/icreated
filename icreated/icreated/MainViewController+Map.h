@@ -10,7 +10,11 @@
 
 @interface MainViewController (Map) <MKMapViewDelegate, UIGestureRecognizerDelegate, SMCalloutViewDelegate>
 
+- (void)startTimer;
+- (void)stopTimer;
+
 - (void)viewDidLoadMap;
+- (void)refreshMap;
 
 @end
 

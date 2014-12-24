@@ -52,6 +52,7 @@
     
     [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginFlag"]];
     
+    
     [self viewDidLoadNewsStand];
     [self viewDidLoadMap];
     
@@ -60,10 +61,12 @@
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0) {
+        [self stopTimer];
         [self.view bringSubviewToFront:self.newsStand];
     }
     else if (sender.selectedSegmentIndex == 1) {
         self.map.hidden = NO;
+        [self startTimer];
         [self.view bringSubviewToFront:self.map];
     }
 }

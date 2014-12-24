@@ -33,5 +33,7 @@
 @property (nonatomic, strong) UILabel *calloutTimeText;
 @property (nonatomic, strong) UILabel *calloutPeopleCount;
 
+@property NSTimer *timer;
+
 @end
 

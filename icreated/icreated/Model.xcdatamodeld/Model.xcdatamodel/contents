@@ -10,6 +10,7 @@
         <attribute name="eventId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="event" inverseEntity="Comment" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="event" inverseEntity="Photo" syncable="YES"/>
     </entity>
@@ -26,7 +27,7 @@
     </entity>
     <elements>
         <element name="Comment" positionX="135" positionY="-100" width="128" height="73"/>
-        <element name="Event" positionX="-63" positionY="-126" width="128" height="148"/>
+        <element name="Event" positionX="-63" positionY="-126" width="128" height="165"/>
         <element name="Photo" positionX="117" positionY="32" width="128" height="88"/>
         <element name="User" positionX="-252" positionY="47" width="128" height="103"/>
     </elements>
