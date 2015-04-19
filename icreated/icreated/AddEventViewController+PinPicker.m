@@ -18,13 +18,12 @@
     UINavigationController *navigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:self.pinPickerViewController];
     
+    // TODO What is this??
     // You can even set the style of stuff before you show it
 //    navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     
     // And now you want to present the view in a modal fashion
     [self presentViewController:navigationController animated:YES completion:nil];
-    
-//    [self.navigationController presentViewController:self.pinPickerViewController animated:YES completion:nil];
     
 }
 
