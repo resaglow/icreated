@@ -8,19 +8,8 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController (Map) <MKMapViewDelegate, UIGestureRecognizerDelegate, SMCalloutViewDelegate>
-
-- (void)startTimer;
-- (void)stopTimer;
+@interface MainViewController (Map) <MapDataSourceDelegate>
 
 - (void)viewDidLoadMap;
-- (void)refreshMap;
-
-@end
-
-@interface MKMapView (UIGestureRecognizer)
-
-// this tells the compiler that MKMapView actually implements this method
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
 
 @end

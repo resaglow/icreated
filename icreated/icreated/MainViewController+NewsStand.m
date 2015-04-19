@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController+NewsStand.h"
-#import "NSDate+RFC1123.h"
 
 @implementation MainViewController (NewsStand)
 
@@ -68,7 +67,7 @@
     label = (UILabel *)[cell viewWithTag:2];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    label.text = [event.date RFC1123String];
+    label.text = [dateFormatter stringFromDate:event.date];
     
     label = (UILabel *)[cell viewWithTag:3];
     

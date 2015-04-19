@@ -8,13 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "SMCalloutView.h"
 #import "EventAnnotation.h"
-#import "EventUpdater.h"
-
-@interface CustomMapView : MKMapView
-@property (nonatomic, strong) SMCalloutView *calloutView;
-@end
+#import "MapDataSource.h"
 
 @interface MainViewController : UIViewController
 
@@ -26,14 +21,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *newsStand;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-@property (strong, nonatomic) CustomMapView *map;
-@property (nonatomic, retain) EventAnnotation *customAnnotation;
-@property (nonatomic, strong) SMCalloutView *calloutView;
-@property (nonatomic, strong) UITextView *calloutTextView;
-@property (nonatomic, strong) UILabel *calloutTimeText;
-@property (nonatomic, strong) UILabel *calloutPeopleCount;
-
-@property NSTimer *timer;
+@property (strong, nonatomic) CustomMapView *mapView;
+@property (strong, nonatomic) MapDataSource *mapDataSource;
 
 @end
 

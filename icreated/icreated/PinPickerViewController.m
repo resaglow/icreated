@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 pispbsu. All rights reserved.
 //
 
+#define kMinimumPressDuration 0.2
+
 #import "PinPickerViewController.h"
 
 @interface PinPickerViewController () <MKMapViewDelegate>
@@ -26,7 +28,7 @@
     self.navigationItem.leftBarButtonItem.action = @selector(dismiss);
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] init];
-    self.navigationItem.rightBarButtonItem.title = @"\uf045";
+    self.navigationItem.rightBarButtonItem.title = kFAOK;
     self.navigationItem.rightBarButtonItem.target = self;
     self.navigationItem.rightBarButtonItem.action = @selector(sendAnnotation);
     self.rightBarButton = self.navigationItem.rightBarButtonItem;
@@ -42,7 +44,7 @@
     
     UILongPressGestureRecognizer *dropPin = [[UILongPressGestureRecognizer alloc] init];
     [dropPin addTarget:self action:@selector(handleLongPress:)];
-    dropPin.minimumPressDuration = 0.2;
+    dropPin.minimumPressDuration = kMinimumPressDuration;
     [self.map addGestureRecognizer:dropPin];
 }
 
@@ -72,6 +74,7 @@
     [self.map addAnnotation:annotation];
 }
 
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[EventAnnotation class]]) {
@@ -85,7 +88,7 @@
             annotationView.annotation = annotation;
         }
         
-        annotationView.image = [self eventPinWithSize:CGSizeMake(38, 38)];
+        annotationView.image = [self eventPinWithSize:CGSizeMake(kFAPinSide, kFAPinSide)];
         
         return annotationView;
     }
@@ -94,7 +97,7 @@
 }
 
 - (UIImage *)eventPinWithSize:(CGSize)size {
-    NSString *pinSymbol = @"\uf041";
+    NSString *pinSymbol = kFAPin;
     UIGraphicsBeginImageContextWithOptions(size, NO, 0);
     [pinSymbol drawInRect:CGRectMake(0, 0, size.width, size.height)
            withAttributes:@{NSForegroundColorAttributeName:[UIColor redColor],

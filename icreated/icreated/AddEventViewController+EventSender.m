@@ -7,7 +7,6 @@
 //
 
 #import "AddEventViewController+EventSender.h"
-#import "NSDate+RFC1123.h"
 
 @implementation AddEventViewController (EventSender)
 
@@ -42,7 +41,7 @@
                                     [[NSNumber numberWithDouble:self.annotation.coordinate.latitude] stringValue], @"Latitude",
                                     [[NSNumber numberWithDouble:self.annotation.coordinate.longitude] stringValue], @"Longitude",
                                     self.textView.text, @"Description",
-                                    [self.eventDate RFC1123String], @"EventDate",
+                                    nil, @"EventDate", // TODO!!! SHOULD NOT BE NIL!
                                     nil];
     
     NSError *error;

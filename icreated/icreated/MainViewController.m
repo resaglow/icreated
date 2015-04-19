@@ -56,18 +56,18 @@
     [self viewDidLoadNewsStand];
     [self viewDidLoadMap];
     
-    self.map.hidden = YES;
+    self.mapView.hidden = YES;
 }
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0) {
-        [self stopTimer];
+        [self.mapDataSource stopTimer];
         [self.view bringSubviewToFront:self.newsStand];
     }
     else if (sender.selectedSegmentIndex == 1) {
-        self.map.hidden = NO;
-        [self startTimer];
-        [self.view bringSubviewToFront:self.map];
+        self.mapView.hidden = NO;
+        [self.mapDataSource startTimer];
+        [self.view bringSubviewToFront:self.mapView];
     }
 }
 
