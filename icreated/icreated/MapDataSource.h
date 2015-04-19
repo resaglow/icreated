@@ -10,9 +10,11 @@
 #import <MapKit/MapKit.h>
 #import "SMCalloutView.h"
 #import "EventAnnotation.h"
+#import "EventDetailViewController.h"
 #import "EventUpdater.h"
 
 @protocol MapDataSourceDelegate <NSObject>
+@property (nonatomic, strong) EventAnnotation *curAnnotation;
 @end
 
 

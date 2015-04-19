@@ -18,6 +18,7 @@
 
 @implementation MainViewController
 
+
 - (void)setAddEventButtonVisibily:(BOOL)visibily {
     NSMutableArray *rightBarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
     

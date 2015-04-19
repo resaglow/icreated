@@ -14,8 +14,22 @@
     self.mapView = [[CustomMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setShowsUserLocation:YES];
     self.mapDataSource = [[MapDataSource alloc] initWithMapView:self.mapView calloutFlag:YES];
+    [(UIButton *)self.mapDataSource.calloutView.contentView addTarget:self
+                                                                       action:@selector(pushDetailViewController)
+                                                             forControlEvents:UIControlEventTouchUpInside];
     self.mapDataSource.delegate = self;
     [self.view addSubview:self.mapView];
+}
+
+- (void)pushDetailViewController {
+    [self performSegueWithIdentifier:@"detailScreenSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[EventDetailViewController class]]) {
+        EventDetailViewController *detailVC = (EventDetailViewController *)segue.destinationViewController;
+        detailVC.textViewText = self.curAnnotation.title;
+    }
 }
 
 @end

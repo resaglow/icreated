@@ -23,6 +23,9 @@
 
 @property (strong, nonatomic) CustomMapView *mapView;
 @property (strong, nonatomic) MapDataSource *mapDataSource;
+@property (strong, nonatomic) EventAnnotation *curAnnotation;
+
+//- (void)setCurAnnotation:(EventAnnotation *)curAnnotation;
 
 @end
 

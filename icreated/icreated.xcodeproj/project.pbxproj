@@ -18,6 +18,7 @@
 		9C3F4CF31A436CFE002EA440 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3F4CF21A436CFE002EA440 /* Comment.m */; };
 		9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */; };
 		9C5AD0381AE462F7001D3E72 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD0371AE462F7001D3E72 /* NSDate+RFC1123.m */; };
+		9C5AD03B1AE46E1D001D3E72 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD03A1AE46E1D001D3E72 /* EventDetailViewController.m */; };
 		9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */; };
 		9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */; };
 		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
@@ -77,6 +78,8 @@
 		9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddEventViewController+GestureHandlers.m"; sourceTree = "<group>"; };
 		9C5AD0361AE462F7001D3E72 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
 		9C5AD0371AE462F7001D3E72 /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
+		9C5AD0391AE46E12001D3E72 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
+		9C5AD03A1AE46E1D001D3E72 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
@@ -210,6 +213,15 @@
 				9CFFBFE11AE40C2E0002A405 /* MapDataSource.m */,
 			);
 			name = MapDataSource;
+			sourceTree = "<group>";
+		};
+		9C5AD03C1AE46E22001D3E72 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9C5AD0391AE46E12001D3E72 /* EventDetailViewController.h */,
+				9C5AD03A1AE46E1D001D3E72 /* EventDetailViewController.m */,
+			);
+			name = EventDetail;
 			sourceTree = "<group>";
 		};
 		9C6F793D1A1FDF6C0039B5E0 /* AddEvent */ = {
@@ -351,6 +363,7 @@
 				9C9623AB19F66749002C2515 /* Menu */,
 				9C9623AA19F66731002C2515 /* Main */,
 				9C6F793D1A1FDF6C0039B5E0 /* AddEvent */,
+				9C5AD03C1AE46E22001D3E72 /* EventDetail */,
 				9C9623A719F666EA002C2515 /* Login */,
 				9C9623A819F66700002C2515 /* Register */,
 				9C3F4CDB1A436CAF002EA440 /* Profile */,
@@ -565,6 +578,7 @@
 				9CF3FDBE1A30A3140027841A /* AddEventViewController+EventSender.m in Sources */,
 				9C03482E19F18F460070BEFD /* LoginViewController.m in Sources */,
 				9CBB4E8F1A4464A200B95FBD /* UserUpdater.m in Sources */,
+				9C5AD03B1AE46E1D001D3E72 /* EventDetailViewController.m in Sources */,
 				9C3F4CDA1A436CA9002EA440 /* ProfileViewController.m in Sources */,
 				9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */,
 				9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */,

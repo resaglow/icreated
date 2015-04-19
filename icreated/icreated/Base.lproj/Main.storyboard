@@ -183,7 +183,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MH-wY-9vO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="295" y="666"/>
+            <point key="canvasLocation" x="305" y="772"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="X9e-it-Rrq">
@@ -201,7 +201,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="86" id="Vg8-4v-cyv">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="86" id="Vg8-4v-cyv">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vg8-4v-cyv" id="3jt-hi-74j">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -226,6 +226,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="H3m-2Q-vXF" kind="push" id="LPW-MZ-c0J"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -239,7 +242,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="CgE-0g-qL7">
-                            <rect key="frame" x="54" y="7" width="212" height="31"/>
+                            <rect key="frame" x="54" y="6.5" width="212" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Feed"/>
@@ -266,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idc-VK-n9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="666"/>
+            <point key="canvasLocation" x="728" y="772"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="lpq-Ux-KsH">
@@ -280,7 +283,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-ez-pyH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-ez-pyH">
                                 <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-7q-xOh" userLabel="InnerView">
@@ -449,7 +452,7 @@
                     <color key="backgroundColor" red="0.6841111858565514" green="0.73715913388639709" blue="0.78960060586734693" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1247" y="622"/>
+            <point key="canvasLocation" x="1241" y="596"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="fBX-xJ-Nqm">
@@ -642,10 +645,41 @@
             </objects>
             <point key="canvasLocation" x="1140" y="-112"/>
         </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="nHP-cN-nzo">
+            <objects>
+                <viewController id="H3m-2Q-vXF" customClass="EventDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vvZ-QV-YaN"/>
+                        <viewControllerLayoutGuide type="bottom" id="UdD-lf-fV1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gLX-FX-O0P">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tUR-ij-emI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KNV-3w-c00"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="textView" destination="tUR-ij-emI" id="TYK-sQ-cdx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lgR-p7-1QP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1241" y="1247"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="UB1-h4-Qxt"/>
-        <segue reference="Qpb-N3-h8l"/>
+        <segue reference="aKu-VB-sul"/>
         <segue reference="VJO-20-DuY"/>
     </inferredMetricsTieBreakers>
 </document>

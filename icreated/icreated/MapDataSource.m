@@ -104,6 +104,7 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     if (self.calloutsFlag) {
         EventAnnotation *annotation = (EventAnnotation *)view.annotation;
+        self.delegate.curAnnotation = annotation;
         self.calloutTextView.text = annotation.title;
         self.calloutTimeText.text = [annotation.date RFC1123String];
         
@@ -243,7 +244,6 @@
         return NO;
     }
     else {
-        NSLog(@"%@", [touch.view class]);
         return [super gestureRecognizer:gestureRecognizer shouldReceiveTouch:touch];
     }
 }
