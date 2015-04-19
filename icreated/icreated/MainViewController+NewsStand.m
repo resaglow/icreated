@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController+NewsStand.h"
+#import "NSDate+RFC1123.h"
+#import "SORelativeDateTransformer.h"
 
 @implementation MainViewController (NewsStand)
 
@@ -67,10 +69,10 @@
     label = (UILabel *)[cell viewWithTag:2];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    label.text = [dateFormatter stringFromDate:event.date];
+    label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
+//    label.text = [event.date RFC1123String];
     
     label = (UILabel *)[cell viewWithTag:3];
-    
     if (event.place) {
         CLPlacemark* placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
 //        NSLog(@"Placemark is: %@", placemark);
@@ -85,6 +87,7 @@
     else {
         NSLog(@"event.place not set, probably placemark was = nil while updating");
     }
+    
     return cell;
 }
 

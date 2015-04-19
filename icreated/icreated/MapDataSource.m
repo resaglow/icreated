@@ -19,15 +19,19 @@
 #define kCalloutHeight 80
 
 #import "MapDataSource.h"
+#import "NSDate+RFC1123.h"
 
 @implementation MapDataSource
 
-- (id)initWithMapView:(CustomMapView *)mapView {
+- (id)initWithMapView:(CustomMapView *)mapView calloutFlag:(BOOL)calloutFlag {
+    self.calloutsFlag = calloutFlag;
     self.mapView = mapView;
     [self.mapView setDelegate:self];
     
-    [self initCalloutView];
-    self.mapView.calloutView = self.calloutView;
+    if (calloutFlag) {
+        [self initCalloutView];
+        self.mapView.calloutView = self.calloutView;
+    }
     
     self.timer = [NSTimer timerWithTimeInterval:kMapRefreshInterval
                                          target:self
@@ -98,32 +102,36 @@
 
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    EventAnnotation *annotation = (EventAnnotation *)view.annotation;
-    self.calloutTextView.text = annotation.title;
-    self.calloutTimeText.text = @""; //[annotation.date RFC1123String];
-    
-    CGFloat fixedWidth = self.calloutTextView.frame.size.width;
-    CGSize newSize = [self.calloutTextView sizeThatFits:CGSizeMake(fixedWidth, CGFLOAT_MAX)];
-    
-    CGRect newFrame = self.calloutTextView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    
-    if (newFrame.size.height <= 80.0f) {
-        CGFloat textViewsHeightDiff = self.calloutTextView.frame.size.height - newFrame.size.height;
-        self.calloutTextView.frame = newFrame;
-        self.calloutView.contentView.frame = CGRectMake(0,
-                                                        0,
-                                                        self.calloutView.contentView.frame.size.width,
-                                                        self.calloutView.contentView.frame.size.height - textViewsHeightDiff);
+    if (self.calloutsFlag) {
+        EventAnnotation *annotation = (EventAnnotation *)view.annotation;
+        self.calloutTextView.text = annotation.title;
+        self.calloutTimeText.text = [annotation.date RFC1123String];
+        
+        CGFloat fixedWidth = self.calloutTextView.frame.size.width;
+        CGSize newSize = [self.calloutTextView sizeThatFits:CGSizeMake(fixedWidth, CGFLOAT_MAX)];
+        
+        CGRect newFrame = self.calloutTextView.frame;
+        newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+        
+        if (newFrame.size.height <= 80.0f) {
+            CGFloat textViewsHeightDiff = self.calloutTextView.frame.size.height - newFrame.size.height;
+            self.calloutTextView.frame = newFrame;
+            self.calloutView.contentView.frame = CGRectMake(0,
+                                                            0,
+                                                            self.calloutView.contentView.frame.size.width,
+                                                            self.calloutView.contentView.frame.size.height - textViewsHeightDiff);
+        }
+        
+        self.calloutView.calloutOffset = view.calloutOffset;
+        
+        [self.calloutView presentCalloutFromRect:view.bounds inView:view constrainedToView:self.delegate.view animated:YES];
     }
-    
-    self.calloutView.calloutOffset = view.calloutOffset;
-    
-    [self.calloutView presentCalloutFromRect:view.bounds inView:view constrainedToView:self.delegate.view animated:YES];
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-    [self.calloutView dismissCalloutAnimated:YES];
+    if (self.calloutsFlag) {
+        [self.calloutView dismissCalloutAnimated:YES];
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
@@ -223,7 +231,7 @@
 
 @end
 
-#pragma -mark CustomMapView
+#pragma mark - CustomMapView
 
 @implementation CustomMapView
 

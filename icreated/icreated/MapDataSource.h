@@ -27,10 +27,11 @@
 @property (nonatomic, strong) UILabel *calloutPeopleCount;
 @property NSTimer *timer;
 @property UIViewController <MapDataSourceDelegate> *delegate;
+@property BOOL calloutsFlag;
 - (void)refreshMap;
 - (void)startTimer;
 - (void)stopTimer;
-- (id)initWithMapView:(MKMapView *)map;
+- (id)initWithMapView:(MKMapView *)map calloutFlag:(BOOL)calloutFlag;
 @end
 
 

@@ -51,7 +51,7 @@
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      @"http://nbixman-001-site1.myasp.net/api/Account/Register"]];
+                                      [serverUrl stringByAppendingString:@"/api/Account/Register"]]];
     
     [theRequest setHTTPMethod:@"POST"];
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

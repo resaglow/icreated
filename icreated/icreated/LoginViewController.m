@@ -59,7 +59,7 @@
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      @"http://nbixman-001-site1.myasp.net/Token"]];
+                                      [serverUrl stringByAppendingString:@"/Token"]]];
     
     [theRequest setHTTPMethod:@"POST"];
     [theRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

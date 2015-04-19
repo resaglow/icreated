@@ -13,7 +13,7 @@
 - (void)viewDidLoadMap {
     self.mapView = [[CustomMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setShowsUserLocation:YES];
-    self.mapDataSource = [[MapDataSource alloc] initWithMapView:self.mapView];
+    self.mapDataSource = [[MapDataSource alloc] initWithMapView:self.mapView calloutFlag:YES];
     self.mapDataSource.delegate = self;
     [self.view addSubview:self.mapView];
 }

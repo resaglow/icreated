@@ -12,12 +12,12 @@
 
 @protocol sendDataProtocol <NSObject>
 
--(void)getData:(EventAnnotation *)annotation;
+- (void)getData:(EventAnnotation *)annotation;
 
 @end
 
 @interface PinPickerViewController : UIViewController
 
-@property(nonatomic,assign) id delegate;
+@property (nonatomic, assign) id delegate;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "EventUpdater.h"
+#import "NSDate+RFC1123.h"
 
 @interface EventUpdater ()
 
@@ -55,7 +56,7 @@ static NSFetchedResultsController *fetchedResultsController;
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler {
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      [serverUrl stringByAppendingString:@"/Events"]]];
+                                      [serverUrl stringByAppendingString:@"/api/Events"]]];
     
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
@@ -125,7 +126,7 @@ static NSFetchedResultsController *fetchedResultsController;
                                                                  inManagedObjectContext:managedObjectContext];
         
         newEvent.eventId = [eventDict objectForKey:@"EventId"];
-//        newEvent.date = [eventDict objectForKey:@"EventDate"];
+        newEvent.date = [NSDate dateFromRFC1123:[eventDict objectForKey:@"EventDate"]];
         newEvent.desc = [eventDict objectForKey:@"Description"];
         
         NSString *stringLatitude = [eventDict objectForKey:@"Latitude"];
