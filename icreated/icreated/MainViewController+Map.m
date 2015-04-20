@@ -14,9 +14,8 @@
     self.mapView = [[CustomMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setShowsUserLocation:YES];
     self.mapDataSource = [[MapDataSource alloc] initWithMapView:self.mapView calloutFlag:YES];
-    [(UIButton *)self.mapDataSource.calloutView.contentView addTarget:self
-                                                                       action:@selector(pushDetailViewController)
-                                                             forControlEvents:UIControlEventTouchUpInside];
+    UIButton *contentView = (UIButton *)self.mapDataSource.calloutView.contentView;
+    [contentView addTarget:self action:@selector(pushDetailViewController) forControlEvents:UIControlEventTouchUpInside];
     self.mapDataSource.delegate = self;
     [self.view addSubview:self.mapView];
 }

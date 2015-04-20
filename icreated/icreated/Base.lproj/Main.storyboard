@@ -227,7 +227,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="H3m-2Q-vXF" kind="push" id="LPW-MZ-c0J"/>
+                                            <segue destination="H3m-2Q-vXF" kind="push" identifier="detailScreenSegue" id="LPW-MZ-c0J"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

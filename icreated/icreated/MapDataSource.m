@@ -91,8 +91,10 @@
     self.calloutTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, kCalloutStandardInfoHeight, kCalloutWidth, kCalloutTextHeight)];
     self.calloutTextView.backgroundColor = [UIColor clearColor];
     self.calloutTextView.editable = NO;
+    self.calloutTextView.userInteractionEnabled = NO;
+    self.calloutTextView.font = smallFont;
     
-    UIView *contentView = [UIButton new];
+    UIButton *contentView = [UIButton new];
     contentView.frame = CGRectMake(0, 0, kCalloutWidth, kCalloutHeight);
     [contentView addSubview:self.calloutTextView];
     [contentView addSubview:higherView];
