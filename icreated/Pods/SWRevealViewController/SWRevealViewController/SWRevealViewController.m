@@ -1211,15 +1211,16 @@ const int FrontViewPositionNone = 0xff;
     
     // symetric replacement of frontViewPosition
     [self _getAdjustedFrontViewPosition:&frontViewPosition forSymetry:symetry];
+    
     // restore user interaction and animate to the final position
     [self _restoreUserInteraction];
-    [self _setFrontViewPosition:frontViewPosition withDuration:duration];
     [self _notifyPanGestureEnded];
+    [self _setFrontViewPosition:frontViewPosition withDuration:duration];
 }
 
 
 - (void)_handleRevealGestureStateCancelledWithRecognizer:(UIPanGestureRecognizer *)recognizer
-{
+{    
     [self _restoreUserInteraction];
     [self _notifyPanGestureEnded];
     [self _dequeue];

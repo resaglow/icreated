@@ -83,7 +83,6 @@ static NSString * const kStringsTableName = @"FDTake";
 
 - (void)takePhotoOrChooseFromLibrary
 {
-    
     self.sources = nil;
     self.buttonTitles = nil;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -154,7 +153,7 @@ static NSString * const kStringsTableName = @"FDTake";
     } else {
         self.imagePicker.sourceType = [[self.sources objectAtIndex:buttonIndex] integerValue];
         
-        if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        if ((self.imagePicker.sourceType==UIImagePickerControllerSourceTypeCamera) || (self.imagePicker.sourceType==UIImagePickerControllerSourceTypeCamera)) {
             if (self.defaultToFrontCamera && [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
                 [self.imagePicker setCameraDevice:UIImagePickerControllerCameraDeviceFront];
             }
@@ -162,10 +161,10 @@ static NSString * const kStringsTableName = @"FDTake";
         // set the media type: photo or video
         if (actionSheet.tag == kPhotosActionSheetTag) {
             self.imagePicker.allowsEditing = self.allowsEditingPhoto;
-            self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects:(NSString *) kUTTypeImage, nil];
+            self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeImage, nil];
         } else if (actionSheet.tag == kVideosActionSheetTag) {
             self.imagePicker.allowsEditing = self.allowsEditingVideo;
-            self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects:(NSString *) kUTTypeMovie, nil];
+            self.imagePicker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
         } else if (actionSheet.tag == kVideosOrPhotosActionSheetTag) {
             if ([self.sources count] == 1) {
                 if (buttonIndex == 0) {
@@ -192,7 +191,6 @@ static NSString * const kStringsTableName = @"FDTake";
                                         animated:YES];
         }
         else {
-            
             // On iPhone use full screen presentation.
             [[self presentingViewController] presentViewController:self.imagePicker animated:YES completion:nil];
         }
@@ -243,7 +241,8 @@ static NSString * const kStringsTableName = @"FDTake";
             [self.popover dismissPopoverAnimated:YES];
     }
     // Handle a movie capture
-    else if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0) == kCFCompareEqualTo) {
+    else if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0)
+        == kCFCompareEqualTo) {
         if ([self.delegate respondsToSelector:@selector(takeController:gotVideo:withInfo:)])
             [self.delegate takeController:self gotVideo:[info objectForKey:UIImagePickerControllerMediaURL] withInfo:info];
     }
@@ -254,6 +253,7 @@ static NSString * const kStringsTableName = @"FDTake";
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [picker dismissViewControllerAnimated:YES completion:nil];
     self.imagePicker = nil;
@@ -266,7 +266,6 @@ static NSString * const kStringsTableName = @"FDTake";
 
 - (UIViewController*)presentingViewController
 {
-    
     // Use optional view controller for presenting the image picker if set
     UIViewController *presentingViewController = nil;
     if (self.viewControllerForPresentingImagePickerController!=nil) {
@@ -306,7 +305,6 @@ static NSString * const kStringsTableName = @"FDTake";
                                               otherButtonTitles:nil];
         for (NSString *title in self.buttonTitles)
             [self.actionSheet addButtonWithTitle:title];
-        
         [self.actionSheet addButtonWithTitle:[self textForButtonWithTitle:kCancelKey]];
         self.actionSheet.cancelButtonIndex = self.sources.count;
         
