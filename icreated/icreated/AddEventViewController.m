@@ -41,12 +41,12 @@
     
     self.menuButton.title = @"\uf0c9";
     [self.menuButton setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"FontAwesome" size:30.0], NSFontAttributeName, nil]
+     [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
                                    forState:UIControlStateNormal];
     
     self.addButton.title = @"\uf14a";
     [self.addButton setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"FontAwesome" size:30.0], NSFontAttributeName, nil]
+     [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
                                   forState:UIControlStateNormal];
     self.addButton.target = self;
     self.addButton.action = @selector(sendEvent);

@@ -10,7 +10,7 @@
 
 @implementation MainViewController (Map)
 
-- (void)viewDidLoadMap {
+- (void)initMap {
     self.mapView = [[CustomMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setShowsUserLocation:YES];
     self.mapCalloutDataSource = [[MapCalloutDataSource alloc] initWithMapView:self.mapView];
@@ -31,5 +31,7 @@
         detailVC.textViewText = self.curAnnotation.title;
     }
 }
+
+
 
 @end

@@ -11,10 +11,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol TableDataSourceDelegate <NSObject>
-
 - (void)configureCell:(UITableViewCell *)cell withObject:(id)object;
+@optional
 - (void)selectedObject:(id)object;
-
 @end
 
 @interface TableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
@@ -26,6 +25,6 @@
 @property (readonly) NSEntityDescription *entity;
 
 - (id)initWithTableView:(UITableView *)tableView withFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
-      andReuseIdenifier:(NSString *)reuseIdentifier;
+         reuseIdenifier:(NSString *)reuseIdentifier;
 
 @end

@@ -8,8 +8,9 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController (NewsStand) <UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController (NewsStand) <TableDataSourceDelegate, TableRefreshDataSourceDelegate>
 
-- (void)viewDidLoadNewsStand;
+- (void)initNewsStand;
+- (void)refreshingMethod:(void (^)(void))handler;
 
 @end

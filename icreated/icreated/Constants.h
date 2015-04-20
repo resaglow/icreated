@@ -16,6 +16,10 @@
 #define kFAOK @"\uf045"
 #define kFAPeople @"\uf007"
 #define kFATime @"\uf017"
+#define kFAMenu @"\uf0c9"
+#define kFAAddEvent @"\uf044"
+
+#define kFABarButtonFontSize 30
 
 #define kFAStandardFontSize 20
 #define kFASmallFontSize 10

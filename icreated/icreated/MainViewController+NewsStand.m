@@ -12,54 +12,16 @@
 
 @implementation MainViewController (NewsStand)
 
-- (void)viewDidLoadNewsStand {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = appDelegate.managedObjectContext;
+- (void)initNewsStand {    
+    self.newsStandDataSource = [[TableRefreshDataSource alloc] initWithTableView:self.newsStand
+                                                     fetchedResultsController:[EventUpdater fetchedResultsController]
+                                                              reuseIdenifier:@"eventCell"];
+    self.newsStandDataSource.delegate = self;
     
-    [[EventUpdater fetchedResultsController] performFetch:nil];
-    
-    [self.newsStand setDataSource:self];
-    [self.newsStand setDelegate:self];
-    
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    
-    [self.refreshControl addTarget:self
-                            action:@selector(refreshNewsStand)
-                  forControlEvents:UIControlEventValueChanged];
-    
-    [self.newsStand addSubview:self.refreshControl];
 }
 
-- (void)refreshNewsStand {
-    [EventUpdater getEventsWithCompletionHandler:^(void) {
-        [[EventUpdater fetchedResultsController] performFetch:nil];
-        
-        [self.newsStand reloadData];
-        NSLog(@"Newsstand reloaded");
-        
-        [self.refreshControl endRefreshing];
-    }];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    NSInteger secNum = [[[EventUpdater fetchedResultsController] sections] count];
-    NSLog(@"%ld sections", (long)secNum);
-    return secNum;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> secInfo = [[[EventUpdater fetchedResultsController] sections] objectAtIndex:section];
-    NSLog(@"%lu rows", (unsigned long)[secInfo numberOfObjects]);
-    return [secInfo numberOfObjects];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
-    
-    Event *event = [[EventUpdater fetchedResultsController] objectAtIndexPath:indexPath];
+- (void)configureCell:(UITableViewCell *)cell withObject:(id)object {
+    Event *event = (Event *)object;
     
     UILabel *label;
     
@@ -70,25 +32,31 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
-//    label.text = [event.date RFC1123String];
+    //    label.text = [event.date RFC1123String];
     
+    CLPlacemark* placemark;
     label = (UILabel *)[cell viewWithTag:3];
     if (event.place) {
-        CLPlacemark* placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
-//        NSLog(@"Placemark is: %@", placemark);
+        placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
+        //        NSLog(@"Placemark is: %@", placemark);
         if (placemark.country) {
             label.text = placemark.country;
             NSLog(@"Country is: %@", placemark.country);
         }
         else {
-            NSLog(@"Unknown country");
+            label.text = @"<unknown>";
+            NSLog(@"Unknown country, placemark.country = nil");
         }
     }
     else {
+        label.text = @"<nil>";
         NSLog(@"event.place not set, probably placemark was = nil while updating");
     }
-    
-    return cell;
 }
+
+- (void)refreshingMethod:(void (^)(void))handler {
+    [EventUpdater getEventsWithCompletionHandler:handler];
+}
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TableDataSource.h"
+#import "Event.h"
 
 @interface TableDataSource ()
 
@@ -21,7 +22,7 @@
 #pragma mark - Initializers
 
 - (id)initWithTableView:(UITableView *)tableView withFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
-      andReuseIdenifier:(NSString *)reuseIdentifier
+         reuseIdenifier:(NSString *)reuseIdentifier
 {
     self = [super init];
     
@@ -57,45 +58,40 @@
     return YES;
 }
 
-- (NSEntityDescription *)entity
-{
+- (NSEntityDescription *)entity {
     return [[self.fetchedResultsController fetchRequest] entity];
 }
 
 #pragma mark - UITableViewDataSource delegate methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self.fetchedResultsController sections] count];
+    NSInteger sectionsCount = [[self.fetchedResultsController sections] count];
+    NSLog(@"%ld sections", (long)sectionsCount);
+    return sectionsCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    NSLog(@"%lu rows in section #%ld", (unsigned long)[sectionInfo numberOfObjects], (long)section);
     return [sectionInfo numberOfObjects];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
+    if (![object isKindOfClass:[Event class]]) {
+        NSLog(@"WAT");
+    }
     [self.delegate configureCell:cell withObject:object];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ((editingStyle == UITableViewCellEditingStyleDelete)
-        && ![self deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]]) {
-        abort();
-    }
-}
-
 #pragma mark - UITableViewDataDelegate delegate methods
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate selectedObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    if ([self.delegate respondsToSelector:@selector(selectedObject:)]) {
+        [self.delegate selectedObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    }
 }
 
 @end

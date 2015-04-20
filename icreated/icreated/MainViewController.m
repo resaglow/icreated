@@ -36,38 +36,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.menuButton.title = @"\uf0c9";
+    self.menuButton.title = kFAMenu;
     [self.menuButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                             [UIFont fontWithName:@"FontAwesome" size:30.0], NSFontAttributeName, nil]
+                                             [UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
                                                                               forState:UIControlStateNormal];
     
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    self.addEventButton.title = @"\uf044";
+    self.addEventButton.title = kFAAddEvent;
     [self.addEventButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [UIFont fontWithName:@"FontAwesome" size:30.0], NSFontAttributeName, nil]
+                                                 [UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
                                                                                   forState:UIControlStateNormal];
     
     [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginFlag"]];
     
     
-    [self viewDidLoadNewsStand];
-    [self viewDidLoadMap];
+    [self initNewsStand];
+    [self initMap];
     
     self.mapView.hidden = YES;
 }
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0) {
-        [self.mapCalloutDataSource stopTimer];
         [self.view bringSubviewToFront:self.newsStand];
+        self.mapView.hidden = YES;
+        [self.mapCalloutDataSource stopTimer];
     }
     else if (sender.selectedSegmentIndex == 1) {
         self.mapView.hidden = NO;
-        [self.mapCalloutDataSource startTimer];
         [self.view bringSubviewToFront:self.mapView];
+        [self.mapCalloutDataSource startTimer];
     }
 }
 

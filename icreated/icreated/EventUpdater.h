@@ -11,7 +11,7 @@
 
 @interface EventUpdater : NSObject <NSURLConnectionDataDelegate>
 
-+ (void) setManagedObjectContext:(NSManagedObjectContext *)context;
++ (void)setManagedObjectContext:(NSManagedObjectContext *)context;
 
 + (NSFetchedResultsController *)fetchedResultsController;
 

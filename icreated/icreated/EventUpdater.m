@@ -115,31 +115,22 @@ static NSFetchedResultsController *fetchedResultsController;
         // This fixes the bug, so far no clue why
         NSError *error;
         if (![managedObjectContext save:&error]) {
-            NSLog(@"Error! %@", error);
+            NSLog(@"Error saving while updating! %@", error);
         }
     }
     
     NSLog(@"Started adding entries to dict");
     // Add all the new entries in the context
     for (id eventDict in updatedEventsArray) {
-        Event *newEvent = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event"
-                                                                 inManagedObjectContext:managedObjectContext];
-        
-        newEvent.eventId = [eventDict objectForKey:@"EventId"];
-        newEvent.date = [NSDate dateFromRFC1123:[eventDict objectForKey:@"EventDate"]];
-        newEvent.desc = [eventDict objectForKey:@"Description"];
-        
         NSString *stringLatitude = [eventDict objectForKey:@"Latitude"];
         NSString *stringLongitude = [eventDict objectForKey:@"Longitude"];
         
         if (stringLatitude == nil || stringLongitude == nil) {
             NSLog(@"Nil latitude/longitude, continuing");
-            [managedObjectContext deleteObject:newEvent];
             continue;
         }
         else if ([stringLatitude isEqual:[NSNull null]] || [stringLongitude isEqual:[NSNull null]]) {
             NSLog(@"<null> latitude/longitude from the server, continuing");
-            [managedObjectContext deleteObject:newEvent];
             continue;
         }
         
@@ -148,16 +139,21 @@ static NSFetchedResultsController *fetchedResultsController;
         
         if (!(latitude > -90 && latitude < 90 && longitude > -180 && longitude < 180)) {
             NSLog(@"BUG: Coordinates out of the range, continuing");
-            [managedObjectContext deleteObject:newEvent];
             continue;
         }
         else {
 //            NSLog(@"Valid coordinates, latitude = %f, longitude = %f", latitude, longitude);
         }
         
+        Event *newEvent = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event"
+                                                                 inManagedObjectContext:managedObjectContext];
+        
+        newEvent.eventId = [eventDict objectForKey:@"EventId"];
+        newEvent.date = [NSDate dateFromRFC1123:[eventDict objectForKey:@"EventDate"]];
+        newEvent.desc = [eventDict objectForKey:@"Description"];
+        
         newEvent.latitude = [NSNumber numberWithDouble:latitude];
         newEvent.longitude = [NSNumber numberWithDouble:longitude];
-        
         
         CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
         
@@ -174,6 +170,7 @@ static NSFetchedResultsController *fetchedResultsController;
                     NSLog(@"Error: for some reason placemark = nil");
                 }
                 else {
+//                    NSLog(@"Adding place %@", placemark);
                     newEvent.place = [NSKeyedArchiver archivedDataWithRootObject:placemark];
                 }
             }
