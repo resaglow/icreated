@@ -1,19 +1,19 @@
 //
-//  icreatedTests.m
-//  icreatedTests
+//  MapDataSourceTests.m
+//  icreated
 //
-//  Created by Artem Lobanov on 17/10/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 20/04/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface icreatedTests : XCTestCase
+@interface MapDataSourceTests : XCTestCase
 
 @end
 
-@implementation icreatedTests
+@implementation MapDataSourceTests
 
 - (void)setUp {
     [super setUp];

@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController (Map) <MapDataSourceDelegate>
+@interface MainViewController (Map)
 
 - (void)viewDidLoadMap;
 

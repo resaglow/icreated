@@ -18,7 +18,6 @@
 
 @implementation MainViewController
 
-
 - (void)setAddEventButtonVisibily:(BOOL)visibily {
     NSMutableArray *rightBarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
     
@@ -62,12 +61,12 @@
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0) {
-        [self.mapDataSource stopTimer];
+        [self.mapCalloutDataSource stopTimer];
         [self.view bringSubviewToFront:self.newsStand];
     }
     else if (sender.selectedSegmentIndex == 1) {
         self.mapView.hidden = NO;
-        [self.mapDataSource startTimer];
+        [self.mapCalloutDataSource startTimer];
         [self.view bringSubviewToFront:self.mapView];
     }
 }

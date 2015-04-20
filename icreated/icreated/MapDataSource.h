@@ -13,27 +13,16 @@
 #import "EventDetailViewController.h"
 #import "EventUpdater.h"
 
-@protocol MapDataSourceDelegate <NSObject>
-@property (nonatomic, strong) EventAnnotation *curAnnotation;
-@end
-
-
 @class CustomMapView;
 
 @interface MapDataSource : NSObject <MKMapViewDelegate, SMCalloutViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) CustomMapView *mapView;
-@property (nonatomic, retain) EventAnnotation *customAnnotation;
-@property (nonatomic, strong) SMCalloutView *calloutView;
-@property (nonatomic, strong) UITextView *calloutTextView;
-@property (nonatomic, strong) UILabel *calloutTimeText;
-@property (nonatomic, strong) UILabel *calloutPeopleCount;
 @property NSTimer *timer;
-@property UIViewController <MapDataSourceDelegate> *delegate;
-@property BOOL calloutsFlag;
+@property UIViewController *delegate;
 - (void)refreshMap;
 - (void)startTimer;
 - (void)stopTimer;
-- (id)initWithMapView:(MKMapView *)map calloutFlag:(BOOL)calloutFlag;
+- (id)initWithMapView:(MKMapView *)mapView;
 @end
 
 

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "EventAnnotation.h"
-#import "MapDataSource.h"
+#import "MapCalloutDataSource.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <MapCalloutDataSourceDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
@@ -22,7 +22,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property (strong, nonatomic) CustomMapView *mapView;
-@property (strong, nonatomic) MapDataSource *mapDataSource;
+@property (strong, nonatomic) MapCalloutDataSource *mapCalloutDataSource;
 @property (strong, nonatomic) EventAnnotation *curAnnotation;
 
 @end

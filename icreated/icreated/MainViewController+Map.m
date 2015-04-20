@@ -13,10 +13,11 @@
 - (void)viewDidLoadMap {
     self.mapView = [[CustomMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setShowsUserLocation:YES];
-    self.mapDataSource = [[MapDataSource alloc] initWithMapView:self.mapView calloutFlag:YES];
-    UIButton *contentView = (UIButton *)self.mapDataSource.calloutView.contentView;
-    [contentView addTarget:self action:@selector(pushDetailViewController) forControlEvents:UIControlEventTouchUpInside];
-    self.mapDataSource.delegate = self;
+    self.mapCalloutDataSource = [[MapCalloutDataSource alloc] initWithMapView:self.mapView];
+    [(UIButton *)self.mapCalloutDataSource.calloutView.contentView addTarget:self
+                                                                      action:@selector(pushDetailViewController)
+                                                            forControlEvents:UIControlEventTouchUpInside];
+    self.mapCalloutDataSource.delegate = self;
     [self.view addSubview:self.mapView];
 }
 

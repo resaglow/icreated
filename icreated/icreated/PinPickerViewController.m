@@ -43,7 +43,7 @@
     
     self.map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.map setShowsUserLocation:YES];
-    self.dataSource = [[MapDataSource alloc] initWithMapView:self.map calloutFlag:NO];
+    self.dataSource = [[MapDataSource alloc] initWithMapView:self.map];
     [self.view addSubview:self.map];
     
     UILongPressGestureRecognizer *dropPin = [[UILongPressGestureRecognizer alloc] init];
