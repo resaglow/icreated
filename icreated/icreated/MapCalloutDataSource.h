@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UITextView *calloutTextView;
 @property (nonatomic, strong) UILabel *calloutTimeText;
 @property (nonatomic, strong) UILabel *calloutPeopleCount;
-@property UIViewController <MapCalloutDataSourceDelegate> *delegate;
+@property UIViewController<MapCalloutDataSourceDelegate> *delegate;
 - (id)initWithMapView:(MKMapView *)mapView;
 
 @end
