@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <RestKit/CoreData.h>
+#import <RestKit/RestKit.h>
 
 @interface AppDelegate ()
 
@@ -15,15 +17,12 @@
 @implementation AppDelegate
 
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self setUIOptions];    
+    [self initUIOptions];
     
-    [EventUpdater setManagedObjectContext:self.managedObjectContext];
+    [self initRestKit];
+    
+    //    [EventUpdater setManagedObjectContext:self.managedObjectContext];
     
     return YES;
 }
@@ -52,14 +51,14 @@
 
 #pragma mark - UI Options method
 
-- (void)setUIOptions {
+- (void)initUIOptions {
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:192.0f / 255.0f
                                                                   green:57.0f / 255.0f
                                                                    blue:43.0f / 255.0f
                                                                   alpha:1]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-
+    
     
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
                                                    forState:UIControlStateSelected];
@@ -76,71 +75,36 @@
                                                                   alpha:1]];
 }
 
-#pragma mark - Core Data methods
+#pragma mark - RestKit initialization
 
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext) {
-        return _managedObjectContext;
-    }
+- (void)initRestKit {
+    // Initialize RestKit
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:kServerUrl]];
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
+    // Initialize managed object model from bundle
+    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    // Initialize managed object store
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    objectManager.managedObjectStore = managedObjectStore;
     
-    return _managedObjectContext;
+    
+    // Complete Core Data stack initialization
+    [managedObjectStore createPersistentStoreCoordinator];
+    NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"icreatedDB.sqlite"];
+    NSString *seedPath = [[NSBundle mainBundle] pathForResource:@"icreatedSeedDB" ofType:@"sqlite"];
+    NSError *error;
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath
+                                                                     fromSeedDatabaseAtPath:seedPath
+                                                                          withConfiguration:nil options:nil error:&error];
+    NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
+    
+    // Create the managed object contexts
+    [managedObjectStore createManagedObjectContexts];
+    
+    // Configure a managed object cache to ensure we do not create duplicate objects
+    managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc]
+                                             initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
 }
-
-- (NSManagedObjectModel *)managedObjectModel {
-    if (_managedObjectModel) {
-        return _managedObjectModel;
-    }
-    
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
-}
-
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"icreatedDB.sqlite"];
-    
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
-         
-         */
-        
-        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
-        
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _persistentStoreCoordinator;
-}
-
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-
-
 
 
 @end
