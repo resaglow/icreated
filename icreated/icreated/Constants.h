@@ -9,7 +9,7 @@
 #ifndef icreated_Constants_h
 #define icreated_Constants_h
 
-#define serverUrl @"http://icreate.azurewebsites.net"
+#define kServerUrl @"http://icreate.azurewebsites.net"
 
 // FontAwesome configs
 #define kFAPin @"\uf041"

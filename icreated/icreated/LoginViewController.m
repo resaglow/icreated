@@ -59,7 +59,7 @@
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      [serverUrl stringByAppendingString:@"/Token"]]];
+                                      [kServerUrl stringByAppendingString:@"/Token"]]];
     
     [theRequest setHTTPMethod:@"POST"];
     [theRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

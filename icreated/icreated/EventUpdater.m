@@ -56,7 +56,7 @@ static NSFetchedResultsController *fetchedResultsController;
 + (void)getEventsWithCompletionHandler:(void (^)(void))handler {
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      [serverUrl stringByAppendingString:@"/api/Events"]]];
+                                      [kServerUrl stringByAppendingString:@"/api/Events"]]];
     
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     

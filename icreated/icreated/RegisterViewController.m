@@ -51,7 +51,7 @@
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      [serverUrl stringByAppendingString:@"/api/Account/Register"]]];
+                                      [kServerUrl stringByAppendingString:@"/api/Account/Register"]]];
     
     [theRequest setHTTPMethod:@"POST"];
     [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
