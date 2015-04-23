@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "MapCalloutDataSource.h"
+#import "MapEventCalloutDataSource.h"
 #import "TableRefreshDataSource.h"
+#import "EventUpdater.h"
+#import "UserUpdater.h"
 
 @interface MainViewController : UIViewController
 
@@ -21,9 +23,11 @@
 @property (strong, nonatomic) IBOutlet UITableView *newsStand;
 @property (nonatomic, strong) TableRefreshDataSource *newsStandDataSource;
 
-@property (strong, nonatomic) CustomMapView *mapView;
-@property (strong, nonatomic) MapCalloutDataSource *mapCalloutDataSource;
+@property (strong, nonatomic) CalloutMapView *mapView;
+@property (strong, nonatomic) MapEventCalloutDataSource *mapCalloutDataSource;
 @property (strong, nonatomic) EventAnnotation *curAnnotation;
+
+@property (strong, nonatomic) EventUpdater *eventUpdater;
 
 @end
 

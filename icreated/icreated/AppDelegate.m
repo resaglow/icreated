@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <RestKit/CoreData.h>
 #import <RestKit/RestKit.h>
+#import "Event.h"
 
 @interface AppDelegate ()
 
@@ -19,11 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUIOptions];
-    
     [self initRestKit];
-    
-    //    [EventUpdater setManagedObjectContext:self.managedObjectContext];
-    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return YES;
 }
 
@@ -87,7 +85,6 @@
     RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
     objectManager.managedObjectStore = managedObjectStore;
     
-    
     // Complete Core Data stack initialization
     [managedObjectStore createPersistentStoreCoordinator];
     NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"icreatedDB.sqlite"];
@@ -104,6 +101,27 @@
     // Configure a managed object cache to ensure we do not create duplicate objects
     managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc]
                                              initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
+    
+    
+    
+    
+    
+    
+    // Setting up mapping
+//    RKWEMapping *eventMapping = [RKObjectMapping mappingForClass:[Event class]];
+    RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
+    [eventMapping addAttributeMappingsFromDictionary:@{@"EventId": @"eventId",
+                                                       @"Description": @"desc",
+                                                       @"EventDate": @"date",
+                                                       @"Latitude": @"latitude",
+                                                       @"Longitude": @"longitude"}];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:eventMapping
+                                                                                            method:RKRequestMethodAny
+                                                                                       pathPattern:@"/api/Events"
+                                                                                           keyPath:nil
+                                                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
 }
 
 

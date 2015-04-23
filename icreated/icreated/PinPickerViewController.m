@@ -9,13 +9,13 @@
 #define kMinimumPressDuration 0.2
 
 #import "PinPickerViewController.h"
-#import "MapDataSource.h"
+#import "MapEventDataSource.h"
 
 
 @interface PinPickerViewController () <MKMapViewDelegate>
 
 @property (strong, nonatomic) MKMapView *map;
-@property (strong, nonatomic) MapDataSource *dataSource;
+@property (strong, nonatomic) MapEventDataSource *dataSource;
 
 @property EventAnnotation *curAnnotation;
 @property UIBarButtonItem *rightBarButton;
@@ -43,7 +43,7 @@
     
     self.map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.map setShowsUserLocation:YES];
-    self.dataSource = [[MapDataSource alloc] initWithMapView:self.map];
+    self.dataSource = [[MapEventDataSource alloc] initWithMapView:self.map];
     [self.view addSubview:self.map];
     
     UILongPressGestureRecognizer *dropPin = [[UILongPressGestureRecognizer alloc] init];

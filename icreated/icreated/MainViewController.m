@@ -35,11 +35,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initButtons];
+    self.eventUpdater = [[EventUpdater alloc] init];
+    [self initNewsStand];
+    [self initMap];
     
+    self.mapView.hidden = YES;
+}
+
+- (void)initButtons {
     self.menuButton.title = kFAMenu;
     [self.menuButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                              [UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
-                                                                              forState:UIControlStateNormal];
+                                   forState:UIControlStateNormal];
     
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
@@ -48,15 +56,9 @@
     self.addEventButton.title = kFAAddEvent;
     [self.addEventButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                  [UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
-                                                                                  forState:UIControlStateNormal];
+                                       forState:UIControlStateNormal];
     
     [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginFlag"]];
-    
-    
-    [self initNewsStand];
-    [self initMap];
-    
-    self.mapView.hidden = YES;
 }
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {

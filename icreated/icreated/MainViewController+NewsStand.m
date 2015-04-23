@@ -9,13 +9,15 @@
 #import "MainViewController+NewsStand.h"
 #import "NSDate+RFC1123.h"
 #import "SORelativeDateTransformer.h"
+#import "Event.h"
 
 @implementation MainViewController (NewsStand)
 
-- (void)initNewsStand {    
-    self.newsStandDataSource = [[TableRefreshDataSource alloc] initWithTableView:self.newsStand
-                                                     fetchedResultsController:[EventUpdater fetchedResultsController]
-                                                              reuseIdenifier:@"eventCell"];
+- (void)initNewsStand {
+    self.newsStandDataSource =
+        [[TableRefreshDataSource alloc] initWithTableView:self.newsStand
+                                 fetchedResultsController:self.eventUpdater.fetchedResultsController
+                                           reuseIdenifier:@"eventCell"];
     self.newsStandDataSource.delegate = self;
     
 }
@@ -31,31 +33,37 @@
     label = (UILabel *)[cell viewWithTag:2];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
-    //    label.text = [event.date RFC1123String];
+//    label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
+    label.text = [event.date RFC1123String];
     
-    CLPlacemark* placemark;
-    label = (UILabel *)[cell viewWithTag:3];
-    if (event.place) {
-        placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
-        //        NSLog(@"Placemark is: %@", placemark);
-        if (placemark.country) {
-            label.text = placemark.country;
-            NSLog(@"Country is: %@", placemark.country);
-        }
-        else {
-            label.text = @"<unknown>";
-            NSLog(@"Unknown country, placemark.country = nil");
-        }
-    }
-    else {
-        label.text = @"<nil>";
-        NSLog(@"event.place not set, probably placemark was = nil while updating");
-    }
+//    CLPlacemark* placemark;
+//    label = (UILabel *)[cell viewWithTag:3];
+//    if (event.place) {
+//        placemark = [NSKeyedUnarchiver unarchiveObjectWithData:event.place];
+////        NSLog(@"Placemark is: %@", placemark);
+//        if (placemark.country) {
+//            label.text = placemark.country;
+//            NSLog(@"Country is: %@", placemark.country);
+//        }
+//        else {
+//            label.text = @"<unknown>";
+//            NSLog(@"Unknown country, placemark.country = nil");
+//        }
+//    }
+//    else {
+//        label.text = @"<nil>";
+//        NSLog(@"event.place not set, probably placemark was = nil while updating");
+//    }
 }
 
 - (void)refreshingMethod:(void (^)(void))handler {
-    [EventUpdater getEventsWithCompletionHandler:handler];
+    RestKitSuccessHandler successHandler = ^void(RKObjectRequestOperation *operation,
+                                                 RKMappingResult *mappingResult) { handler(); };
+    RestKitFailureHandler failureHandler = ^void(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"Error getting events: %@", error);
+        [self.newsStandDataSource.refreshControl endRefreshing];
+    };
+    [self.eventUpdater getEventsWithSuccess:successHandler failure:failureHandler];
 }
 
 

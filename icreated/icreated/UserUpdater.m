@@ -20,8 +20,8 @@ static NSFetchedResultsController *fetchedResultsController;
 
 + (NSFetchedResultsController *)fetchedResultsController {
     if (!managedObjectContext) {
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.managedObjectContext = appDelegate.managedObjectContext;
+//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        self.managedObjectContext = appDelegate.managedObjectContext;
     }
     
     if (fetchedResultsController) {
@@ -48,66 +48,7 @@ static NSFetchedResultsController *fetchedResultsController;
     return fetchedResultsController;
 }
 
-+ (void)getUserInfoWithCompletionhandler:(void (^)(void))handler {
-    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
-                                     [NSURL URLWithString:
-                                      @"http://nbixman-001-site1.myasp.net/api/Account/UserInfo"]];
-    
-    // Standard authRequired code
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-    if (token == nil) {
-        NSLog(@"WAT: User info request while logged out");
-        if (handler) handler();
-        return;
-    }
-    
-    NSString *tokenToSend = [@"Bearer " stringByAppendingString:token];
-    [theRequest addValue:tokenToSend forHTTPHeaderField:@"Authorization"];
-    
-    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:theRequest queue:queue completionHandler:
-     ^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if (error != nil) {
-             NSLog(@"BUG: Connection fault, error = %@", error);
-             if (handler) handler();
-             return;
-         }
-         
-         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-         if (httpResponse.statusCode != 200) {
-             NSLog(@"BUG: Server fault, status code = %ld", (long)httpResponse.statusCode);
-             if (handler) handler();
-             return;
-         }
-         
-         NSError *error2 = nil;
-         NSDictionary *info = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:data
-                                                                          options:NSJSONReadingMutableLeaves
-                                                                            error:&error2];
-         NSLog(@"USER INFO: %@", info);
-         
-         //         NSLog(@"Started updateding MOC");
-         //         [self updateManagedObjectContext];
-         
-         // Somehow "костыль" because of dead server response
-         // Приходит, когда сервер упал, но все равно присылает 200
-         if ([friendsArray isEqual: @{ @"Message": @"An error has occurred." }]) {
-             NSLog(@"BUG: Server fault, however 200 status code (Message : An error has occurred)");
-             friendsArray = (NSMutableArray *)@[];
-         }
-         else {
-             NSLog(@"User info update OK");
-         }
-         
-         if (handler) handler();
-         
-         
-     }];
-}
+
 
 
 + (void)getUsersOfType:(UserType)userType byUserId:(NSInteger)userId completionhandler:(void (^)(void))handler {
@@ -169,10 +110,6 @@ static NSFetchedResultsController *fetchedResultsController;
          
          
      }];
-}
-
-
-+ (void)updateManagedObjectContext {
 }
 
 

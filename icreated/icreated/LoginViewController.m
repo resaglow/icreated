@@ -58,8 +58,7 @@
     [self.connection cancel];
     
     NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
-                                     [NSURL URLWithString:
-                                      [kServerUrl stringByAppendingString:@"/Token"]]];
+                                     [NSURL URLWithString:[kServerUrl stringByAppendingString:@"/Token"]]];
     
     [theRequest setHTTPMethod:@"POST"];
     [theRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

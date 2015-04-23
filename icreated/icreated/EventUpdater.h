@@ -2,19 +2,17 @@
 //  EventUpdater.h
 //  icreated
 //
-//  Created by Artem Lobanov on 20/10/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 21/04/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "Event.h"
+#import "Updater.h"
+#import <UIKit/UIKit.h>
 
-@interface EventUpdater : NSObject <NSURLConnectionDataDelegate>
+@interface EventUpdater : Updater
 
-+ (void)setManagedObjectContext:(NSManagedObjectContext *)context;
+@property (readonly, nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-+ (NSFetchedResultsController *)fetchedResultsController;
-
-+ (void)getEventsWithCompletionHandler:(void (^)(void))handler;
+- (void)getEventsWithSuccess:(RestKitSuccessHandler)successHandler failure:(RestKitFailureHandler)failureHandler;
 
 @end

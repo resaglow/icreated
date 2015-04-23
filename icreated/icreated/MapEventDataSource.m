@@ -1,5 +1,5 @@
 //
-//  MapDataSource.m
+//  MapEventDataSource.m
 //  icreated
 //
 //  Created by Artem Lobanov on 19/04/15.
@@ -8,11 +8,11 @@
 
 #define kMapRefreshInterval 10.0
 
-#import "MapDataSource.h"
+#import "MapEventDataSource.h"
 
-@implementation MapDataSource
+@implementation MapEventDataSource
 
-- (id)initWithMapView:(CustomMapView *)mapView {
+- (id)initWithMapView:(MKMapView *)mapView {
     self.mapView = mapView;
     [self.mapView setDelegate:self];
     
@@ -72,21 +72,21 @@
 
 - (void)refreshMap {
     NSLog(@"Request to refresh map");
-    [EventUpdater getEventsWithCompletionHandler:^(void) {
-        //        NSLog(@"Refreshing map");
-        [[EventUpdater fetchedResultsController] performFetch:nil];
+    [self.eventUpdater getEventsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//        NSLog(@"Refreshing map");
+        [self.eventUpdater.fetchedResultsController performFetch:nil];
         
-        for (NSInteger i = 0; i < [[[[EventUpdater fetchedResultsController] sections] objectAtIndex:0] numberOfObjects]; i++) {
+        for (NSInteger i = 0; i < [self.eventUpdater.fetchedResultsController.sections[0] numberOfObjects]; i++) {
             NSIndexPath *indexPath = [[NSIndexPath alloc] init];
             indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            Event *curEvent = [[EventUpdater fetchedResultsController] objectAtIndexPath:indexPath];
+            Event *curEvent = [self.eventUpdater.fetchedResultsController objectAtIndexPath:indexPath];
             
             EventAnnotation *curAnnotation = [[EventAnnotation alloc] init];
             
             curAnnotation.title = curEvent.desc;
             curAnnotation.date = curEvent.date;
             
-            //            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
+//            NSLog(@"%@, %@, %@", curEvent.desc, curEvent.date, curEvent.latitude);
             
             CLLocationCoordinate2D curCoordinate;
             curCoordinate.latitude = curEvent.latitude.doubleValue;
@@ -98,8 +98,8 @@
             });
         }
         
-        //        NSLog(@"Map refresh done");
-    }];
+//    NSLog(@"Map refresh done");
+    } failure:nil];
 }
 
 
@@ -128,34 +128,6 @@
     
     // tell the callout to wait for a while while we scroll (we assume the scroll delay for MKMapView matches UIScrollView)
     return kSMCalloutViewRepositionDelayForUIScrollView;
-}
-
-@end
-
-#pragma mark - CustomMapView
-
-@implementation CustomMapView
-
-// override UIGestureRecognizer's delegate method so we can prevent MKMapView's recognizer from firing
-// when we interact with UIControl subclasses inside our callout view.
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([touch.view isKindOfClass:[UITextView class]] ||
-        [touch.view isKindOfClass:[UILabel class]]) {
-        return NO;
-    }
-    else {
-        return [super gestureRecognizer:gestureRecognizer shouldReceiveTouch:touch];
-    }
-}
-
-// Allow touches to be sent to our calloutview.
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    CGPoint ourPoint = [self.calloutView convertPoint:point fromView:self];
-    UIView *calloutMaybe = [self.calloutView hitTest:ourPoint
-                                           withEvent:event];
-    if (calloutMaybe) return calloutMaybe;
-    
-    return [super hitTest:point withEvent:event];
 }
 
 @end

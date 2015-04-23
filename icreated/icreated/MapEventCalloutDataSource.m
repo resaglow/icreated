@@ -1,5 +1,5 @@
 //
-//  MapCalloutDataSource.m
+//  MapEventCalloutDataSource.m
 //  icreated
 //
 //  Created by Artem Lobanov on 20/04/15.
@@ -16,16 +16,18 @@
 #define kCalloutWidth 180
 #define kCalloutHeight 80
 
-#import "MapCalloutDataSource.h"
+#import "MapEventCalloutDataSource.h"
 #import "NSDate+RFC1123.h"
 
-@implementation MapCalloutDataSource
+@implementation MapEventCalloutDataSource
 
 - (id)initWithMapView:(MKMapView *)mapView {
     self = [super initWithMapView:mapView];
     
+    self.calloutMapView = (CalloutMapView *)self.mapView;
+    
     [self initCalloutView];
-    self.mapView.calloutView = self.calloutView;
+    self.calloutMapView.calloutView = self.calloutView;
     
     return self;
 }
@@ -114,3 +116,33 @@
 
 
 @end
+
+#pragma mark - CalloutMapView
+
+@implementation CalloutMapView
+
+// override UIGestureRecognizer's delegate method so we can prevent MKMapView's recognizer from firing
+// when we interact with UIControl subclasses inside our callout view.
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isKindOfClass:[UITextView class]] ||
+        [touch.view isKindOfClass:[UILabel class]]) {
+        return NO;
+    }
+    else {
+        return [super gestureRecognizer:gestureRecognizer shouldReceiveTouch:touch];
+    }
+}
+
+// Allow touches to be sent to our calloutview.
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    CGPoint ourPoint = [self.calloutView convertPoint:point fromView:self];
+    UIView *calloutMaybe = [self.calloutView hitTest:ourPoint
+                                           withEvent:event];
+    if (calloutMaybe) return calloutMaybe;
+    
+    return [super hitTest:point withEvent:event];
+}
+
+@end
+
+

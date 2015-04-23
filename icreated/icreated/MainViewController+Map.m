@@ -11,13 +11,14 @@
 @implementation MainViewController (Map)
 
 - (void)initMap {
-    self.mapView = [[CustomMapView alloc] initWithFrame:self.view.bounds];
+    self.mapView = [[CalloutMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setShowsUserLocation:YES];
-    self.mapCalloutDataSource = [[MapCalloutDataSource alloc] initWithMapView:self.mapView];
+    self.mapCalloutDataSource = [[MapEventCalloutDataSource alloc] initWithMapView:self.mapView];
     [(UIButton *)self.mapCalloutDataSource.calloutView.contentView addTarget:self
                                                                       action:@selector(pushDetailViewController)
                                                             forControlEvents:UIControlEventTouchUpInside];
     self.mapCalloutDataSource.delegate = self;
+    self.mapCalloutDataSource.eventUpdater = self.eventUpdater;
     [self.view addSubview:self.mapView];
 }
 
