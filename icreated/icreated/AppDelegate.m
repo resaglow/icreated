@@ -153,24 +153,24 @@
 //        RKPathMatcher *pathMatcherSelf = [RKPathMatcher pathMatcherWithPattern:@"/api/Account/UserInfo"];
 //        BOOL matchSelf = [pathMatcherSelf matchesPath:[url relativePath] tokenizeQueryStrings:NO parsedArguments:nil];
         if (matchEvent) {
-            NSLog(@"Pattern matched events!");
+            NSLog(@"Pattern matched events");
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
             return fetchRequest;
         }
 //        else if (matchFriends) {
-//            NSLog(@"Pattern matched friends!");
+//            NSLog(@"Pattern matched friends");
 //            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"User"];
 //            return fetchRequest;
 //        }
 //        else if (matchSelf) {
-//            NSLog(@"Pattern matched self!");
+//            NSLog(@"Pattern matched self");
 //            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CenterViewItem"];
 //            return fetchRequest;
 //        }
         return nil;
     }];
     
-    [UserUpdater initCurUser];
+    [UserUpdater initCurUserLocal];
 }
 
 

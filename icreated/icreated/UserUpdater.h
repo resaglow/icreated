@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, UserType) {
 
 + (User *)curUser;
 + (void)setCurUser:(User *)user;
-+ (void)initCurUser;
-
++ (void)initCurUserLocal;
++ (void)initCurUserRemoteWithSuccess:(RestKitSuccessHandler)successHandler
+                             failure:(RestKitFailureHandler)failureHandler;
 @end

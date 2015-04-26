@@ -89,7 +89,7 @@
                      return;
                  }
                  else {
-                     NSLog(@"SOOOOO FAR SO GOOOD!");
+                     NSLog(@"Relationships saved");
                      handler();
                  }
              }

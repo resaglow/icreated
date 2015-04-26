@@ -64,7 +64,11 @@
                      [userDefaults setObject:[responseObject objectForKey:@"userName"] forKey:@"userName"];
                      [userDefaults synchronize];
                      
-                     [self moveToMainScene];
+                     [UserUpdater initCurUserRemoteWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                         [self moveToMainScreen];
+                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                         NSLog(@"Bug: can't get remote curUser");
+                     }];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      NSLog(@"Failed logging in:(");
@@ -72,7 +76,7 @@
                  }];
 }
 
-- (void)moveToMainScene {
+- (void)moveToMainScreen {
     MenuViewController *menuVC = (MenuViewController *)self.revealViewController.rearViewController;
     [menuVC reloadMenu];
     

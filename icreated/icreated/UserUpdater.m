@@ -20,28 +20,48 @@ static User *_curUser;
     _curUser = user;
 }
 
-+ (void)initCurUser {
++ (void)initCurUserRemoteWithSuccess:(RestKitSuccessHandler)successHandler
+                             failure:(RestKitFailureHandler)failureHandler {
+    UserUpdater *updater = [[UserUpdater alloc] init];
+    [updater getUserInfoWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (mappingResult && mappingResult.array.count > 0) {
+            [UserUpdater setCurUser:(User *)mappingResult.array[0]];
+            successHandler(operation, mappingResult);
+        }
+        else {
+            NSLog(@"Bug: can't map remote curUser");
+        }
+        
+    } failure:failureHandler];
+}
+
++ (void)initCurUserLocal {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSManagedObjectContext *managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     if ([userDefaults objectForKey:@"token"]) {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         [fetchRequest setEntity:[NSEntityDescription entityForName:@"User"
                                             inManagedObjectContext:managedObjectContext]];
-        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"userName like 'sample11'"]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"userName like %@", [userDefaults objectForKey:@"userName"]]];
         NSArray *result = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
         if (result && result.count > 0) {
             [self setCurUser:(User *)result[0]];
         }
         else {
-            NSLog(@"Error: Setting curUser while it's not in the local store");
+            NSLog(@"Bug: Setting curUser while it's not in the local store");
         }
+    }
+    else {
+        NSLog(@"Bug: setting curUser while not having token");
     }
 }
 
 
 - (NSFetchedResultsController *)getFetchedResultsControllerWithUserType:(UserType)userType {
-    NSPredicate *predicate = [NSPredicate
-                              predicateWithFormat:@"(ANY followers.userName like 'sample11') AND (ANY following.userName like 'sample11')"];
+    NSString *curUserName = [UserUpdater curUser].userName;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+    @"(ANY followers.userName like %@) AND (ANY following.userName like %@)", curUserName, curUserName];
+    
     return [super getFetchedResultsControllerWithEntity:@"User"
                                                 sortKey:@"userName"
                                               predicate:predicate];
@@ -89,6 +109,7 @@ static User *_curUser;
             NSLog(@"WAAAT O_O");
             return;
     }
+    // HOW TO GET CURRENT USER ID??
     path = [path stringByReplacingOccurrencesOfString:@":id" withString:@"26"/*[NSString stringWithFormat:@"%ld", (long)userId]*/];
     // [end] Configure path
     
