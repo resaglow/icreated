@@ -17,6 +17,12 @@ typedef NS_ENUM(NSUInteger, UserType) {
 
 @interface UserUpdater : Updater
 
++ (User *)curUser;
++ (void)setCurUser:(User *)user;
++ (void)initCurUserLocal;
++ (void)initCurUserRemoteWithSuccess:(RestKitSuccessHandler)successHandler
+                             failure:(RestKitFailureHandler)failureHandler;
+
 - (NSFetchedResultsController *)getFetchedResultsControllerWithUserType:(UserType)userType;
 
 - (void)getUserInfoWithSuccess:(RestKitSuccessHandler)successHandler
@@ -26,9 +32,4 @@ typedef NS_ENUM(NSUInteger, UserType) {
            WithSuccess:(RestKitSuccessHandler)successHandler
                failure:(RestKitFailureHandler)failureHandler;
 
-+ (User *)curUser;
-+ (void)setCurUser:(User *)user;
-+ (void)initCurUserLocal;
-+ (void)initCurUserRemoteWithSuccess:(RestKitSuccessHandler)successHandler
-                             failure:(RestKitFailureHandler)failureHandler;
 @end
