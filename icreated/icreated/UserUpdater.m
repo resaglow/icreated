@@ -20,6 +20,24 @@ static User *_curUser;
     _curUser = user;
 }
 
++ (void)initCurUser {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSManagedObjectContext *managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    if ([userDefaults objectForKey:@"token"]) {
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        [fetchRequest setEntity:[NSEntityDescription entityForName:@"User"
+                                            inManagedObjectContext:managedObjectContext]];
+        [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"userName like 'sample11'"]];
+        NSArray *result = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+        if (result && result.count > 0) {
+            [self setCurUser:(User *)result[0]];
+        }
+        else {
+            NSLog(@"Error: Setting curUser while it's not in the local store");
+        }
+    }
+}
+
 
 - (NSFetchedResultsController *)getFetchedResultsControllerWithUserType:(UserType)userType {
     NSPredicate *predicate = [NSPredicate
@@ -34,7 +52,7 @@ static User *_curUser;
     [self getTokenWithSuccess:^(NSString *tokenToSend) {
         [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:tokenToSend];
     } failure:^{
-        NSLog(@"Getting users without token, cannot do this due to server");
+        NSLog(@"Getting userInfo without token, cannot do this due to server");
     }];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Content-Type" value:@"application/json"];
     

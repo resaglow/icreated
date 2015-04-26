@@ -10,6 +10,7 @@
 #import <RestKit/CoreData.h>
 #import <RestKit/RestKit.h>
 #import "Event.h"
+#import "UserUpdater.h"
 
 @interface AppDelegate ()
 
@@ -168,6 +169,8 @@
 //        }
         return nil;
     }];
+    
+    [UserUpdater initCurUser];
 }
 
 

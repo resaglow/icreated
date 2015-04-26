@@ -74,6 +74,7 @@
     if ([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqual: @"logout"]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults removeObjectForKey:@"token"];
+        [userDefaults removeObjectForKey:@"userName"];
         [userDefaults synchronize];
         [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
     }

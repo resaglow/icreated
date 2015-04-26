@@ -28,5 +28,6 @@ typedef NS_ENUM(NSUInteger, UserType) {
 
 + (User *)curUser;
 + (void)setCurUser:(User *)user;
++ (void)initCurUser;
 
 @end

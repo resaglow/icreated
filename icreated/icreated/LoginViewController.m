@@ -61,17 +61,10 @@
                      
                      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                      [userDefaults setObject:[responseObject objectForKey:@"access_token"] forKey:@"token"];
+                     [userDefaults setObject:[responseObject objectForKey:@"userName"] forKey:@"userName"];
                      [userDefaults synchronize];
                      
-                     // Getting userId
-                     UserUpdater *updater = [[UserUpdater alloc] init];
-                     [updater getUserInfoWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                         [UserUpdater setCurUser:(User *)mappingResult.array[0]];
-                         [self moveToMainScreen];
-                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                         NSLog(@"XOXOXO");
-                         [self moveToMainScreen];
-                     }];
+                     [self moveToMainScene];
                  }
                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                      NSLog(@"Failed logging in:(");
@@ -79,7 +72,7 @@
                  }];
 }
 
-- (void)moveToMainScreen {
+- (void)moveToMainScene {
     MenuViewController *menuVC = (MenuViewController *)self.revealViewController.rearViewController;
     [menuVC reloadMenu];
     

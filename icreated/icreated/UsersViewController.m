@@ -84,7 +84,7 @@
                  [[user mutableSetValueForKey:@"followers"] addObject:[UserUpdater curUser]];
                  [[user mutableSetValueForKey:@"following"] addObject:[UserUpdater curUser]];
                  
-                 if (![[RKObjectManager sharedManager].managedObjectStore.mainQueueManagedObjectContext save:nil]) {
+                 if (![[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext save:nil]) {
                      NSLog(@"Unable to save MOC while updating friends");
                      return;
                  }
