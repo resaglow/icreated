@@ -1,3 +1,4 @@
 language: objective-c
 xcode_workspace: icreated/icreated.xcworkspace
 xcode_scheme: icreated
+osx_image: xcode61 
