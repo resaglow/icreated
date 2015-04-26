@@ -51,7 +51,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"loginFlag"] == nil) menuIds = menuLogoutIds;
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) menuIds = menuLogoutIds;
     else menuIds = menuLoginIds;
     
     return 1;
@@ -74,8 +74,6 @@
     if ([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqual: @"logout"]) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults removeObjectForKey:@"token"];
-        [userDefaults removeObjectForKey:@"username"];
-        [userDefaults removeObjectForKey:@"loginFlag"];
         [userDefaults synchronize];
         [self performSegueWithIdentifier:@"mainScreenSegue" sender:self];
     }

@@ -12,11 +12,14 @@
 
 static NSFetchedResultsController *fetchedResultsController;
 
-- (NSFetchedResultsController *)getFetchedResultsControllerWithEntity:(NSString *)entityName sortKey:(NSString *)sortKey {
-    if (fetchedResultsController) {
+- (NSFetchedResultsController *)getFetchedResultsControllerWithEntity:(NSString *)entityName
+                                                            /*batchSize:(NSInteger)batchSize*/
+                                                              sortKey:(NSString *)sortKey
+                                                            /*predicate:(NSPredicate *)predicate*/ {
+    if (fetchedResultsController && fetchedResultsController.fetchRequest.entityName == entityName) {
         return fetchedResultsController;
     }
-    
+                                                                
     NSManagedObjectContext *managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -35,7 +38,7 @@ static NSFetchedResultsController *fetchedResultsController;
     fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                    managedObjectContext:managedObjectContext
                                                                      sectionNameKeyPath:nil
-                                                                              cacheName:nil];
+                                                                              cacheName:@"Master"];
     
     return fetchedResultsController;
 }

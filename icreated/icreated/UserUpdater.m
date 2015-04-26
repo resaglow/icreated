@@ -2,114 +2,76 @@
 //  UserUpdater.m
 //  icreated
 //
-//  Created by Artem Lobanov on 19/12/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 23/04/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import "UserUpdater.h"
 
 @implementation UserUpdater
 
-static NSManagedObjectContext *managedObjectContext;
-static NSMutableArray *friendsArray;
-static NSFetchedResultsController *fetchedResultsController;
+static User *_curUser;
 
-+ (void)setManagedObjectContext:(NSManagedObjectContext *)context {
-    managedObjectContext = context;
++ (User *)curUser {
+    return _curUser;
 }
 
-+ (NSFetchedResultsController *)fetchedResultsController {
-    if (!managedObjectContext) {
-//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//        self.managedObjectContext = appDelegate.managedObjectContext;
-    }
-    
-    if (fetchedResultsController) {
-        return fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
-                                              inManagedObjectContext:managedObjectContext];
-    
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"userId" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                   managedObjectContext:managedObjectContext
-                                                                     sectionNameKeyPath:nil
-                                                                              cacheName:nil];
-    
-    
-    return fetchedResultsController;
++ (void)setCurUser:(User *)user {
+    _curUser = user;
 }
 
 
+- (NSFetchedResultsController *)fetchedResultsController {
+    return [super getFetchedResultsControllerWithEntity:@"User" sortKey:@"userName"];
+}
 
-
-+ (void)getUsersOfType:(UserType)userType byUserId:(NSInteger)userId completionhandler:(void (^)(void))handler {
-    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
-                                     [NSURL URLWithString:
-                                      @"http://nbixman-001-site1.myasp.net/api/friends/my/m"]];
+- (void)getUserInfoWithSuccess:(RestKitSuccessHandler)successHandler
+                       failure:(RestKitFailureHandler)failureHandler  {
+    [self getTokenWithSuccess:^(NSString *tokenToSend) {
+        [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:tokenToSend];
+    } failure:^{
+        NSLog(@"Getting users without token, cannot do this due to server");
+    }];
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Content-Type" value:@"application/json"];
     
-    // Standard authRequired code
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-    if (token == nil) {
-        NSLog(@"WAT: Users request while logged out");
-        if (handler) handler();
-        return;
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/api/Account/UserInfo" parameters:nil
+                                              success:successHandler failure:failureHandler];
+}
+
+- (void)getUsersOfType:(UserType)userType byUserId:(NSInteger)userId
+           WithSuccess:(RestKitSuccessHandler)successHandler
+               failure:(RestKitFailureHandler)failureHandler {
+    [self getTokenWithSuccess:^(NSString *tokenToSend) {
+        [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:tokenToSend];
+    } failure:^{
+        NSLog(@"Getting users without token, cannot do this due to server");
+    }];
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Content-Type" value:@"application/json"];
+    
+    // [start] Configure path
+    NSString *path = nil;
+    switch (userType) {
+        case UserTypeFriends:
+            path = @"/api/Friends/List/:id/m";
+            break;
+        
+        case UserTypeFollowing:
+            path = @"/api/Friends/List/:id/s"; // subscribed to == following
+            break;
+            
+        case UserTypeFollowers:
+            path = @"/api/Friends/List/:id/f";
+            break;
+            
+        default:
+            NSLog(@"WAAAT O_O");
+            return;
     }
-
-    NSString *tokenToSend = [@"Bearer " stringByAppendingString:token];
-    [theRequest addValue:tokenToSend forHTTPHeaderField:@"Authorization"];
+    path = [path stringByReplacingOccurrencesOfString:@":id" withString:@"26"/*[NSString stringWithFormat:@"%ld", (long)userId]*/];
+    // [end] Configure path
     
-    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:theRequest queue:queue completionHandler:
-     ^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         if (error != nil) {
-             NSLog(@"BUG: Connection fault, error = %@", error);
-             if (handler) handler();
-             return;
-         }
-         
-         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-         if (httpResponse.statusCode != 200) {
-             NSLog(@"BUG: Server fault, status code = %ld", (long)httpResponse.statusCode);
-             if (handler) handler();
-             return;
-         }
-         
-         NSError *error2 = nil;
-         friendsArray = (NSMutableArray *)[NSJSONSerialization JSONObjectWithData:data
-                                                                                options:NSJSONReadingMutableLeaves
-                                                                                  error:&error2];
-         NSLog(@"FRIENDS: %@", friendsArray);
-         
-//         NSLog(@"Started updateding MOC");
-//         [self updateManagedObjectContext];
-         
-         // Somehow "костыль" because of dead server response
-         // Приходит, когда сервер упал, но все равно присылает 200
-         if ([friendsArray isEqual: @{ @"Message": @"An error has occurred." }]) {
-             NSLog(@"BUG: Server fault, however 200 status code (Message : An error has occurred)");
-             friendsArray = (NSMutableArray *)@[];
-         }
-         else {
-             NSLog(@"Users update OK");
-         }
-         
-         if (handler) handler();
-         
-         
-     }];
+    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil
+                                              success:successHandler failure:failureHandler];
 }
 
 

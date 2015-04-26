@@ -22,8 +22,6 @@
                                        userInfo:nil
                                         repeats:YES];
     
-    [self refreshMap];
-    
     return self;
 }
 

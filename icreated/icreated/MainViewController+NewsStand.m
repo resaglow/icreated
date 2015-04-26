@@ -57,13 +57,12 @@
 }
 
 - (void)refreshingMethod:(void (^)(void))handler {
-    RestKitSuccessHandler successHandler = ^void(RKObjectRequestOperation *operation,
-                                                 RKMappingResult *mappingResult) { handler(); };
-    RestKitFailureHandler failureHandler = ^void(RKObjectRequestOperation *operation, NSError *error) {
-        NSLog(@"Error getting events: %@", error);
-        [self.newsStandDataSource.refreshControl endRefreshing];
-    };
-    [self.eventUpdater getEventsWithSuccess:successHandler failure:failureHandler];
+    [self.eventUpdater getEventsWithSuccess:^void(RKObjectRequestOperation *operation,
+                                                  RKMappingResult *mappingResult) { handler(); }
+                                    failure:^void(RKObjectRequestOperation *operation, NSError *error) {
+                                        NSLog(@"Error getting events: %@", error);
+                                        [self.newsStandDataSource.refreshControl endRefreshing];
+                                    }];
 }
 
 

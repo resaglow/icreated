@@ -283,7 +283,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-ez-pyH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-ez-pyH">
                                 <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-7q-xOh" userLabel="InnerView">
@@ -516,7 +516,7 @@
                     <navigationItem key="navigationItem" id="IzK-Ga-FdQ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="UsersStand" destination="pbi-Fd-FD2" id="Dad-Tv-zb5"/>
+                        <outlet property="usersStand" destination="pbi-Fd-FD2" id="Vtz-cn-mAc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rlq-A7-SFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -678,8 +678,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UB1-h4-Qxt"/>
-        <segue reference="aKu-VB-sul"/>
-        <segue reference="VJO-20-DuY"/>
+        <segue reference="0Zp-VM-m1J"/>
+        <segue reference="O5M-ju-wiD"/>
+        <segue reference="lq7-fp-wLQ"/>
     </inferredMetricsTieBreakers>
 </document>

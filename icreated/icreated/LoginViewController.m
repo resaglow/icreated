@@ -9,6 +9,8 @@
 #import "MenuViewController.h"
 #import "LoginViewController.h"
 #import "SWRevealViewController.h"
+#import <RestKit/RestKit.h>
+#import "UserUpdater.h"
 
 @interface LoginViewController ()
 
@@ -27,95 +29,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initMenu];
+    [UIBarButtonItem initMenuWithController:self];
     
     UILabel *titleViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     titleViewLabel.text = @"Login";
     titleViewLabel.textAlignment = NSTextAlignmentCenter;
-    titleViewLabel.font = [UIFont fontWithName:@"FontAwesome" size:25.0];
+    titleViewLabel.font = [UIFont fontWithName:@"FontAwesome" size:kFAStandardFontSize];
     titleViewLabel.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = titleViewLabel;
     
     self.responseData = [NSMutableData data];
 }
 
-- (void)initMenu {
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-    barButton.title = @"\uf0c9";
-    [barButton setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"FontAwesome" size:30.0], NSFontAttributeName, nil]
-                             forState:UIControlStateNormal];
-    barButton.tintColor = [UIColor whiteColor];
-    barButton.target = self.revealViewController;
-    barButton.action = @selector(revealToggle:);
-    self.navigationItem.leftBarButtonItem = barButton;
-    
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-}
-
-
 - (IBAction)sendLogin:(id)sender {
     [self.connection cancel];
     
-    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:
-                                     [NSURL URLWithString:[kServerUrl stringByAppendingString:@"/Token"]]];
+    AFHTTPClient *httpClient = [RKObjectManager sharedManager].HTTPClient;
+    [httpClient cancelAllHTTPOperationsWithMethod:nil path:@"/Token"];
+    [httpClient setDefaultHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+    [httpClient setDefaultHeader:@"Accept" value:@"application/json"];
     
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [theRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSDictionary *parameters = @{@"username": self.usernameTextField.text,
+                                 @"password": self.passwordTextField.text,
+                                 @"grant_type": @"password"};
     
-    NSString *postData = [NSString stringWithFormat:
-                          @"grant_type=password&username=%@&password=%@",
-                          self.usernameTextField.text,
-                          self.passwordTextField.text];
+    [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
     
-    [theRequest setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest
-                                                                  delegate:self];
-    self.connection = connection;
-    [connection start];
+    [httpClient postPath:@"/Token" parameters:parameters
+                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                     NSLog(@"Logged in successfully");
+                     
+                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                     [userDefaults setObject:[responseObject objectForKey:@"access_token"] forKey:@"token"];
+                     [userDefaults synchronize];
+                     
+                     // Getting userId
+                     UserUpdater *updater = [[UserUpdater alloc] init];
+                     [updater getUserInfoWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                         [UserUpdater setCurUser:(User *)mappingResult.array[0]];
+                         [self moveToMainScreen];
+                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                         NSLog(@"XOXOXO");
+                         [self moveToMainScreen];
+                     }];
+                 }
+                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"Failed logging in:(");
+                     self.errorLabel.text = @"Maybe(!) username and/or password are not correct";
+                 }];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.responseData appendData:data];
-}
-
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Connection error: %@" , error);
-}
-
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Login finished loading");
+- (void)moveToMainScreen {
+    MenuViewController *menuVC = (MenuViewController *)self.revealViewController.rearViewController;
+    [menuVC reloadMenu];
     
-    NSError *error = nil;
-    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&error];
-    
-    NSString *token = [res objectForKey:@"access_token"];
-    
-    if (token == nil) {
-        NSLog(@"Login failed");
-        self.errorLabel.text = @"Username and/or password are not correct";
-    }
-    else {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:token forKey:@"token"];
-        
-        NSLog(@"Logged in successfully");
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:@"loggedIn" forKey:@"loginFlag"];
-        [userDefaults setObject:self.usernameTextField.text forKey:@"username"];
-        [userDefaults synchronize];
-        
-        MenuViewController *menuVC = (MenuViewController *)self.revealViewController.rearViewController;
-        [menuVC reloadMenu];
-        
-        [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
-    }
+    [self performSegueWithIdentifier:@"loginSuccessful" sender:self];
 }
-
 
 @end

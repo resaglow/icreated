@@ -31,8 +31,6 @@
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         self.fetchedResultsController = fetchedResultsController;
-        self.fetchedResultsController.delegate = self;
-        
         NSError *error = nil;
         if ((self.fetchedResultsController != nil) && ![self.fetchedResultsController performFetch:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -79,9 +77,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
-    if (![object isKindOfClass:[Event class]]) {
-        NSLog(@"WAT");
-    }
     [self.delegate configureCell:cell withObject:object];
     return cell;
 }

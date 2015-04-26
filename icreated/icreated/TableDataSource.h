@@ -16,7 +16,7 @@
 - (void)selectedObject:(id)object;
 @end
 
-@interface TableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface TableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) UIViewController<TableDataSourceDelegate> *delegate;
 @property (readonly, strong) NSFetchedResultsController *fetchedResultsController;

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableRefreshDataSource.h"
+#import "UIBarButtonItem+Menu.h"
+#import "UserUpdater.h"
+#import "User.h"
 
-@interface UsersViewController : UIViewController
-
+@interface UsersViewController : UIViewController <TableDataSourceDelegate, TableRefreshDataSourceDelegate, MenuViewController>
 @property BOOL menuFlag;
-
 @end

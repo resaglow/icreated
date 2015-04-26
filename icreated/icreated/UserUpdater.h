@@ -2,11 +2,11 @@
 //  UserUpdater.h
 //  icreated
 //
-//  Created by Artem Lobanov on 19/12/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 23/04/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "Updater.h"
 #import "User.h"
 
 typedef NS_ENUM(NSUInteger, UserType) {
@@ -15,10 +15,18 @@ typedef NS_ENUM(NSUInteger, UserType) {
     UserTypeFollowers
 };
 
-@interface UserUpdater : NSObject
+@interface UserUpdater : Updater
 
-+ (void)getUserInfoWithCompletionhandler:(void (^)(void))handler;
+@property (readonly, nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-+ (void)getUsersOfType:(UserType)userType byUserId:(NSInteger)userId completionhandler:(void (^)(void))handler;
+- (void)getUserInfoWithSuccess:(RestKitSuccessHandler)successHandler
+                       failure:(RestKitFailureHandler)failureHandler;
+
+- (void)getUsersOfType:(UserType)userType byUserId:(NSInteger)userId
+           WithSuccess:(RestKitSuccessHandler)successHandler
+               failure:(RestKitFailureHandler)failureHandler;
+
++ (User *)curUser;
++ (void)setCurUser:(User *)user;
 
 @end

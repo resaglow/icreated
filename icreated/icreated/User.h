@@ -2,8 +2,8 @@
 //  User.h
 //  icreated
 //
-//  Created by Artem Lobanov on 18/12/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 24/04/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,21 +13,23 @@
 
 @interface User : NSManagedObject
 
-@property (nonatomic, retain) NSSet *photos;
+@property (nonatomic, retain) NSNumber * userId;
+@property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) Photo *avatar;
-@property (nonatomic, retain) NSSet *friends;
+@property (nonatomic, retain) NSSet *followers;
+@property (nonatomic, retain) NSSet *following;
 @end
 
 @interface User (CoreDataGeneratedAccessors)
 
-- (void)addPhotosObject:(Photo *)value;
-- (void)removePhotosObject:(Photo *)value;
-- (void)addPhotos:(NSSet *)values;
-- (void)removePhotos:(NSSet *)values;
+- (void)addFollowersObject:(User *)value;
+- (void)removeFollowersObject:(User *)value;
+- (void)addFollowers:(NSSet *)values;
+- (void)removeFollowers:(NSSet *)values;
 
-- (void)addFriendsObject:(User *)value;
-- (void)removeFriendsObject:(User *)value;
-- (void)addFriends:(NSSet *)values;
-- (void)removeFriends:(NSSet *)values;
+- (void)addFollowingObject:(User *)value;
+- (void)removeFollowingObject:(User *)value;
+- (void)addFollowing:(NSSet *)values;
+- (void)removeFollowing:(NSSet *)values;
 
 @end

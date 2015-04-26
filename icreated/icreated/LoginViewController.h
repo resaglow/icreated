@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIBarButtonItem+Menu.h"
 
-@interface LoginViewController : UIViewController <NSURLConnectionDataDelegate>
+@interface LoginViewController : UIViewController <MenuViewController>
 
 @end

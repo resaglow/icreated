@@ -58,7 +58,7 @@
                                                  [UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
                                        forState:UIControlStateNormal];
     
-    [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"loginFlag"]];
+    [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
 }
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
@@ -71,6 +71,7 @@
         self.mapView.hidden = NO;
         [self.view bringSubviewToFront:self.mapView];
         [self.mapCalloutDataSource startTimer];
+        [self.mapCalloutDataSource refreshMap];
     }
 }
 
