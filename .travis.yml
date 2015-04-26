@@ -1,3 +1,6 @@
+notifications:
+  email: false
+
 language: objective-c
 xcode_workspace: icreated/icreated.xcworkspace
 xcode_scheme: icreated
