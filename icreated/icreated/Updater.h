@@ -16,7 +16,9 @@ typedef void (^RestKitFailureHandler)(RKObjectRequestOperation *operation, NSErr
 
 @interface Updater : NSObject
 
-- (NSFetchedResultsController *)getFetchedResultsControllerWithEntity:(NSString *)entityName sortKey:(NSString *)sortKey;
+- (NSFetchedResultsController *)getFetchedResultsControllerWithEntity:(NSString *)entityName
+                                                              sortKey:(NSString *)sortKey
+                                                            predicate:(NSPredicate *)predicate;
 
 - (void)getTokenWithSuccess:(void (^)(NSString *))successHandler failure:(void (^)(void))failureHandler;
 

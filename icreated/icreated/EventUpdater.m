@@ -11,7 +11,9 @@
 @implementation EventUpdater
 
 - (NSFetchedResultsController *)fetchedResultsController {
-    return [super getFetchedResultsControllerWithEntity:@"Event" sortKey:@"eventId"];
+    return [super getFetchedResultsControllerWithEntity:@"Event"
+                                                sortKey:@"eventId"
+                                              predicate:nil];
 }
 
 - (void)getEventsWithSuccess:(RestKitSuccessHandler)successHandler failure:(RestKitFailureHandler)failureHandler {

@@ -13,9 +13,8 @@
 static NSFetchedResultsController *fetchedResultsController;
 
 - (NSFetchedResultsController *)getFetchedResultsControllerWithEntity:(NSString *)entityName
-                                                            /*batchSize:(NSInteger)batchSize*/
                                                               sortKey:(NSString *)sortKey
-                                                            /*predicate:(NSPredicate *)predicate*/ {
+                                                            predicate:(NSPredicate *)predicate {
     if (fetchedResultsController && fetchedResultsController.fetchRequest.entityName == entityName) {
         return fetchedResultsController;
     }
@@ -34,6 +33,8 @@ static NSFetchedResultsController *fetchedResultsController;
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    [fetchRequest setPredicate:predicate];
     
     fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                    managedObjectContext:managedObjectContext

@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, UserType) {
 
 @interface UserUpdater : Updater
 
-@property (readonly, nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+- (NSFetchedResultsController *)getFetchedResultsControllerWithUserType:(UserType)userType;
 
 - (void)getUserInfoWithSuccess:(RestKitSuccessHandler)successHandler
                        failure:(RestKitFailureHandler)failureHandler;

@@ -21,8 +21,12 @@ static User *_curUser;
 }
 
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    return [super getFetchedResultsControllerWithEntity:@"User" sortKey:@"userName"];
+- (NSFetchedResultsController *)getFetchedResultsControllerWithUserType:(UserType)userType {
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"(ANY followers.userName like 'sample11') AND (ANY following.userName like 'sample11')"];
+    return [super getFetchedResultsControllerWithEntity:@"User"
+                                                sortKey:@"userName"
+                                              predicate:predicate];
 }
 
 - (void)getUserInfoWithSuccess:(RestKitSuccessHandler)successHandler

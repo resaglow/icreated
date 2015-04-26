@@ -40,7 +40,7 @@
     self.userUpdater = [[UserUpdater alloc] init];
     self.userStandDataSource =
     [[TableRefreshDataSource alloc] initWithTableView:self.usersStand
-                             fetchedResultsController:self.userUpdater.fetchedResultsController
+                             fetchedResultsController:[self.userUpdater getFetchedResultsControllerWithUserType:UserTypeFriends]
                                        reuseIdenifier:@"userCell"];
     self.userStandDataSource.delegate = self;
 }
