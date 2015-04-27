@@ -51,7 +51,9 @@
     
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    if (self.revealViewController.panGestureRecognizer) { // Fix for tests to work, maybe bug of SWRC
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
     
     self.addEventButton.title = kFAAddEvent;
     [self.addEventButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
