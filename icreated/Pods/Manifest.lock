@@ -4,6 +4,7 @@ PODS:
   - FDTake (0.2.4)
   - ISO8601DateFormatterValueTransformer (0.6.0):
     - RKValueTransformers (~> 1.1.0)
+  - OCMock (3.1.2)
   - RestKit (0.24.1):
     - RestKit/Core (= 0.24.1)
   - RestKit/Core (0.24.1):
@@ -33,6 +34,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - FDTake
+  - OCMock
   - RestKit
   - SMCalloutView
   - SORelativeDateTransformer (~> 1.1.10)
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   FDTake: 6ff34778a1d0b5d5a1883fc6773e158ed89bd473
   ISO8601DateFormatterValueTransformer: 3ac3a721381697cab4e792d8049ce2f2e9ad3036
+  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
   RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
   RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
   SMCalloutView: acee64c093fe04721fee640b42ed25d8265cc010

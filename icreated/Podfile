@@ -8,4 +8,8 @@ pod 'FDTake'
 pod 'SORelativeDateTransformer', '~> 1.1.10'
 pod 'RestKit'
 
+target :icreatedTests do
+  pod 'OCMock'
+end
+
 xcodeproj 'icreated.xcodeproj'
