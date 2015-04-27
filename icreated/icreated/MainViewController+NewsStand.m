@@ -31,8 +31,8 @@
     label.text = event.desc;
     
     label = (UILabel *)[cell viewWithTag:2];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 //    label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
     label.text = [event.date RFC1123String];
     
