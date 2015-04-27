@@ -20,6 +20,7 @@
 		9C4801D61AE94C1200391881 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4801D51AE94C1200391881 /* NSDate+RFC1123.m */; };
 		9C4801D91AE94CA300391881 /* UIBarButtonItem+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4801D81AE94CA300391881 /* UIBarButtonItem+Menu.m */; };
 		9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */; };
+		9C55445E1AEE1CF700ADE278 /* TableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */; };
 		9C5AD03B1AE46E1D001D3E72 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD03A1AE46E1D001D3E72 /* EventDetailViewController.m */; };
 		9C5AD04A1AE4CB27001D3E72 /* MapEventCalloutDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD0491AE4CB27001D3E72 /* MapEventCalloutDataSource.m */; };
 		9C5AD0501AE4D561001D3E72 /* TableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD04F1AE4D561001D3E72 /* TableDataSource.m */; };
@@ -87,6 +88,7 @@
 		9C4801D81AE94CA300391881 /* UIBarButtonItem+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Menu.m"; sourceTree = "<group>"; };
 		9C4B17A61A323A3000A2980B /* AddEventViewController+GestureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddEventViewController+GestureHandlers.h"; sourceTree = "<group>"; };
 		9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddEventViewController+GestureHandlers.m"; sourceTree = "<group>"; };
+		9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDataSourceTests.m; sourceTree = "<group>"; };
 		9C5AD0361AE462F7001D3E72 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
 		9C5AD0391AE46E12001D3E72 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		9C5AD03A1AE46E1D001D3E72 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				9CEB7F8F19F16EBF0096B4E7 /* Supporting Files */,
+				9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */,
 			);
 			path = icreatedTests;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C55445E1AEE1CF700ADE278 /* TableDataSourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
