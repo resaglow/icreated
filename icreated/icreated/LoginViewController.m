@@ -18,9 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
-@property (retain, nonatomic) NSURLConnection *connection;
-@property (retain, nonatomic) NSMutableData *responseData;
-
 @end
 
 
@@ -37,13 +34,9 @@
     titleViewLabel.font = [UIFont fontWithName:@"FontAwesome" size:kFAStandardFontSize];
     titleViewLabel.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = titleViewLabel;
-    
-    self.responseData = [NSMutableData data];
 }
 
 - (IBAction)sendLogin:(id)sender {
-    [self.connection cancel];
-    
     AFHTTPClient *httpClient = [RKObjectManager sharedManager].HTTPClient;
     [httpClient cancelAllHTTPOperationsWithMethod:nil path:@"/Token"];
     [httpClient setDefaultHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];

@@ -17,7 +17,7 @@
 #define kCalloutHeight 80
 
 #import "MapEventCalloutDataSource.h"
-#import "NSDate+RFC1123.h"
+#import <RKISO8601DateFormatter.h>
 
 @implementation MapEventCalloutDataSource
 
@@ -88,7 +88,10 @@
     EventAnnotation *annotation = (EventAnnotation *)view.annotation;
     self.delegate.curAnnotation = annotation;
     self.calloutTextView.text = annotation.title;
-    self.calloutTimeText.text = [annotation.date RFC1123String];
+    
+    RKISO8601DateFormatter *formatter = [RKISO8601DateFormatter new];
+    formatter.includeTime = YES, formatter.timeZone = nil;
+    self.calloutTimeText.text = [formatter stringFromDate:annotation.date];
     
     CGFloat fixedWidth = self.calloutTextView.frame.size.width;
     CGSize newSize = [self.calloutTextView sizeThatFits:CGSizeMake(fixedWidth, CGFLOAT_MAX)];

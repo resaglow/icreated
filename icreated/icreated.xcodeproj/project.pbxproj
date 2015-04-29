@@ -17,7 +17,6 @@
 		9C3F4CEA1A436CFD002EA440 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3F4CE91A436CFD002EA440 /* Event.m */; };
 		9C3F4CED1A436CFD002EA440 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3F4CEC1A436CFD002EA440 /* Photo.m */; };
 		9C3F4CF31A436CFE002EA440 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3F4CF21A436CFE002EA440 /* Comment.m */; };
-		9C4801D61AE94C1200391881 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4801D51AE94C1200391881 /* NSDate+RFC1123.m */; };
 		9C4801D91AE94CA300391881 /* UIBarButtonItem+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4801D81AE94CA300391881 /* UIBarButtonItem+Menu.m */; };
 		9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */; };
 		9C55445E1AEE1CF700ADE278 /* TableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */; };
@@ -84,13 +83,11 @@
 		9C3F4CEC1A436CFD002EA440 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		9C3F4CF11A436CFE002EA440 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		9C3F4CF21A436CFE002EA440 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
-		9C4801D51AE94C1200391881 /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
 		9C4801D71AE94CA300391881 /* UIBarButtonItem+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Menu.h"; sourceTree = "<group>"; };
 		9C4801D81AE94CA300391881 /* UIBarButtonItem+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Menu.m"; sourceTree = "<group>"; };
 		9C4B17A61A323A3000A2980B /* AddEventViewController+GestureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AddEventViewController+GestureHandlers.h"; sourceTree = "<group>"; };
 		9C4B17A71A323A3000A2980B /* AddEventViewController+GestureHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AddEventViewController+GestureHandlers.m"; sourceTree = "<group>"; };
 		9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDataSourceTests.m; sourceTree = "<group>"; };
-		9C5AD0361AE462F7001D3E72 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
 		9C5AD0391AE46E12001D3E72 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		9C5AD03A1AE46E1D001D3E72 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		9C5AD0481AE4CB27001D3E72 /* MapEventCalloutDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapEventCalloutDataSource.h; sourceTree = "<group>"; };
@@ -436,8 +433,6 @@
 				9C4801D81AE94CA300391881 /* UIBarButtonItem+Menu.m */,
 				9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */,
 				9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */,
-				9C5AD0361AE462F7001D3E72 /* NSDate+RFC1123.h */,
-				9C4801D51AE94C1200391881 /* NSDate+RFC1123.m */,
 				9CEB7F7619F16EBF0096B4E7 /* Info.plist */,
 				9CEB7F7719F16EBF0096B4E7 /* main.m */,
 				9CBDC7D81A39972000094644 /* InfoPlist.strings */,
@@ -674,7 +669,6 @@
 				9CF3DE4F1A434DCF001C86E6 /* UsersViewController.m in Sources */,
 				9CEB7F7E19F16EBF0096B4E7 /* MainViewController.m in Sources */,
 				9CB8157C1AEA5EA400B50D71 /* User.m in Sources */,
-				9C4801D61AE94C1200391881 /* NSDate+RFC1123.m in Sources */,
 				9C3F4CF31A436CFE002EA440 /* Comment.m in Sources */,
 				9C5AD04A1AE4CB27001D3E72 /* MapEventCalloutDataSource.m in Sources */,
 				9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */,

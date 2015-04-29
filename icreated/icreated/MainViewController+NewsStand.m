@@ -7,8 +7,8 @@
 //
 
 #import "MainViewController+NewsStand.h"
-#import "NSDate+RFC1123.h"
-#import "SORelativeDateTransformer.h"
+#import <ISO8601DateFormatterValueTransformer/RKISO8601DateFormatter.h>
+#import <SORelativeDateTransformer.h>
 #import "Event.h"
 
 @implementation MainViewController (NewsStand)
@@ -34,7 +34,9 @@
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 //    label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
-    label.text = [event.date RFC1123String];
+    RKISO8601DateFormatter *formatter = [RKISO8601DateFormatter new];
+    formatter.includeTime = YES, formatter.timeZone = nil;
+    label.text = [formatter stringFromDate:event.date];
     
 //    CLPlacemark* placemark;
 //    label = (UILabel *)[cell viewWithTag:3];

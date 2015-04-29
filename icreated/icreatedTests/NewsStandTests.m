@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "MainViewController+NewsStand.h"
-#import "NSDate+RFC1123.h"
+#import <RKISO8601DateFormatter.h>
 
 @interface NewsStandTests : XCTestCase
 @property (strong, nonatomic) MainViewController *mainViewController;
@@ -54,7 +54,11 @@
     UILabel *eventDescriptionLabel = (UILabel *)[cell viewWithTag:1];
     UILabel *eventDateLabel = (UILabel *)[cell viewWithTag:2];
     XCTAssertEqualObjects(eventDescriptionLabel.text, [self.event desc], @"Description string not set correctly for the event cell");
-    XCTAssertEqualObjects(eventDateLabel.text, [[self.event date] RFC1123String], @"Date string not set correctly for the event cell");
+    
+    RKISO8601DateFormatter *formatter = [RKISO8601DateFormatter new];
+    formatter.includeTime = YES, formatter.timeZone = nil;
+    NSString *dateString = [formatter stringFromDate:[self.event date]];
+    XCTAssertEqualObjects(eventDateLabel.text, dateString, @"Date string not set correctly for the event cell");
 }
 
 

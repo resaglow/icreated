@@ -74,7 +74,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="3ly-FF-bHk" kind="custom" customClass="SWRevealViewControllerSegue" id="0Zp-VM-m1J"/>
+                                                <segue destination="3ly-FF-bHk" kind="custom" identifier="addEventSegue" customClass="SWRevealViewControllerSegue" id="0Zp-VM-m1J"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -255,7 +255,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" id="031-6g-4Bp">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="3ly-FF-bHk" kind="show" id="VJO-20-DuY"/>
+                                <segue destination="3ly-FF-bHk" kind="push" id="VJO-20-DuY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -583,7 +583,7 @@
                         <outlet property="errorLabel" destination="aSf-ox-mp1" id="9OC-QU-7Zk"/>
                         <outlet property="passwordTextField" destination="693-mM-LQb" id="Sw1-Kq-W5R"/>
                         <outlet property="usernameTextField" destination="tnT-xj-ma4" id="ZKY-Bw-chw"/>
-                        <segue destination="bqv-FJ-V8a" kind="show" identifier="loginSuccessful" id="lq7-fp-wLQ"/>
+                        <segue destination="bqv-FJ-V8a" kind="push" identifier="loginSuccessful" id="lq7-fp-wLQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tb-nG-rlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -638,7 +638,7 @@
                         <outlet property="errorLabel" destination="aUK-6Q-bl9" id="9mV-ET-rMh"/>
                         <outlet property="loginTextField" destination="zPx-5D-gGB" id="Ohc-wz-k50"/>
                         <outlet property="passwordTextField" destination="sec-xF-tMI" id="O5Z-8s-Abb"/>
-                        <segue destination="bqv-FJ-V8a" kind="show" identifier="registerSuccessful" id="G0C-ge-lB6"/>
+                        <segue destination="bqv-FJ-V8a" kind="push" identifier="registerSuccessful" id="G0C-ge-lB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a48-Nn-coE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -678,8 +678,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="aKu-VB-sul"/>
         <segue reference="O5M-ju-wiD"/>
-        <segue reference="lq7-fp-wLQ"/>
-        <segue reference="VJO-20-DuY"/>
+        <segue reference="0Zp-VM-m1J"/>
     </inferredMetricsTieBreakers>
 </document>

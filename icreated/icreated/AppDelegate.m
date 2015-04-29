@@ -11,6 +11,7 @@
 #import <RestKit/RestKit.h>
 #import "Event.h"
 #import "UserUpdater.h"
+#import <ISO8601DateFormatterValueTransformer/RKISO8601DateFormatter.h>
 
 @interface AppDelegate ()
 
@@ -171,6 +172,12 @@
     }];
     
     [UserUpdater initCurUserLocal];
+    
+    NSDate *date = [NSDate date];
+    RKISO8601DateFormatter *formatter = [RKISO8601DateFormatter new];
+    formatter.includeTime = YES, formatter.timeZone = nil;
+    NSString *dateString = [formatter stringFromDate:date];
+    NSLog(@"DATE: %@", dateString);
 }
 
 

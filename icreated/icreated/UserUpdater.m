@@ -85,9 +85,7 @@ static User *_curUser;
                failure:(RestKitFailureHandler)failureHandler {
     [self getTokenWithSuccess:^(NSString *tokenToSend) {
         [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:tokenToSend];
-    } failure:^{
-        NSLog(@"Getting users without token, cannot do this due to server");
-    }];
+    } failure:^{ NSLog(@"Getting users without token, cannot do this due to server"); }];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Content-Type" value:@"application/json"];
     
     // [start] Configure path
