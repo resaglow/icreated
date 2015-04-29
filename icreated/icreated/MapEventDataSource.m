@@ -72,7 +72,13 @@
     NSLog(@"Request to refresh map");
     [self.eventUpdater getEventsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 //        NSLog(@"Refreshing map");
-        [self.eventUpdater.fetchedResultsController performFetch:nil];
+        NSError *err = nil;
+        [self.eventUpdater.fetchedResultsController performFetch:&err];
+        if (err) {
+            NSLog(@"Error fetching events to refresh a map");
+        }
+        
+        NSArray *someArr = [self.eventUpdater.fetchedResultsController fetchedObjects];
         
         for (NSInteger i = 0; i < [self.eventUpdater.fetchedResultsController.sections[0] numberOfObjects]; i++) {
             NSIndexPath *indexPath = [[NSIndexPath alloc] init];
@@ -97,7 +103,9 @@
         }
         
 //    NSLog(@"Map refresh done");
-    } failure:nil];
+    } failure:^void(RKObjectRequestOperation *operation, NSError *error) {
+        NSLog(@"Error getting events for map: %@", error);
+    }];
 }
 
 

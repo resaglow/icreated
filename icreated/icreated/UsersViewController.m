@@ -90,7 +90,6 @@
                  }
                  else {
                      NSLog(@"Relationships saved");
-                     handler();
                  }
              }
              else {
@@ -98,6 +97,7 @@
                  return;
              }
          }
+         handler();
      }
      failure:^void(RKObjectRequestOperation *operation, NSError *error) {
          NSLog(@"Error getting users: %@", error);

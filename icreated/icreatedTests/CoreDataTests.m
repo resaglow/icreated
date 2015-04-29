@@ -171,16 +171,4 @@
     XCTAssertEqual(deletedItems.count, 0, @"The delete failed");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 @end

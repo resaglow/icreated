@@ -15,10 +15,10 @@ static NSFetchedResultsController *fetchedResultsController;
 - (NSFetchedResultsController *)getFetchedResultsControllerWithEntity:(NSString *)entityName
                                                               sortKey:(NSString *)sortKey
                                                             predicate:(NSPredicate *)predicate {
-    if (fetchedResultsController && fetchedResultsController.fetchRequest.entityName == entityName) {
+    if (fetchedResultsController && [fetchedResultsController.fetchRequest.entityName isEqualToString:entityName]) {
         return fetchedResultsController;
     }
-                                                                
+    
     NSManagedObjectContext *managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
