@@ -3,7 +3,7 @@
 //  icreated
 //
 //  Created by Artem Lobanov on 18/04/15.
-//  Copyright (c) 2015 Artem Lobanov. All rights reserved.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

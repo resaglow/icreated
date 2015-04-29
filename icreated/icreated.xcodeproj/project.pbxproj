@@ -26,6 +26,7 @@
 		9C5AD0541AE4DB0A001D3E72 /* TableRefreshDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD0531AE4DB0A001D3E72 /* TableRefreshDataSource.m */; };
 		9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */; };
 		9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */; };
+		9C92E4E21AF13E2D0096CAA2 /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */; };
 		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
 		9CAD470A1A49FBEA0086B5D8 /* sampleAvatar.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */; };
 		9CB287C11AE69C7A007743FF /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB287C01AE69C7A007743FF /* Updater.m */; };
@@ -99,6 +100,7 @@
 		9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
 		9C9623A419F666CE002C2515 /* EventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAnnotation.h; sourceTree = "<group>"; };
 		9C9623A519F666CE002C2515 /* EventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAnnotation.m; sourceTree = "<group>"; };
 		9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleAvatar.jpeg; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				9CEB7F8F19F16EBF0096B4E7 /* Supporting Files */,
 				9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */,
 				9CBEA3171AEE4E5A00543D84 /* NewsStandTests.m */,
+				9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */,
 			);
 			path = icreatedTests;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C55445E1AEE1CF700ADE278 /* TableDataSourceTests.m in Sources */,
+				9C92E4E21AF13E2D0096CAA2 /* CoreDataTests.m in Sources */,
 				9CBEA3181AEE4E5A00543D84 /* NewsStandTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
