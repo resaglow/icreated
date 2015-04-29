@@ -60,7 +60,7 @@
                                                  [UIFont fontWithName:@"FontAwesome" size:kFABarButtonFontSize], NSFontAttributeName, nil]
                                        forState:UIControlStateNormal];
     
-    [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    [self setAddEventButtonVisibily:[[NSUserDefaults standardUserDefaults] objectForKey:@"token"] != nil];
 }
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
