@@ -227,7 +227,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="H3m-2Q-vXF" kind="show" identifier="detailScreenSegue" id="LPW-MZ-c0J"/>
+                                            <segue destination="H3m-2Q-vXF" kind="push" identifier="detailScreenSegue" id="LPW-MZ-c0J"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -474,7 +474,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="PCA-Rm-o1P" kind="show" id="UB1-h4-Qxt"/>
+                                    <segue destination="PCA-Rm-o1P" kind="push" id="UB1-h4-Qxt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -570,7 +570,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="U3Y-m8-GUn" kind="show" id="ZuC-VL-y7K"/>
+                                    <segue destination="U3Y-m8-GUn" kind="push" id="ZuC-VL-y7K"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -678,8 +678,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aKu-VB-sul"/>
-        <segue reference="O5M-ju-wiD"/>
-        <segue reference="0Zp-VM-m1J"/>
+        <segue reference="Qpb-N3-h8l"/>
+        <segue reference="UB1-h4-Qxt"/>
+        <segue reference="VJO-20-DuY"/>
     </inferredMetricsTieBreakers>
 </document>
