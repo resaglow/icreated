@@ -22,6 +22,13 @@
 #import "FDTakeController.h"
 #import "PinPickerViewController.h"
 
+typedef NS_ENUM(NSUInteger, DetailItemIndex) {
+    DetailItemIndexCategory,
+    DetailItemIndexPlace,
+    DetailItemIndexTime,
+    DetailItemIndexPhotos
+};
+
 @interface AddEventViewController : UIViewController <SWRevealViewControllerDelegate,
                                                       UIGestureRecognizerDelegate,
                                                       UITextViewDelegate,

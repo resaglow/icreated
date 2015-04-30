@@ -100,7 +100,7 @@
 
 - (void)initAccessoryView {
     self.accessoryButtons = [NSMutableArray array];
-    self.accessoryButtonSymbols = @[@"\uf02b", @"\uf041", @"\uf017", @"\uf030", @"\uf13e"];
+    self.accessoryButtonSymbols = @[kFACategory, kFAPin, kFATime, kFAPhoto, kFALock];
     
     if (ACCESSORY_BUTTONS_COUNT > self.accessoryButtonSymbols.count) {
         NSLog(@"ERROR: TOO FEW BUTTON SYMBOLS)");
@@ -124,9 +124,9 @@
         [self.accessoryButtons addObject:button];
     }
     
-    [self.accessoryButtons[1] addTarget:self action:@selector(pushPinPickerViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.accessoryButtons[2] addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
-    [self.accessoryButtons[3] addTarget:self action:@selector(showPhotoPicker) forControlEvents:UIControlEventTouchUpInside];
+    [self.accessoryButtons[DetailItemIndexPlace] addTarget:self action:@selector(pushPinPickerViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.accessoryButtons[DetailItemIndexTime] addTarget:self action:@selector(showDatePicker) forControlEvents:UIControlEventTouchUpInside];
+    [self.accessoryButtons[DetailItemIndexPhotos] addTarget:self action:@selector(showPhotoPicker) forControlEvents:UIControlEventTouchUpInside];
     
     for (NSInteger i = 0; i < self.accessoryButtons.count; i++) {
         [self.accessoryView addSubview:self.accessoryButtons[i]];

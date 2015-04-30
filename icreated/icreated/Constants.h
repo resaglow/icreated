@@ -18,6 +18,9 @@
 #define kFATime @"\uf017"
 #define kFAMenu @"\uf0c9"
 #define kFAAddEvent @"\uf044"
+#define kFACategory @"\uf02b"
+#define kFAPhoto @"\uf030"
+#define kFALock @"\uf13e"
 
 #define kFABarButtonFontSize 30
 
@@ -25,5 +28,9 @@
 #define kFASmallFontSize 10
 
 #define kFAPinSide 38
+
+#define kFontSizeBigger 25
+
+
 
 #endif

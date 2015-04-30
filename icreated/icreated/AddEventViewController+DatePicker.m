@@ -23,22 +23,24 @@
     [self.datePicker showActionSheetPicker];
 }
 
--(void)timeWasSelected:(NSDate *)selectedTime element:(id)element {
+- (void)timeWasSelected:(NSDate *)selectedTime element:(id)element {
     self.eventDate = selectedTime;
     
-    UIButton *timeButton = self.accessoryButtons[2];
+    UIButton *timeButton = self.accessoryButtons[DetailItemIndexTime];
     [timeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     
     NSString *stringFromDate = [[SORelativeDateTransformer registeredTransformer] transformedValue:selectedTime];
     
-    UIView *viewToLoad = self.views[0]; // First view for the time
-    NSLayoutConstraint *viewToLoadHeight = self.heights[0];
+    UIView *viewToLoad = self.views[DetailItemIndexTime]; // First view for the time
+    NSLayoutConstraint *viewToLoadHeight = self.heights[DetailItemIndexTime];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(VIEW_PADDING,
                                                                VIEW_PADDING,
                                                                viewToLoad.frame.size.width - 2 * VIEW_PADDING,
                                                                NORMAL_VIEW_HEIGHT - 2 * VIEW_PADDING)];
     [label setText:stringFromDate];
+    [label setTextColor:[UIColor redColor]];
+    [label setFont:[UIFont systemFontOfSize:kFontSizeBigger]];
     
     [[viewToLoad subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
