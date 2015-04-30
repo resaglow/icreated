@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIBarButtonItem+Menu.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <MenuViewController>
 
 @property BOOL menuFlag;
 

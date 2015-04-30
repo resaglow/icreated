@@ -29,7 +29,7 @@
     
     self.firstFreeViewIndex++;
 }
-
+ 
 // UICollectionViewDataSource methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;

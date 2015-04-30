@@ -33,9 +33,7 @@
     // Default property value is always 0/nil in Obj-C,
     // so if parent view controller didn't specify it, init should be sended
     // otherwise shouldn't.
-    if (!self.menuFlag) {
-        [self initMenu];
-    }
+    if (!self.menuFlag) [UIBarButtonItem initMenuWithController:self];
     
     [self initAvatar];
     
@@ -45,21 +43,6 @@
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     if (username != nil) usernameLabel.text = username;
     [self.view addSubview:usernameLabel];
-}
-
-
-- (void)initMenu {
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-    barButton.title = @"\uf0c9";
-    [barButton setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"FontAwesome" size:26.0], NSFontAttributeName, nil]
-                             forState:UIControlStateNormal];
-    barButton.tintColor = [UIColor whiteColor];
-    barButton.target = self.revealViewController;
-    barButton.action = @selector(revealToggle:);
-    self.navigationItem.leftBarButtonItem = barButton;
-    
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 - (void)initAvatar {
