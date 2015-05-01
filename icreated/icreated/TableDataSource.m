@@ -62,6 +62,7 @@
 
 #pragma mark - UITableViewDataSource delegate methods
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger sectionsCount = [[self.fetchedResultsController sections] count];
     NSLog(@"%ld sections", (long)sectionsCount);
@@ -74,10 +75,31 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row % 2 == 0) {
+        return 245.0;
+    }
+    else {
+        return 245.0 - 68.0;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
     [self.delegate configureCell:cell withObject:object];
+    
+    if (indexPath.row % 2 != 0) {
+        UITextView *eventDesciption = (UITextView *)[cell viewWithTag:5];
+        UIView *whiteView = (UIView *)[cell viewWithTag:6];
+        NSLayoutConstraint *constraint =
+        [NSLayoutConstraint constraintWithItem:whiteView attribute:NSLayoutAttributeTop
+                                     relatedBy:NSLayoutRelationEqual toItem:eventDesciption
+                                     attribute:NSLayoutAttributeBottom multiplier:1 constant:2];
+        constraint.priority = 996;
+        [cell addConstraint:constraint];
+    }
+    
     return cell;
 }
 

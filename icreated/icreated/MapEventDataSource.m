@@ -78,8 +78,6 @@
             NSLog(@"Error fetching events to refresh a map");
         }
         
-        NSArray *someArr = [self.eventUpdater.fetchedResultsController fetchedObjects];
-        
         for (NSInteger i = 0; i < [self.eventUpdater.fetchedResultsController.sections[0] numberOfObjects]; i++) {
             NSIndexPath *indexPath = [[NSIndexPath alloc] init];
             indexPath = [NSIndexPath indexPathForRow:i inSection:0];

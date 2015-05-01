@@ -11,6 +11,10 @@
 #import <SORelativeDateTransformer.h>
 #import "Event.h"
 
+@interface MainViewController ()
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
+@end
+
 @implementation MainViewController (NewsStand)
 
 - (void)initNewsStand {
@@ -19,6 +23,14 @@
                                  fetchedResultsController:self.eventUpdater.fetchedResultsController
                                            reuseIdenifier:@"eventCell"];
     self.newsStandDataSource.delegate = self;
+    
+//    CGFloat tableBorderLeft = 20;
+//    CGFloat tableBorderRight = 20;
+//    
+//    CGRect tableRect = self.view.frame;
+//    tableRect.origin.x += tableBorderLeft; // make the table begin a few pixels right from its origin
+//    tableRect.size.width -= tableBorderLeft + tableBorderRight; // reduce the width of the table
+//    self.newsStand.frame = tableRect;
     
 }
 
@@ -56,6 +68,7 @@
 //        label.text = @"<nil>";
 //        NSLog(@"event.place not set, probably placemark was = nil while updating");
 //    }
+
 }
 
 - (void)refreshingMethod:(void (^)(void))handler {

@@ -27,6 +27,7 @@
 		9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */; };
 		9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */; };
 		9C92E4E21AF13E2D0096CAA2 /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */; };
+		9C92E4E41AF243400096CAA2 /* noavatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C92E4E31AF243400096CAA2 /* noavatar.jpg */; };
 		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
 		9CAD470A1A49FBEA0086B5D8 /* sampleAvatar.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */; };
 		9CB287C11AE69C7A007743FF /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB287C01AE69C7A007743FF /* Updater.m */; };
@@ -101,6 +102,7 @@
 		9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
+		9C92E4E31AF243400096CAA2 /* noavatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noavatar.jpg; sourceTree = "<group>"; };
 		9C9623A419F666CE002C2515 /* EventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAnnotation.h; sourceTree = "<group>"; };
 		9C9623A519F666CE002C2515 /* EventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAnnotation.m; sourceTree = "<group>"; };
 		9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleAvatar.jpeg; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				9C4801D71AE94CA300391881 /* UIBarButtonItem+Menu.h */,
 				9C4801D81AE94CA300391881 /* UIBarButtonItem+Menu.m */,
 				9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */,
+				9C92E4E31AF243400096CAA2 /* noavatar.jpg */,
 				9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */,
 				9CEB7F7619F16EBF0096B4E7 /* Info.plist */,
 				9CEB7F7719F16EBF0096B4E7 /* main.m */,
@@ -570,6 +573,7 @@
 				9CEB7F8119F16EBF0096B4E7 /* Main.storyboard in Resources */,
 				9CBDC7DC1A3997CA00094644 /* Localizable.strings in Resources */,
 				9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */,
+				9C92E4E41AF243400096CAA2 /* noavatar.jpg in Resources */,
 				9CEB7F8619F16EBF0096B4E7 /* LaunchScreen.xib in Resources */,
 				9CAD470A1A49FBEA0086B5D8 /* sampleAvatar.jpeg in Resources */,
 				9CEB7F8319F16EBF0096B4E7 /* Images.xcassets in Resources */,
