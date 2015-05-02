@@ -2,11 +2,12 @@
 //  User.m
 //  icreated
 //
-//  Created by Artem Lobanov on 24/04/15.
+//  Created by Artem Lobanov on 02/05/15.
 //  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import "User.h"
+#import "Event.h"
 #import "Photo.h"
 #import "User.h"
 
@@ -18,5 +19,6 @@
 @dynamic avatar;
 @dynamic followers;
 @dynamic following;
+@dynamic createdEvents;
 
 @end

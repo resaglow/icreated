@@ -80,7 +80,7 @@
         return 245.0;
     }
     else {
-        return 245.0 - 68.0;
+        return 245.0 - 70.0;
     }
 }
 
@@ -90,13 +90,14 @@
     [self.delegate configureCell:cell withObject:object];
     
     if (indexPath.row % 2 != 0) {
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
         UITextView *eventDesciption = (UITextView *)[cell viewWithTag:5];
         UIView *whiteView = (UIView *)[cell viewWithTag:6];
+        imageView.image = nil;
         NSLayoutConstraint *constraint =
         [NSLayoutConstraint constraintWithItem:whiteView attribute:NSLayoutAttributeTop
                                      relatedBy:NSLayoutRelationEqual toItem:eventDesciption
-                                     attribute:NSLayoutAttributeBottom multiplier:1 constant:2];
-        constraint.priority = 996;
+                                     attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
         [cell addConstraint:constraint];
     }
     

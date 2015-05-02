@@ -2,13 +2,14 @@
 //  Event.m
 //  icreated
 //
-//  Created by Artem Lobanov on 18/12/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 02/05/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import "Event.h"
 #import "Comment.h"
 #import "Photo.h"
+#import "User.h"
 
 
 @implementation Event
@@ -18,8 +19,9 @@
 @dynamic eventId;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic place;
 @dynamic comments;
 @dynamic photos;
-@dynamic place;
+@dynamic author;
 
 @end

@@ -2,15 +2,14 @@
 //  Event.h
 //  icreated
 //
-//  Created by Artem Lobanov on 18/12/14.
-//  Copyright (c) 2014 pispbsu. All rights reserved.
+//  Created by Artem Lobanov on 02/05/15.
+//  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import <MapKit/MapKit.h>
 
-@class Comment, Photo;
+@class Comment, Photo, User;
 
 @interface Event : NSManagedObject
 
@@ -19,10 +18,10 @@
 @property (nonatomic, retain) NSNumber * eventId;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSData * place;
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *photos;
-@property (nonatomic, retain) NSData *place;
-
+@property (nonatomic, retain) User *author;
 @end
 
 @interface Event (CoreDataGeneratedAccessors)

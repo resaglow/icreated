@@ -106,24 +106,6 @@
                                              initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
     
     
-    
-    // Setting up event mapping
-    RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
-    [eventMapping addAttributeMappingsFromDictionary:@{@"EventId": @"eventId",
-                                                       @"Description": @"desc",
-                                                       @"EventDate": @"date",
-                                                       @"Latitude": @"latitude",
-                                                       @"Longitude": @"longitude"}];
-    eventMapping.identificationAttributes = @[@"eventId"];
-    
-    RKResponseDescriptor *eventResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:eventMapping method:RKRequestMethodAny
-                                            pathPattern:@"/api/Events" keyPath:nil
-                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    
-    [[RKObjectManager sharedManager] addResponseDescriptor:eventResponseDescriptor];
-    
-    
     // Setting up user & self mapping
     RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
     [userMapping addAttributeMappingsFromDictionary:@{/*@"UserId": @"userId",*/
@@ -143,6 +125,24 @@
     
     [[RKObjectManager sharedManager] addResponseDescriptor:userResponseDescriptor];
     [[RKObjectManager sharedManager] addResponseDescriptor:selfResponseDescriptor];
+    
+    // Setting up event mapping
+    RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:managedObjectStore];
+    [eventMapping addAttributeMappingsFromDictionary:@{@"EventId": @"eventId",
+                                                       @"Description": @"desc",
+                                                       @"EventDate": @"date",
+                                                       @"Latitude": @"latitude",
+                                                       @"Longitude": @"longitude"}];
+    eventMapping.identificationAttributes = @[@"eventId"];
+    
+    
+    
+    RKResponseDescriptor *eventResponseDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:eventMapping method:RKRequestMethodAny
+                                            pathPattern:@"/api/Events" keyPath:nil
+                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:eventResponseDescriptor];
     
     // To perform local orphaned object cleanup
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *url) {

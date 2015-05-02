@@ -11,27 +11,15 @@
 #import <SORelativeDateTransformer.h>
 #import "Event.h"
 
-@interface MainViewController ()
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
-@end
-
 @implementation MainViewController (NewsStand)
 
 - (void)initNewsStand {
+    self.newsStand.contentInset = UIEdgeInsetsMake(4, 0, 4, 0);
     self.newsStandDataSource =
         [[TableRefreshDataSource alloc] initWithTableView:self.newsStand
                                  fetchedResultsController:self.eventUpdater.fetchedResultsController
                                            reuseIdenifier:@"eventCell"];
     self.newsStandDataSource.delegate = self;
-    
-//    CGFloat tableBorderLeft = 20;
-//    CGFloat tableBorderRight = 20;
-//    
-//    CGRect tableRect = self.view.frame;
-//    tableRect.origin.x += tableBorderLeft; // make the table begin a few pixels right from its origin
-//    tableRect.size.width -= tableBorderLeft + tableBorderRight; // reduce the width of the table
-//    self.newsStand.frame = tableRect;
-    
 }
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(id)object {
@@ -68,7 +56,13 @@
 //        label.text = @"<nil>";
 //        NSLog(@"event.place not set, probably placemark was = nil while updating");
 //    }
-
+    
+//    UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
+//    UIImage *scaledImage = [imageView.image scaleToWidth:imageView.frame.size.width];
+//    UIImage *scaledImage = [imageView.image scaleToHeight:imageView.frame.size.height];
+//    imageView.image = scaledImage;
+    UIView *whiteView = [cell viewWithTag:6];
+    [cell bringSubviewToFront:whiteView];
 }
 
 - (void)refreshingMethod:(void (^)(void))handler {

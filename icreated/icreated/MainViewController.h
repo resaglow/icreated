@@ -12,6 +12,7 @@
 #import "TableRefreshDataSource.h"
 #import "EventUpdater.h"
 #import "UserUpdater.h"
+#import "UIImage+Scale.h"
 
 @interface MainViewController : UIViewController
 
