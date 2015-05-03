@@ -44,6 +44,7 @@
     self.map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.map setShowsUserLocation:YES];
     self.dataSource = [[MapEventDataSource alloc] initWithMapView:self.map];
+    self.dataSource.delegate = self;
     [self.view addSubview:self.map];
     
     UILongPressGestureRecognizer *dropPin = [[UILongPressGestureRecognizer alloc] init];
@@ -68,7 +69,8 @@
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.map];
     CLLocationCoordinate2D curCoordinate = [self.map convertPoint:touchPoint toCoordinateFromView:self.map];
-    if ([self distanceBetween:curCoordinate and:self.curAnnotation.coordinate] < 100) {
+    NSLog(@"Distance = %f", [self distanceBetween:curCoordinate and:self.curAnnotation.coordinate]);
+    if ([self distanceBetween:curCoordinate and:self.curAnnotation.coordinate] < 100) { // Which constant is reasonable here?
         [self.map removeAnnotation:self.curAnnotation];
         NSMutableArray *rightBarButtons = [self.navigationItem.rightBarButtonItems mutableCopy];
         [rightBarButtons removeObject:self.rightBarButton];

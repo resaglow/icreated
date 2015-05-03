@@ -68,23 +68,73 @@
     return image;
 }
 
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+    MKAnnotationView *aV;
+    for (aV in views) {
+        // Don't pin drop if annotation is user location
+        if ([aV.annotation isKindOfClass:[MKUserLocation class]]) {
+            continue;
+        }
+        
+        // Check if current annotation is inside visible map rect, else go to next one
+        MKMapPoint point =  MKMapPointForCoordinate(aV.annotation.coordinate);
+        if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
+            continue;
+        }
+        
+        CGRect endFrame = aV.frame;
+        
+        // Move annotation out of view
+        aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - self.delegate.view.frame.size.height, aV.frame.size.width, aV.frame.size.height);
+        
+        // Animate drop
+        [UIView animateWithDuration:0.5 delay:0.04 * [views indexOfObject:aV] options:UIViewAnimationOptionCurveLinear animations:^{
+            aV.frame = endFrame;
+            // Animate squash
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [UIView animateWithDuration:0.05 animations:^{
+                    aV.transform = CGAffineTransformMake(1.0, 0, 0, 0.8, 0, aV.frame.size.height * 0.1);
+                    
+                }completion:^(BOOL finished){
+                    [UIView animateWithDuration:0.1 animations:^{
+                        aV.transform = CGAffineTransformIdentity;
+                    }];
+                }];
+            }
+        }];
+    }
+}
+
 - (void)refreshMap {
     NSLog(@"Request to refresh map");
     [self.eventUpdater getEventsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 //        NSLog(@"Refreshing map");
         NSError *err = nil;
-        [self.eventUpdater.fetchedResultsController performFetch:&err];
         if (err) {
             NSLog(@"Error fetching events to refresh a map");
         }
-        
-        for (NSInteger i = 0; i < [self.eventUpdater.fetchedResultsController.sections[0] numberOfObjects]; i++) {
+
+        NSArray *events = mappingResult.array;
+        for (NSInteger i = 0; i < events.count; i++) {
             NSIndexPath *indexPath = [[NSIndexPath alloc] init];
             indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            Event *curEvent = [self.eventUpdater.fetchedResultsController objectAtIndexPath:indexPath];
+            Event *curEvent = events[i];
             
             EventAnnotation *curAnnotation = [[EventAnnotation alloc] init];
             
+            BOOL oldAnnot = NO;
+            for (id elem in self.mapView.annotations) {
+                if ([elem isKindOfClass:[MKUserLocation class]]) continue;
+                EventAnnotation *annotation = (EventAnnotation *)elem;
+                if (annotation.eventId == curEvent.eventId) {
+                    oldAnnot = YES;
+                    break;
+                }
+            }
+            if (oldAnnot) continue;
+            
+            curAnnotation.eventId = curEvent.eventId;
             curAnnotation.title = curEvent.desc;
             curAnnotation.date = curEvent.date;
             
