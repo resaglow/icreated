@@ -28,6 +28,7 @@
 		9C8156C71AF4459700B4BF8E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8156C61AF4459700B4BF8E /* User.m */; };
 		9C82854C1A02DB9F00421B88 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */; };
 		9C8F5CE31AF521DD00AA6886 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F5CE21AF521DD00AA6886 /* UIImage+Scale.m */; };
+		9C8F5D1B1AF62EED00AA6886 /* UINavigationBar+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8F5D1A1AF62EED00AA6886 /* UINavigationBar+Shadow.m */; };
 		9C92E4E21AF13E2D0096CAA2 /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */; };
 		9C92E4E41AF243400096CAA2 /* noavatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C92E4E31AF243400096CAA2 /* noavatar.jpg */; };
 		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
@@ -106,6 +107,8 @@
 		9C82854B1A02DB9F00421B88 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9C8F5CE11AF521DD00AA6886 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		9C8F5CE21AF521DD00AA6886 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		9C8F5D191AF62EED00AA6886 /* UINavigationBar+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Shadow.h"; sourceTree = "<group>"; };
+		9C8F5D1A1AF62EED00AA6886 /* UINavigationBar+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Shadow.m"; sourceTree = "<group>"; };
 		9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTests.m; sourceTree = "<group>"; };
 		9C92E4E31AF243400096CAA2 /* noavatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noavatar.jpg; sourceTree = "<group>"; };
 		9C9623A419F666CE002C2515 /* EventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAnnotation.h; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 				9C8F5CE21AF521DD00AA6886 /* UIImage+Scale.m */,
 				9CCF953F1A2A401A00A5C2C9 /* MainViewController+Map.h */,
 				9CCF95401A2A401A00A5C2C9 /* MainViewController+Map.m */,
+				9C8F5D191AF62EED00AA6886 /* UINavigationBar+Shadow.h */,
+				9C8F5D1A1AF62EED00AA6886 /* UINavigationBar+Shadow.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 				9CEB7F7E19F16EBF0096B4E7 /* MainViewController.m in Sources */,
 				9C3F4CF31A436CFE002EA440 /* Comment.m in Sources */,
 				9C5AD04A1AE4CB27001D3E72 /* MapEventCalloutDataSource.m in Sources */,
+				9C8F5D1B1AF62EED00AA6886 /* UINavigationBar+Shadow.m in Sources */,
 				9CEB7F7B19F16EBF0096B4E7 /* AppDelegate.m in Sources */,
 				9CF3FDBB1A30A3000027841A /* PinPickerViewController.m in Sources */,
 				9C5AD0501AE4D561001D3E72 /* TableDataSource.m in Sources */,

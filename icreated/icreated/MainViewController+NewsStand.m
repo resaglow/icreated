@@ -10,6 +10,7 @@
 #import <ISO8601DateFormatterValueTransformer/RKISO8601DateFormatter.h>
 #import <SORelativeDateTransformer.h>
 #import "Event.h"
+#import "UINavigationBar+Shadow.h"
 
 @implementation MainViewController (NewsStand)
 
