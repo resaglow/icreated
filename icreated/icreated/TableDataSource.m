@@ -86,20 +86,36 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    id cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
-    [self.delegate configureCell:cell withObject:object];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
     
-    if (indexPath.row % 2 != 0) {
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
-        UITextView *eventDesciption = (UITextView *)[cell viewWithTag:5];
-        UIView *whiteView = (UIView *)[cell viewWithTag:6];
-        imageView.image = nil;
-        NSLayoutConstraint *constraint =
-        [NSLayoutConstraint constraintWithItem:whiteView attribute:NSLayoutAttributeTop
-                                     relatedBy:NSLayoutRelationEqual toItem:eventDesciption
-                                     attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-        [cell addConstraint:constraint];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
+    UITextView *eventDesciption = (UITextView *)[cell viewWithTag:5];
+    UIView *whiteView = (UIView *)[cell viewWithTag:6];
+    UIView *mainView = [cell viewWithTag:7];
+    
+    if (indexPath.row % 2 == 0 && mainView.constraints.count > 16) {
+//        NSLog(@"About to remove: %lu", (unsigned long)mainView.constraints.count);
+        // VERY bad practice, probably no guarantee our needed constraint will be the last one
+        [mainView removeConstraint:[mainView.constraints lastObject]];
+//        NSLog(@"Removed: %lu", (unsigned long)mainView.constraints.count);
     }
+    
+//    NSLog(@"Constraints count: %lu, %ld", (unsigned long)mainView.constraints.count, (long)indexPath.row);
+    if (indexPath.row % 2 != 0) {
+        if (mainView.constraints.count <= 16) {
+            NSLayoutConstraint *constraint =
+            [NSLayoutConstraint constraintWithItem:whiteView attribute:NSLayoutAttributeTop
+                                         relatedBy:NSLayoutRelationEqual toItem:eventDesciption
+                                         attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+            [mainView addConstraint:constraint];
+        }
+        imageView.image = nil;
+    }
+    else {
+        imageView.image = [UIImage imageNamed:@"sampleAvatar.jpeg"];
+    }
+    
+    [self.delegate configureCell:cell withObject:object];
     
     return cell;
 }

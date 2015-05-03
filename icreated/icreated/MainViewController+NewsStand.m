@@ -10,7 +10,6 @@
 #import <ISO8601DateFormatterValueTransformer/RKISO8601DateFormatter.h>
 #import <SORelativeDateTransformer.h>
 #import "Event.h"
-#import "UINavigationBar+Shadow.h"
 
 @implementation MainViewController (NewsStand)
 
@@ -58,12 +57,10 @@
 //        NSLog(@"event.place not set, probably placemark was = nil while updating");
 //    }
     
-//    UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
-//    UIImage *scaledImage = [imageView.image scaleToWidth:imageView.frame.size.width];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
+    UIImage *scaledImage = [imageView.image scaleToWidth:imageView.frame.size.width];
 //    UIImage *scaledImage = [imageView.image scaleToHeight:imageView.frame.size.height];
-//    imageView.image = scaledImage;
-    UIView *whiteView = [cell viewWithTag:6];
-    [cell bringSubviewToFront:whiteView];
+    imageView.image = scaledImage;
 }
 
 - (void)refreshingMethod:(void (^)(void))handler {

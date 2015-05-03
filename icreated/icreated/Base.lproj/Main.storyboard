@@ -208,7 +208,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vg8-4v-cyv" id="3jt-hi-74j">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-cc-cod">
+                                                <view clipsSubviews="YES" tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-cc-cod">
                                                     <rect key="frame" x="8" y="4" width="304" height="237"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAN-U0-ZJL">
@@ -777,8 +777,8 @@
         <image name="sampleAvatar.jpeg" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VJO-20-DuY"/>
         <segue reference="aKu-VB-sul"/>
+        <segue reference="VJO-20-DuY"/>
         <segue reference="O5M-ju-wiD"/>
     </inferredMetricsTieBreakers>
 </document>
