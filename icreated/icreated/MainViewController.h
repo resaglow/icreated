@@ -14,7 +14,7 @@
 #import "UserUpdater.h"
 #import "UIImage+Scale.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <TableDataSourceDelegate, TableRefreshDataSourceDelegate, MapEventCalloutDataSourceDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

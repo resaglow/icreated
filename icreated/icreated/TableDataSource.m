@@ -87,7 +87,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier forIndexPath:indexPath];
-    
+    NSLog(@"%@", cell);
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
     UITextView *eventDesciption = (UITextView *)[cell viewWithTag:5];
     UIView *whiteView = (UIView *)[cell viewWithTag:6];

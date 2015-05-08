@@ -2,43 +2,23 @@
 //  NewsStandTests.m
 //  icreated
 //
-//  Created by Artem Lobanov on 18/04/15.
+//  Created by Artem Lobanov on 07/05/15.
 //  Copyright (c) 2015 pispbsu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
-#import <OCMock/OCMock.h>
-#import "MainViewController+NewsStand.h"
-#import <RKISO8601DateFormatter.h>
+#import "MainScreenTests.h"
 
-@interface NewsStandTests : XCTestCase
-@property (strong, nonatomic) MainViewController *mainViewController;
-@property (strong, nonatomic) UIStoryboard *storyboard;
-@property id event;
+@interface NewsStandTests : MainScreenTests
+
 @end
-
-@protocol EventInterface <NSObject>
-@property (nonatomic, retain) id date;
-@property (nonatomic, retain) id desc;
-@end
-
 
 @implementation NewsStandTests
 
 - (void)setUp {
     [super setUp];
-    self.storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVC"];
-    [self.mainViewController view];
-    
-    self.event = [OCMockObject mockForProtocol:@protocol(EventInterface)];
-    [[[self.event stub] andReturn:[NSDate date]] date];
-    [[[self.event stub] andReturn:@"Sample test event"] desc];
 }
 
 - (void)tearDown {
-    self.mainViewController = nil;
     [super tearDown];
 }
 
@@ -60,7 +40,5 @@
     NSString *dateString = [formatter stringFromDate:[self.event date]];
     XCTAssertEqualObjects(eventDateLabel.text, dateString, @"Date string not set correctly for the event cell");
 }
-
-
 
 @end

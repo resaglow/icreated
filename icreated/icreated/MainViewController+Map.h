@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController (Map) <MapEventCalloutDataSourceDelegate>
+@interface MainViewController (Map) 
 
 - (void)initMap;
 

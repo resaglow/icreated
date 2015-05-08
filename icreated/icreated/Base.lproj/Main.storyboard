@@ -184,7 +184,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MH-wY-9vO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="772"/>
+            <point key="canvasLocation" x="429" y="772"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="X9e-it-Rrq">
@@ -364,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idc-VK-n9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="728" y="772"/>
+            <point key="canvasLocation" x="932" y="772"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="lpq-Ux-KsH">
@@ -378,7 +378,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-ez-pyH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-ez-pyH">
                                 <rect key="frame" x="0.0" y="20" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-7q-xOh" userLabel="InnerView">
@@ -547,7 +547,7 @@
                     <color key="backgroundColor" red="0.6841111858565514" green="0.73715913388639709" blue="0.78960060586734693" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1241" y="596"/>
+            <point key="canvasLocation" x="1460" y="625"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="fBX-xJ-Nqm">
@@ -724,6 +724,12 @@
                                     <action selector="sendRegister:" destination="U3Y-m8-GUn" eventType="touchUpInside" id="3R5-k1-43O"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gr-Nw-uVs">
+                                <rect key="frame" x="258" y="71" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -734,11 +740,41 @@
                         <outlet property="loginTextField" destination="zPx-5D-gGB" id="Ohc-wz-k50"/>
                         <outlet property="passwordTextField" destination="sec-xF-tMI" id="O5Z-8s-Abb"/>
                         <segue destination="bqv-FJ-V8a" kind="push" identifier="registerSuccessful" id="G0C-ge-lB6"/>
+                        <segue destination="N49-BF-GpY" kind="push" identifier="loginExternalSegue" id="Xib-hh-Bgu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a48-Nn-coE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1140" y="-112"/>
+        </scene>
+        <!--Login External View Controller-->
+        <scene sceneID="nik-WA-teK">
+            <objects>
+                <viewController title="Login External View Controller" id="N49-BF-GpY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="biJ-gf-5YW"/>
+                        <viewControllerLayoutGuide type="bottom" id="G8y-52-jLP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vgU-XN-hLC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hzk-xH-Ead">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1GP-t3-epL"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="bqv-FJ-V8a" kind="push" id="VQg-I1-2Ac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4my-Qy-Uf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1562" y="-112"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="nHP-cN-nzo">
@@ -769,7 +805,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgR-p7-1QP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1241" y="1247"/>
+            <point key="canvasLocation" x="1460" y="1267"/>
         </scene>
     </scenes>
     <resources>
@@ -777,8 +813,8 @@
         <image name="sampleAvatar.jpeg" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aKu-VB-sul"/>
-        <segue reference="VJO-20-DuY"/>
+        <segue reference="lq7-fp-wLQ"/>
         <segue reference="O5M-ju-wiD"/>
+        <segue reference="VJO-20-DuY"/>
     </inferredMetricsTieBreakers>
 </document>

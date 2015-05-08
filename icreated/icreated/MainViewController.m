@@ -54,6 +54,7 @@
     if (self.revealViewController.panGestureRecognizer) { // Fix for tests to work, maybe bug of SWRC
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+
     
     self.addEventButton.title = kFAAddEvent;
     [self.addEventButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
