@@ -157,7 +157,6 @@
     
     XCTAssertNil(saveError, @"There was an error trying to save the data while inserting");
     XCTAssertNil(fetchError, @"There was an error trying to fetch the data while inserting");
-    NSLog(@"WAAAT %@", items);
     XCTAssertEqual(items.count, 1, @"The insert failed");
     
     [self.context deleteObject:items.firstObject];

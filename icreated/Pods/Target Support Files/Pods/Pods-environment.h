@@ -18,6 +18,12 @@
 #define COCOAPODS_VERSION_MINOR_ActionSheetPicker_3_0 3
 #define COCOAPODS_VERSION_PATCH_ActionSheetPicker_3_0 5
 
+// Expecta
+#define COCOAPODS_POD_AVAILABLE_Expecta
+#define COCOAPODS_VERSION_MAJOR_Expecta 1
+#define COCOAPODS_VERSION_MINOR_Expecta 0
+#define COCOAPODS_VERSION_PATCH_Expecta 0
+
 // FDTake
 #define COCOAPODS_POD_AVAILABLE_FDTake
 #define COCOAPODS_VERSION_MAJOR_FDTake 0
@@ -95,6 +101,12 @@
 #define COCOAPODS_VERSION_MAJOR_SWRevealViewController 2
 #define COCOAPODS_VERSION_MINOR_SWRevealViewController 1
 #define COCOAPODS_VERSION_PATCH_SWRevealViewController 0
+
+// Specta
+#define COCOAPODS_POD_AVAILABLE_Specta
+#define COCOAPODS_VERSION_MAJOR_Specta 1
+#define COCOAPODS_VERSION_MINOR_Specta 0
+#define COCOAPODS_VERSION_PATCH_Specta 0
 
 // TransitionKit
 #define COCOAPODS_POD_AVAILABLE_TransitionKit
