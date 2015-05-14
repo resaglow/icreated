@@ -84,6 +84,12 @@
 #define COCOAPODS_VERSION_MINOR_RestKit_Support 24
 #define COCOAPODS_VERSION_PATCH_RestKit_Support 1
 
+// RestKit/Testing
+#define COCOAPODS_POD_AVAILABLE_RestKit_Testing
+#define COCOAPODS_VERSION_MAJOR_RestKit_Testing 0
+#define COCOAPODS_VERSION_MINOR_RestKit_Testing 24
+#define COCOAPODS_VERSION_PATCH_RestKit_Testing 1
+
 // SMCalloutView
 #define COCOAPODS_POD_AVAILABLE_SMCalloutView
 #define COCOAPODS_VERSION_MAJOR_SMCalloutView 2

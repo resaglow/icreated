@@ -7,11 +7,12 @@ pod 'ActionSheetPicker-3.0'
 pod 'FDTake'
 pod 'SORelativeDateTransformer', '~> 1.1.10'
 pod 'RestKit'
-pod 'Specta'
-pod 'Expecta'
 
 target :icreatedTests do
   pod 'OCMock'
+  pod 'Specta'
+  pod 'Expecta'
+  pod 'RestKit/Testing'
 end
 
 xcodeproj 'icreated.xcodeproj'

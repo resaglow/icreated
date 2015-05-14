@@ -25,6 +25,8 @@ PODS:
     - RKValueTransformers (~> 1.1.0)
   - RestKit/Support (0.24.1):
     - TransitionKit (~> 2.1.0)
+  - RestKit/Testing (0.24.1):
+    - RestKit/Network
   - RKValueTransformers (1.1.2)
   - SMCalloutView (2.0.3)
   - SOCKit (1.1)
@@ -39,6 +41,7 @@ DEPENDENCIES:
   - FDTake
   - OCMock
   - RestKit
+  - RestKit/Testing
   - SMCalloutView
   - SORelativeDateTransformer (~> 1.1.10)
   - Specta
