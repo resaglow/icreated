@@ -7,15 +7,23 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <Specta.h>
 #import "MainScreenTests.h"
 
-@interface MapTests : MainScreenTests @end
+
+@interface MainViewController ()
+- (void)pushDetailViewController;
+@end
+
+@interface MapTests : MainScreenTests
+@end
 
 @implementation MapTests
 
+static MapTests *sharedInstance;
+
 - (void)setUp {
     [super setUp];
+    sharedInstance = self;
 }
 
 - (void)tearDown {
@@ -29,14 +37,14 @@
     XCTAssertEqual(NO, NO, @"lol");
 }
 
-//- (void)testEventDetailFromMap {
-//    UIButton *calloutButton = (UIButton *)self.mainViewController.mapCalloutDataSource.calloutView.contentView;
-//    [calloutButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-//}
-
-//SpecBegin(EventDetail) {
-
-
-
+- (void)testEventDetailButton {
+    UIButton *calloutButton = (UIButton *)self.mainViewController.mapCalloutDataSource.calloutView.contentView;
+    id mainVCMock = [OCMockObject partialMockForObject:self.mainViewController];
+    [[mainVCMock expect] pushDetailViewController];
+    
+    [calloutButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    
+    [mainVCMock verify];
+}
 
 @end

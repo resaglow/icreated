@@ -1,0 +1,25 @@
+{
+    "EventId": 1101,
+    "User": {
+        "UserId": 41,
+        "UserName": "TestUserName",
+        "Photo": null
+    },
+    "Latitude": "76",
+    "Longitude": "92",
+    "LocationCaption": "Russia, 663333",
+    "Description": "TestEvent",
+    "EventDate": "2015-05-11 16:38:05Z",
+    "DateCreate": "2015-05-11 13:38:05Z",
+    "LastComments": null,
+    "Photos": [
+        {
+            "Url": "/Uploads/21ci4pp73ruklayt5f4r/ex13bso4kf.jpg",
+            "UserId": 41,
+            "AlbumId": 0,
+            "Likes": [],
+            "LikesCount": 0
+        }
+    ],
+    "LastLikes": null
+}

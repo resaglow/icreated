@@ -25,6 +25,7 @@
 		9C5AD04A1AE4CB27001D3E72 /* MapEventCalloutDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD0491AE4CB27001D3E72 /* MapEventCalloutDataSource.m */; };
 		9C5AD0501AE4D561001D3E72 /* TableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD04F1AE4D561001D3E72 /* TableDataSource.m */; };
 		9C5AD0541AE4DB0A001D3E72 /* TableRefreshDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AD0531AE4DB0A001D3E72 /* TableRefreshDataSource.m */; };
+		9C5D74E21AFD812A00F90203 /* MapEventDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D74E11AFD812A00F90203 /* MapEventDataSourceTests.m */; };
 		9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */; };
 		9C7D024E1AFC945C00B492D5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D024B1AFC945C00B492D5 /* Event.m */; };
 		9C7D024F1AFC945C00B492D5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D024D1AFC945C00B492D5 /* User.m */; };
@@ -33,6 +34,11 @@
 		9C92E4E21AF13E2D0096CAA2 /* CoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */; };
 		9C92E4E41AF243400096CAA2 /* noavatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C92E4E31AF243400096CAA2 /* noavatar.jpg */; };
 		9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9623A519F666CE002C2515 /* EventAnnotation.m */; };
+		9C99EC9C1B03B689003103F9 /* MapEventCalloutDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99EC9B1B03B689003103F9 /* MapEventCalloutDataSourceTests.m */; };
+		9C99EC9F1B03EF14003103F9 /* RestKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99EC9E1B03EF14003103F9 /* RestKitTests.m */; };
+		9C99ECA11B03F30C003103F9 /* eventFixture.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C99ECA01B03F30C003103F9 /* eventFixture.json */; };
+		9C99ECA61B04833B003103F9 /* RestKitInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99ECA51B04833B003103F9 /* RestKitInitializer.m */; };
+		9C99ECB31B055102003103F9 /* userFixture.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C99ECB21B055102003103F9 /* userFixture.json */; };
 		9CAD470A1A49FBEA0086B5D8 /* sampleAvatar.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */; };
 		9CB287C11AE69C7A007743FF /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB287C01AE69C7A007743FF /* Updater.m */; };
 		9CB287CF1AE6EBA8007743FF /* EventUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB287CE1AE6EBA8007743FF /* EventUpdater.m */; };
@@ -102,6 +108,7 @@
 		9C5AD04F1AE4D561001D3E72 /* TableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDataSource.m; sourceTree = "<group>"; };
 		9C5AD0521AE4DB0A001D3E72 /* TableRefreshDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRefreshDataSource.h; sourceTree = "<group>"; };
 		9C5AD0531AE4DB0A001D3E72 /* TableRefreshDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRefreshDataSource.m; sourceTree = "<group>"; };
+		9C5D74E11AFD812A00F90203 /* MapEventDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapEventDataSourceTests.m; sourceTree = "<group>"; };
 		9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		9C7D024A1AFC945C00B492D5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -115,6 +122,12 @@
 		9C92E4E31AF243400096CAA2 /* noavatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noavatar.jpg; sourceTree = "<group>"; };
 		9C9623A419F666CE002C2515 /* EventAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventAnnotation.h; sourceTree = "<group>"; };
 		9C9623A519F666CE002C2515 /* EventAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventAnnotation.m; sourceTree = "<group>"; };
+		9C99EC9B1B03B689003103F9 /* MapEventCalloutDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapEventCalloutDataSourceTests.m; sourceTree = "<group>"; };
+		9C99EC9E1B03EF14003103F9 /* RestKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKitTests.m; sourceTree = "<group>"; };
+		9C99ECA01B03F30C003103F9 /* eventFixture.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = eventFixture.json; sourceTree = "<group>"; };
+		9C99ECA41B04833B003103F9 /* RestKitInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKitInitializer.h; sourceTree = "<group>"; };
+		9C99ECA51B04833B003103F9 /* RestKitInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKitInitializer.m; sourceTree = "<group>"; };
+		9C99ECB21B055102003103F9 /* userFixture.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userFixture.json; sourceTree = "<group>"; };
 		9CAD47091A49FBEA0086B5D8 /* sampleAvatar.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sampleAvatar.jpeg; sourceTree = "<group>"; };
 		9CAD470C1A4B1B3B0086B5D8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		9CB287BF1AE69C7A007743FF /* Updater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Updater.h; sourceTree = "<group>"; };
@@ -237,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				9C55445D1AEE1CF700ADE278 /* TableDataSourceTests.m */,
+				9C5D74E11AFD812A00F90203 /* MapEventDataSourceTests.m */,
+				9C99EC9B1B03B689003103F9 /* MapEventCalloutDataSourceTests.m */,
 				9C92E4E11AF13E2D0096CAA2 /* CoreDataTests.m */,
 			);
 			name = Common;
@@ -308,10 +323,10 @@
 				9C6F793A1A1FDF5D0039B5E0 /* AddEventViewController.h */,
 				9C6F793B1A1FDF5D0039B5E0 /* AddEventViewController.m */,
 				9C4B17A91A323ABE00A2980B /* GestureHandlers */,
-				9CF3FDBF1A30A3C60027841A /* EventSender */,
 				9C7F8DE91A288F380082E7A6 /* PinPicker */,
 				9CCF953B1A2A3DE600A5C2C9 /* DatePicker */,
 				9CCF95601A2A8C6B00A5C2C9 /* PhotoPicker */,
+				9CF3FDBF1A30A3C60027841A /* EventSender */,
 			);
 			name = AddEvent;
 			sourceTree = "<group>";
@@ -376,6 +391,16 @@
 				9CEB7FA119F16FCD0096B4E7 /* MenuViewController.m */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		9C99ECAA1B04E6D2003103F9 /* RestKit */ = {
+			isa = PBXGroup;
+			children = (
+				9C99EC9E1B03EF14003103F9 /* RestKitTests.m */,
+				9C99ECA01B03F30C003103F9 /* eventFixture.json */,
+				9C99ECB21B055102003103F9 /* userFixture.json */,
+			);
+			name = RestKit;
 			sourceTree = "<group>";
 		};
 		9CB287C21AE69C83007743FF /* Updaters */ = {
@@ -443,6 +468,8 @@
 			children = (
 				9CEB7F7919F16EBF0096B4E7 /* AppDelegate.h */,
 				9CEB7F7A19F16EBF0096B4E7 /* AppDelegate.m */,
+				9C99ECA41B04833B003103F9 /* RestKitInitializer.h */,
+				9C99ECA51B04833B003103F9 /* RestKitInitializer.m */,
 				9CEB7F7F19F16EBF0096B4E7 /* Main.storyboard */,
 				9C9623AB19F66749002C2515 /* Menu */,
 				9C9623AA19F66731002C2515 /* Main */,
@@ -481,9 +508,10 @@
 		9CEB7F8E19F16EBF0096B4E7 /* icreatedTests */ = {
 			isa = PBXGroup;
 			children = (
-				9CEB7F8F19F16EBF0096B4E7 /* Supporting Files */,
+				9C99ECAA1B04E6D2003103F9 /* RestKit */,
 				9C3976261AFBC7CC000F00A0 /* Main */,
 				9C3976271AFBC7D3000F00A0 /* Common */,
+				9CEB7F8F19F16EBF0096B4E7 /* Supporting Files */,
 			);
 			path = icreatedTests;
 			sourceTree = "<group>";
@@ -614,6 +642,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C99ECB31B055102003103F9 /* userFixture.json in Resources */,
+				9C99ECA11B03F30C003103F9 /* eventFixture.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +728,7 @@
 				9C5AD03B1AE46E1D001D3E72 /* EventDetailViewController.m in Sources */,
 				9C3F4CDA1A436CA9002EA440 /* ProfileViewController.m in Sources */,
 				9C4B17A81A323A3000A2980B /* AddEventViewController+GestureHandlers.m in Sources */,
+				9C99ECA61B04833B003103F9 /* RestKitInitializer.m in Sources */,
 				9C6F793C1A1FDF5D0039B5E0 /* AddEventViewController.m in Sources */,
 				9C9623A619F666CE002C2515 /* EventAnnotation.m in Sources */,
 				9CFFBFE21AE40C2E0002A405 /* MapEventDataSource.m in Sources */,
@@ -729,9 +760,12 @@
 			files = (
 				9C55445E1AEE1CF700ADE278 /* TableDataSourceTests.m in Sources */,
 				9C3976251AFBC79B000F00A0 /* NewsStandTests.m in Sources */,
+				9C99EC9F1B03EF14003103F9 /* RestKitTests.m in Sources */,
 				9C92E4E21AF13E2D0096CAA2 /* CoreDataTests.m in Sources */,
+				9C5D74E21AFD812A00F90203 /* MapEventDataSourceTests.m in Sources */,
 				9CBEA3181AEE4E5A00543D84 /* MainScreenTests.m in Sources */,
 				9C39762A1AFBDD34000F00A0 /* MapTests.m in Sources */,
+				9C99EC9C1B03B689003103F9 /* MapEventCalloutDataSourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +928,7 @@
 			baseConfigurationReference = 9BAF29389950156BB11BF0C2 /* Pods-icreatedTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -905,6 +940,7 @@
 				INFOPLIST_FILE = icreatedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/icreated.app/icreated";
 			};
 			name = Debug;
@@ -914,6 +950,7 @@
 			baseConfigurationReference = 0E1A248C44BF0A9D7F48C24B /* Pods-icreatedTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

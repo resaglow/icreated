@@ -22,6 +22,8 @@
                                        userInfo:nil
                                         repeats:YES];
     
+    [self refreshMap];
+    
     return self;
 }
 
@@ -96,7 +98,7 @@
                 [UIView animateWithDuration:0.05 animations:^{
                     aV.transform = CGAffineTransformMake(1.0, 0, 0, 0.8, 0, aV.frame.size.height * 0.1);
                     
-                }completion:^(BOOL finished){
+                } completion:^(BOOL finished) {
                     [UIView animateWithDuration:0.1 animations:^{
                         aV.transform = CGAffineTransformIdentity;
                     }];

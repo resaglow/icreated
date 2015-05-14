@@ -122,8 +122,6 @@
 }
 
 
-
-
 - (void)testEventDescriptionAttributeTest {
     NSDictionary *properties = [self getPropertiesWithTypes:self.entityName];
     NSString *fieldName;

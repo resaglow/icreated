@@ -23,7 +23,7 @@
 }
 
 - (void)pushDetailViewController {
-    [self performSegueWithIdentifier:@"detailScreenSegue" sender:self];
+//    [self performSegueWithIdentifier:@"detailScreenSegue" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

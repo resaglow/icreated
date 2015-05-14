@@ -47,7 +47,8 @@
     people.frame = CGRectMake(kCalloutStandardIconSide, 0, kCalloutStandardInfoWidth + kCalloutStandardIconSide, kCalloutStandardIconSide);
     self.calloutPeopleCount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kCalloutStandardInfoWidth, kCalloutStandardInfoHeight)];
     self.calloutPeopleCount.font = smallFont;
-    UILabel *peopleIcon = [[UILabel alloc] initWithFrame:CGRectMake(kCalloutStandardInfoWidth, 0, kCalloutStandardIconSide, kCalloutStandardIconSide)];
+    UILabel *peopleIcon = [[UILabel alloc]
+                           initWithFrame:CGRectMake(kCalloutStandardInfoWidth, 0, kCalloutStandardIconSide, kCalloutStandardIconSide)];
     peopleIcon.font = fontAwesome;
     peopleIcon.text = kFAPeople;
     [people addSubview:self.calloutPeopleCount];

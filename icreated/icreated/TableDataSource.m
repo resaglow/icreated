@@ -33,7 +33,7 @@
         self.fetchedResultsController = fetchedResultsController;
         NSError *error = nil;
         if ((self.fetchedResultsController != nil) && ![self.fetchedResultsController performFetch:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            NSLog(@"Unresolved error, uable to perform fetch, %@, %@", error, [error userInfo]);
             abort();
         }
         
