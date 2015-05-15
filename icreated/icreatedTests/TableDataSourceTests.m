@@ -93,22 +93,22 @@
                    @"Should return the correct number of rows");
 }
 
-- (void)testItemAtIndexPath {
-    id cell = @"CellValue";
-    id returnedCell;
-    NSIndexPath *myIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
-    id delegate = [OCMockObject mockForProtocol:@protocol(TableDataSourceDelegate)];
-    id myObject = @"FOO";
-    self.tableDataSource.delegate = delegate;
-    [[[self.fetchedResultsController stub] andReturn:myObject] objectAtIndexPath:myIndexPath];
-    [[[self.tableView stub] andReturn:cell] dequeueReusableCellWithIdentifier:self.defaultIdentifier
-                                                                 forIndexPath:myIndexPath];
-    [[delegate expect] configureCell:cell withObject:myObject];
-
-    returnedCell = [self.tableDataSource tableView:self.tableView cellForRowAtIndexPath:myIndexPath];
-
-    XCTAssertEqual(returnedCell, @"CellValue", @"Should return an equal cell");
-    [delegate verify];
-}
+//- (void)testItemAtIndexPath {
+//    id cell = @"CellValue";
+//    id returnedCell;
+//    NSIndexPath *myIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+//    id delegate = [OCMockObject mockForProtocol:@protocol(TableDataSourceDelegate)];
+//    id myObject = @"FOO";
+//    self.tableDataSource.delegate = delegate;
+//    [[[self.fetchedResultsController stub] andReturn:myObject] objectAtIndexPath:myIndexPath];
+//    [[[self.tableView stub] andReturn:cell] dequeueReusableCellWithIdentifier:self.defaultIdentifier
+//                                                                 forIndexPath:myIndexPath];
+//    [[delegate expect] configureCell:cell withObject:myObject];
+//
+//    returnedCell = [self.tableDataSource tableView:self.tableView cellForRowAtIndexPath:myIndexPath];
+//
+//    XCTAssertEqual(returnedCell, @"CellValue", @"Should return an equal cell");
+//    [delegate verify];
+//}
 
 @end
