@@ -5,3 +5,6 @@ language: objective-c
 xcode_workspace: icreated/icreated.xcworkspace
 xcode_scheme: icreated
 xcode_sdk: iphonesimulator8.1
+
+before_install: gem install slather -N
+after_success: slather

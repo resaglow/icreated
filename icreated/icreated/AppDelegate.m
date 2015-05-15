@@ -48,8 +48,6 @@
                                                                    blue:43.0f / 255.0f
                                                                   alpha:1]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//    [[UINavigationBar appearance] 
-    
     
     [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}
                                                    forState:UIControlStateSelected];
