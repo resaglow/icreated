@@ -13,4 +13,10 @@
 - (void)initNewsStand;
 - (void)refreshingMethod:(void (^)(void))handler;
 
+enum MyViewTags {
+    kDateTimeLabelTag = 2,
+    kPlacemarkTag,
+    kImageViewTag
+};
+
 @end
