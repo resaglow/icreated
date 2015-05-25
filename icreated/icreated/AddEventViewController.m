@@ -32,6 +32,7 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self.textView setDelegate:self];
     
     self.menuButton.target = self.revealViewController;
@@ -175,7 +176,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidAppear:animated];
+    [super viewDidDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillShowNotification

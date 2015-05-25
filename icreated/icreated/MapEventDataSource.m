@@ -119,8 +119,6 @@
 
         NSArray *events = mappingResult.array;
         for (NSInteger i = 0; i < events.count; i++) {
-            NSIndexPath *indexPath = [[NSIndexPath alloc] init];
-            indexPath = [NSIndexPath indexPathForRow:i inSection:0];
             Event *curEvent = events[i];
             
             EventAnnotation *curAnnotation = [[EventAnnotation alloc] init];

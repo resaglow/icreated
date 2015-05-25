@@ -26,11 +26,7 @@
     Event *event = (Event *)object;
     
     UILabel *label;
-    
-    label = (UILabel *)[cell viewWithTag:1];
-    label.text = event.desc;
-    
-    label = (UILabel *)[cell viewWithTag:2];
+    label = (UILabel *)[cell viewWithTag:kDateTimeLabelTag];
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 //    label.text = [[SORelativeDateTransformer registeredTransformer] transformedValue:event.date];
@@ -57,7 +53,7 @@
 //        NSLog(@"event.place not set, probably placemark was = nil while updating");
 //    }
     
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:4];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:kImageViewTag];
     UIImage *scaledImage = [imageView.image scaleToWidth:imageView.frame.size.width];
 //    UIImage *scaledImage = [imageView.image scaleToHeight:imageView.frame.size.height];
     imageView.image = scaledImage;

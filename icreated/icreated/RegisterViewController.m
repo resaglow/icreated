@@ -24,6 +24,7 @@
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initTitle];
 }
 
