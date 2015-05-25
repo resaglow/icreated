@@ -26,6 +26,7 @@
 @implementation PinPickerViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.leftBarButtonItem.title = @"Cancel";
     self.navigationItem.leftBarButtonItem.target = self;
